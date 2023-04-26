@@ -1,0 +1,11 @@
+issues
+
+-fluttering during import into campagin/links and when adding contacts/groups/links
+-wa sender form and other forms fluttering
+-displaying 0 contacts/groups if buttons clicked too quickly
+-largest lists now showing the entire collection of items
+-labels should be updated in pop ups
+-form fade missing after joining group in links list (checkbox)
+-grab active members not working activate() function issue and other issues for it 
+-gmap data sometimes shows empty contacts
+-context menu strip paste Number (gridTargets Single and Group) (pending)

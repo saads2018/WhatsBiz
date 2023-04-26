@@ -1,0 +1,36 @@
+Change Log - 2.6.9.3 (30 Jan 2023)
+----------------------------------
+
+-Fixed Various Bugs
+*Resolution changes
+*errors when uploading excel sheets
+*etc
+
+-Choose Contact Page
+
+*Import excel contacts and save to software
+*add contacts manually
+*edit/delete contacts from software
+*search for contacts
+*start campaign using the selected contacts (using checkboxes)
+
+-Choose Groups Page
+
+*Import excel groups and groups links and save to software
+*add groups / links manually
+*edit/delete groups /links from software
+*search for groups/ links
+*start campaign using the selected groups (using checkboxes)
+*join groups using the selected links (using checkboxes)
+
+-Settings Page
+
+*clear all saved lists
+
+-Others
+
+*Feature to not only export contacts/groups/links from whatsapp but also save to software
+at the same time
+
+*Feature to not only load contacts/groups/links from saved excel sheets but also from 
+the software

@@ -1,0 +1,17 @@
+2.7.3.1 & 2.7.3.2:
+
+	- Chrome Driver Update Fix (Original WaSender Problem)
+
+2.7.3.0:
+
+	- WaSender 2.7.3.0 Update Major Features Added (WhatsBiz Features Stopped Working - Fixed Through WaSender Update)
+	- Choose Contacts/Groups/Links Import Functionality Fix (Personal Problem)
+
+
+Other (Requests For Future):
+
+	- (New) Import Functionality Problems Due To Wrong Format Used (Not Fixed Yet - Info Button Suggested) (Original WaSender Problem)
+	- (New) KeyMarker Functionality - Can't Add More Than One (Not Fixed Yet - Info Button Suggested) (Original WaSender Problem)
+	- (Old) A customer who just bought the software claims that the resolution is not suitable. Could you make it responsive? Or will it also 	  fit the 720 size? (Not Fixed Yet) (Personal Problem)
+	- (New) Export Unsaved Contacts
+	- (New) Save/Import/Export AutoResponder Commands
