@@ -37,7 +37,6 @@ namespace WASender
             InitializeComponent();
             NativeWinAPI.appear(this);
 
-
             this.sizeNormal = this.flowLayoutPanel1.Size;
             this.StartPosition = FormStartPosition.CenterScreen;
             System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
@@ -72,9 +71,44 @@ namespace WASender
             this.automaticMessagingNav1.chooseContact1.Directly = false;
             this.automaticMessagingNav1.chooseGroupContacts1.Directly = false;
             backToHomeScreen();
+            initializeResolution();
         }
 
        
+        private void initializeResolution()
+        {
+            if (Program.resWidth== 1280 || Program.resWidth == 1600)
+            {
+                foreach (Control control in this.flowLayoutPanel1.Controls)
+                    control.Margin = new Padding(control.Margin.Left, control.Margin.Top, 15, control.Margin.Bottom);
+            }
+            else if (Program.resWidth == 1680 && Program.resHeight == 1050)
+            {
+                this.flowLayoutPanel1.Width+= 200;
+
+                foreach (Control control in this.flowLayoutPanel1.Controls)
+                    control.Margin = new Padding(control.Margin.Left, control.Margin.Top, 15, control.Margin.Bottom);
+            }
+            else if (Program.resWidth == 800)
+            {
+                foreach (Control control in this.panel1.Controls)
+                {
+                    control.Font = new Font(control.Font.FontFamily, 7, control.Font.Style);
+                    if (control.Name == "pictureBox12" || control.Name == "label8" || control.Name == "label14" || control.Name == "versionLabel")
+                        control.Left -= 10;
+                }
+
+                this.panel1.Controls[1].Left += 12;
+                this.panel1.Controls[2].Left += 15;
+                this.panel1.Controls[3].Left += 40;
+                this.panel1.Controls[4].Left += 50;
+                this.panel1.Controls[5].Left += 68;
+                this.panel1.Controls[6].Left += 70;
+                this.panel1.Controls[7].Left += 85;
+                this.panel1.Controls[8].Left += 90;
+
+            }
+        }
 
         int originalExStyle = -1;
         bool enableFormLevelDoubleBuffering = true;
@@ -249,6 +283,7 @@ namespace WASender
             AutoUpdater.Start("https://dkdkfdjldjklgdjfldjs.000webhostapp.com/updateApp.xml");
             /*            AutoUpdater.Start("https://buqayvia.com/updateProgram/updateProgram.xml");
             */
+
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             this.WindowState = FormWindowState.Maximized;
             this.flowLayoutPanel1.Size = new Size(this.flowLayoutPanel1.Width, this.borderPanel18.Location.Y + this.borderPanel18.Height + 30);
@@ -599,6 +634,11 @@ namespace WASender
         }
 
         private void label67_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

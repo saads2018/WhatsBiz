@@ -45,9 +45,11 @@ namespace WASender
                 return createParams;
             }
         }
+
         public NumberFilter(WaSenderForm _waSenderForm)
         {
             InitializeComponent();
+            initializeResolution();
             logger = new Logger("NumberFilter");
             waSenderForm = _waSenderForm;
             selectedIndex = -1;
@@ -58,6 +60,17 @@ namespace WASender
                 initWA();
             }
 
+        }
+
+        private void initializeResolution()
+        {
+            /*if (Program.resScale <= 100)
+            {
+                this.pictureBox1.Width = 57;
+                this.pictureBox2.Width = 42;
+                this.label3.Left = 293;
+                this.materialLabel13.Left = 313;
+            }*/
         }
 
         private void initWA()

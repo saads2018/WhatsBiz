@@ -33,7 +33,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.chooseGroupContacts1 = new WASender.ChooseGroupContacts();
             this.borderPanel3 = new WASender.BorderPanel();
             this.button4 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,6 +46,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.chooseContact1 = new WASender.ChooseContact();
+            this.chooseGroupContacts1 = new WASender.ChooseGroupContacts();
             this.panel4.SuspendLayout();
             this.borderPanel3.SuspendLayout();
             this.borderPanel1.SuspendLayout();
@@ -82,19 +82,10 @@
             this.panel4.Size = new System.Drawing.Size(1397, 860);
             this.panel4.TabIndex = 25;
             // 
-            // chooseGroupContacts1
-            // 
-            this.chooseGroupContacts1.BackColor = System.Drawing.Color.White;
-            this.chooseGroupContacts1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chooseGroupContacts1.Location = new System.Drawing.Point(0, 0);
-            this.chooseGroupContacts1.Name = "chooseGroupContacts1";
-            this.chooseGroupContacts1.Size = new System.Drawing.Size(1397, 860);
-            this.chooseGroupContacts1.TabIndex = 54;
-            this.chooseGroupContacts1.Visible = false;
-            // 
             // borderPanel3
             // 
-            this.borderPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.borderPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.borderPanel3.BackColor = System.Drawing.Color.White;
             this.borderPanel3.BorderColor = System.Drawing.Color.WhiteSmoke;
             this.borderPanel3.Controls.Add(this.button4);
@@ -136,7 +127,8 @@
             // 
             // borderPanel1
             // 
-            this.borderPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.borderPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.borderPanel1.BackColor = System.Drawing.Color.White;
             this.borderPanel1.BorderColor = System.Drawing.Color.WhiteSmoke;
             this.borderPanel1.Controls.Add(this.button2);
@@ -178,7 +170,8 @@
             // 
             // borderPanel6
             // 
-            this.borderPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.borderPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.borderPanel6.BackColor = System.Drawing.Color.White;
             this.borderPanel6.BorderColor = System.Drawing.Color.WhiteSmoke;
             this.borderPanel6.Controls.Add(this.button1);
@@ -265,12 +258,26 @@
             // chooseContact1
             // 
             this.chooseContact1.BackColor = System.Drawing.Color.White;
+            this.chooseContact1.Directly = false;
             this.chooseContact1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chooseContact1.Location = new System.Drawing.Point(0, 0);
+            this.chooseContact1.main = null;
             this.chooseContact1.Name = "chooseContact1";
             this.chooseContact1.Size = new System.Drawing.Size(1397, 860);
-            this.chooseContact1.TabIndex = 50;
+            this.chooseContact1.TabIndex = 52;
             this.chooseContact1.Visible = false;
+            // 
+            // chooseGroupContacts1
+            // 
+            this.chooseGroupContacts1.BackColor = System.Drawing.Color.White;
+            this.chooseGroupContacts1.Directly = false;
+            this.chooseGroupContacts1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chooseGroupContacts1.Location = new System.Drawing.Point(0, 0);
+            this.chooseGroupContacts1.main = null;
+            this.chooseGroupContacts1.Name = "chooseGroupContacts1";
+            this.chooseGroupContacts1.Size = new System.Drawing.Size(1397, 860);
+            this.chooseGroupContacts1.TabIndex = 90;
+            this.chooseGroupContacts1.Visible = false;
             // 
             // AutomaticMessagingNav
             // 

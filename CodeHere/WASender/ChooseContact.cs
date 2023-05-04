@@ -26,8 +26,17 @@ namespace WASender
         private static string fileSaves = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),"fileSaves");
         public ChooseContact()
         {
-            InitializeComponent();    
-            
+            InitializeComponent();
+            initializeResolution();
+
+        }
+
+        private void initializeResolution()
+        {
+            if(Program.resWidth==1280 && Program.resHeight == 1024)
+            {
+                this.panel2.Width -= 70;
+            }
         }
 
         private int totalContacts(List<IndividualContacts> contacts)
@@ -153,10 +162,11 @@ namespace WASender
             panel4.Visible = false;
             customProgressBar1.Visible = true;
             Label label = new Label();
-            customProgressBar1.Location = new Point(this.button2.Location.X+this.button2.Width, this.panel2.Location.Y);
-            customProgressBar1.Size = new Size(this.button3.Location.X - (this.button2.Location.X + this.button2.Width), this.customProgressBar1.Height);
+            customProgressBar1.Size = new Size(this.panel2.Width / 2, this.customProgressBar1.Height);
+            customProgressBar1.Location = new Point(this.panel2.Location.X+this.panel2.Width/2 - this.customProgressBar1.Width/2, this.panel2.Location.Y);
             customProgressBar1.BackColor = Color.White;
             customProgressBar1.Controls.Add(label);
+
             label.AutoSize = true;
             label.BackColor = System.Drawing.Color.White;
             label.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -343,71 +353,78 @@ namespace WASender
             borderPanel.Controls.Add(label01);
             borderPanel.Controls.Add(label02);
             borderPanel.Location = new System.Drawing.Point(0, location);
-            borderPanel.Size = new System.Drawing.Size(1260, 97);
+            borderPanel.Size = new System.Drawing.Size(panel2.Size.Width-20, 97);
+            borderPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
 
-            checkBox0.AutoSize = true;
-            checkBox0.Location = new System.Drawing.Point(988, 41);
-            checkBox0.Size = new System.Drawing.Size(18, 17);
-            checkBox0.TabIndex = 50;
-            checkBox0.UseVisualStyleBackColor = true;
-            checkBox0.Name = checkboxNo;
-            checkBox0.CheckedChanged += CheckBox0_CheckedChanged;
-
-            button0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
-            button0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button0.Font = new System.Drawing.Font("Microsoft Tai Le", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            button0.ForeColor = System.Drawing.Color.White;
-            button0.Location = new System.Drawing.Point(1143, 30);
-            button0.Name = cond == 1 ? (count - 1).ToString() : con.IndexOf(conSingle).ToString();
-            button0.Size = new System.Drawing.Size(65, 47);
-            button0.TabIndex = 73;
-            button0.Click += Button0_Click;
-            button0.Text = " ►";
-            button0.UseVisualStyleBackColor = false;
-
-            label0.AutoSize = true;
-            label0.BackColor = System.Drawing.Color.Transparent;
-            label0.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label0.ForeColor = System.Drawing.Color.Gray;
-            label0.Location = new System.Drawing.Point(cond==1? 595:649, 31);
-            label0.Name = "label11";
-            label0.Size = new System.Drawing.Size(196, 28);
-            label0.TabIndex = 45;
-            label0.Text = String.IsNullOrWhiteSpace(entry1)? "Empty":entry1;
-            label0 = trimLabel(label0, 23);
+            label02.AutoSize = true;
+            label02.BackColor = System.Drawing.Color.Transparent;
+            label02.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label02.ForeColor = System.Drawing.Color.Gray;
+            label02.Location = new System.Drawing.Point( (label4.Location.X-panel2.Location.X) + label4.Size.Width/3, 31);
+            //label02.Location = new System.Drawing.Point(60, 31);
+            label02.Name = "label26";
+            label02.Size = new System.Drawing.Size(35, 28);
+            label02.TabIndex = 10;
+            label02.Text = "#" + (count).ToString();
 
             label01.AutoSize = true;
             label01.BackColor = System.Drawing.Color.Transparent;
             label01.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label01.ForeColor = System.Drawing.Color.Gray;
-            label01.Location = new System.Drawing.Point(324, 31);
+            label01.Location = new System.Drawing.Point(label02.Location.X + (label6.Location.X - label4.Location.X) - label4.Size.Width/3, 31);
+            //label01.Location = new System.Drawing.Point(284, 31);
             label01.Name = "label10";
             label01.Size = new System.Drawing.Size(95, 28);
             label01.TabIndex = 44;
             label01.Text = String.IsNullOrWhiteSpace(entry2) ? "Empty" : entry2;
             label01 = trimLabel(label01, 17);
 
-            label02.AutoSize = true;
-            label02.BackColor = System.Drawing.Color.Transparent;
-            label02.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label02.ForeColor = System.Drawing.Color.Gray;
-            label02.Location = new System.Drawing.Point(87, 31);
-            label02.Name = "label26";
-            label02.Size = new System.Drawing.Size(35, 28);
-            label02.TabIndex = 10;
-            label02.Text = "#" + (count).ToString();
+            label0.AutoSize = true;
+            label0.BackColor = System.Drawing.Color.Transparent;
+            label0.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label0.ForeColor = System.Drawing.Color.Gray;
+            label0.Location = new System.Drawing.Point(label01.Location.X + (label8.Location.X - label6.Location.X) + (cond==0 ? label8.Size.Width/3 : 0) , 31);
+            //label0.Location = new System.Drawing.Point(cond == 1 ? 585 : 639, 31);
+            label0.Name = "label11";
+            label0.Size = new System.Drawing.Size(196, 28);
+            label0.TabIndex = 45;
+            label0.Text = String.IsNullOrWhiteSpace(entry1) ? "Empty" : entry1;
+            label0 = trimLabel(label0, 23);
+
+            checkBox0.AutoSize = true;
+            checkBox0.Location = new System.Drawing.Point(label0.Location.X + (label9.Location.X - label8.Location.X) + label9.Size.Width + (checkBox1.Location.X-(label9.Location.X+label9.Width)), 31);
+            //checkBox0.Location = new System.Drawing.Point(988, 41);
+            checkBox0.Size = new System.Drawing.Size(18, 17);
+            checkBox0.TabIndex = 50;
+            checkBox0.UseVisualStyleBackColor = true;
+            checkBox0.Name = checkboxNo;
+            checkBox0.CheckedChanged += CheckBox0_CheckedChanged;
 
             button1.BackColor = System.Drawing.Color.White;
+            button1.Size = new System.Drawing.Size(124, 36);
             button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             button1.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(146)))), ((int)(((byte)(122)))));
-            button1.Location = new System.Drawing.Point(cond==1? 1095:900, cond == 1 ? 31 : 36);
+            button1.Location = new System.Drawing.Point((cond==1 ? borderPanel.Width - 40 - button1.Width : label0.Location.X) + (cond ==1 ? 0 : label3.Location.X - label8.Location.X), 31);
+            //button1.Location = new System.Drawing.Point(cond==1? 1095:900, cond == 1 ? 31 : 36);
             button1.Name = checkBox0.Name;
-            button1.Size = new System.Drawing.Size(124, 36);
             button1.TabIndex = 69;
             button1.Text = "Edit";
             button1.UseVisualStyleBackColor = false;
             button1.Click += Button1_Click;
+
+            button0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
+            button0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            button0.Font = new System.Drawing.Font("Microsoft Tai Le", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            button0.ForeColor = System.Drawing.Color.White;
+            button0.Location = new System.Drawing.Point(borderPanel.Width- 20 - button0.Width, 31);
+            //button0.Location = new System.Drawing.Point(1143, 30);
+            button0.Name = cond == 1 ? (count - 1).ToString() : con.IndexOf(conSingle).ToString();
+            button0.Size = new System.Drawing.Size(65, 47);
+            button0.TabIndex = 73;
+            button0.Click += Button0_Click;
+            button0.Text = " ►";
+            button0.UseVisualStyleBackColor = false;
 
         }
 

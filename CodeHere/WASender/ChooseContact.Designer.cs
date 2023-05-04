@@ -40,6 +40,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.borderPanel5 = new WASender.BorderPanel();
+            this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -198,6 +199,7 @@
             this.borderPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.borderPanel5.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.borderPanel5.Controls.Add(this.label3);
             this.borderPanel5.Controls.Add(this.label8);
             this.borderPanel5.Controls.Add(this.label4);
             this.borderPanel5.Controls.Add(this.checkBox1);
@@ -207,6 +209,20 @@
             this.borderPanel5.Name = "borderPanel5";
             this.borderPanel5.Size = new System.Drawing.Size(1397, 54);
             this.borderPanel5.TabIndex = 70;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
+            this.label3.Location = new System.Drawing.Point(937, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 29);
+            this.label3.TabIndex = 50;
+            this.label3.Text = "Button";
+            this.label3.Visible = false;
             // 
             // label8
             // 
@@ -384,5 +400,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label3;
     }
 }

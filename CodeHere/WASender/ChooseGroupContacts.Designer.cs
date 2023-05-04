@@ -49,6 +49,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.customProgressBar1 = new WASender.CustomProgressBar();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             this.borderPanel5.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -132,6 +133,7 @@
             this.borderPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.borderPanel5.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.borderPanel5.Controls.Add(this.label3);
             this.borderPanel5.Controls.Add(this.label8);
             this.borderPanel5.Controls.Add(this.label4);
             this.borderPanel5.Controls.Add(this.checkBox1);
@@ -337,6 +339,20 @@
             this.customProgressBar1.TabIndex = 32;
             this.customProgressBar1.Visible = false;
             // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
+            this.label3.Location = new System.Drawing.Point(937, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 29);
+            this.label3.TabIndex = 51;
+            this.label3.Text = "Button";
+            this.label3.Visible = false;
+            // 
             // ChooseGroupContacts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -382,5 +398,6 @@
         private CustomProgressBar customProgressBar1;
         private System.Windows.Forms.Button button4;
         public System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

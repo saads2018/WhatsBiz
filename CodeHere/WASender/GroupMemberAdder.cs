@@ -50,8 +50,19 @@ namespace WASender
                 driver = Utils.Driver;
                 initWA();
             }
+            initializeResolution();
         }
 
+        private void initializeResolution()
+        {
+            /*if (Program.resScale <= 100)
+            {
+                this.pictureBox1.Width = 57;
+                this.pictureBox2.Width = 42;
+                this.label3.Left = 293;
+                this.materialLabel13.Left = 313;
+            }*/
+        }
         protected override CreateParams CreateParams
         {
             get

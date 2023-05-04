@@ -37,8 +37,36 @@ namespace WASender
             this.waSenderForm = _WASender;
             this.mainNavPage = mainNavPage;
             InitializeComponent();
+
+            initializeResolution();
         }
 
+        private void initializeResolution()
+        {
+            if ( (Program.resWidth == 1280 && Program.resHeight == 1024))
+            {
+                this.Size = new Size(this.Width-100, this.Height);
+                this.panel2.Width -= 100;
+                this.dataGridView1.Width -= 100;
+            }
+            else if (Program.resWidth == 1152 && Program.resHeight == 864)
+            {
+                this.panel2.Width -= 100;
+                this.dataGridView1.Width -= 100;
+            }
+            else if (Program.resWidth == 1024 && Program.resHeight == 768)
+            {
+                this.Size = new Size(this.Width + 100, this.Height);
+                this.panel2.Width -= 110;
+                this.dataGridView1.Width -= 110;
+            }
+            else if (Program.resWidth == 800)
+            {
+                this.Size = new Size(this.Width + 100, this.Height);
+                this.panel2.Width = 350;
+                this.dataGridView1.Width = 350;
+            }
+        }
         protected override CreateParams CreateParams
         {
             get

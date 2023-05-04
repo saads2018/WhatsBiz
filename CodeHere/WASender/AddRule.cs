@@ -28,7 +28,7 @@ namespace WaAutoReplyBot
         public AddRule(RuleTransactionModel _ruleTransactionModel, WaAutoReplyForm _waAutoReplyForm, int index = -1)
         {
             InitializeComponent();
-
+            initializeResolution();
             this.index = index;
             ruleTransactionModel = _ruleTransactionModel;
             waAutoReplyForm = _waAutoReplyForm;
@@ -37,6 +37,16 @@ namespace WaAutoReplyBot
         }
 
        
+        private void initializeResolution()
+        {
+            if(Program.resHeight<=600)
+            {
+                this.lstMessages.Height -= 50;
+                this.materialButton1.Top -= 60;
+                this.materialButton3.Top -= 60;
+                this.btnDelete.Top -= 60;
+            }
+        }
 
         protected override CreateParams CreateParams
         {

@@ -25,6 +25,7 @@ namespace WASender
         {
             chooseContact1.Visible = false;
             chooseGroupContacts1.Visible = false;
+            this.panel4.AutoScroll = true;
         }
 
         public void openContacts()

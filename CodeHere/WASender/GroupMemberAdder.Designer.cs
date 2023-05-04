@@ -46,18 +46,19 @@
             this.label100 = new System.Windows.Forms.Label();
             this.materialButton1 = new System.Windows.Forms.Button();
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.materialLabel13 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.materialLabel14 = new System.Windows.Forms.Label();
             this.materialCheckbox2 = new System.Windows.Forms.CheckBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.materialLabel17 = new System.Windows.Forms.Label();
             this.materialCheckbox1 = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.materialLabel10 = new System.Windows.Forms.Label();
             this.txtdelayAfterEveryMessageTo = new WASender.CustomInputs.Int32TextBox();
             this.materialLabel11 = new System.Windows.Forms.Label();
             this.txtdelayAfterEveryMessageFrom = new WASender.CustomInputs.Int32TextBox();
             this.materialLabel12 = new System.Windows.Forms.Label();
-            this.materialLabel13 = new System.Windows.Forms.Label();
-            this.materialLabel14 = new System.Windows.Forms.Label();
             this.txtdelayAfterMessagesTo = new WASender.CustomInputs.Int32TextBox();
             this.materialLabel15 = new System.Windows.Forms.Label();
             this.txtdelayAfterMessagesFrom = new WASender.CustomInputs.Int32TextBox();
@@ -90,6 +91,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel2.SuspendLayout();
             this.materialCard2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -105,7 +107,7 @@
             this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(419, 6);
+            this.label22.Location = new System.Drawing.Point(392, 6);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(252, 26);
             this.label22.TabIndex = 3;
@@ -118,8 +120,9 @@
             this.panel10.Controls.Add(this.label22);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel10.Location = new System.Drawing.Point(0, 41);
+            this.panel10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(1097, 40);
+            this.panel10.Size = new System.Drawing.Size(1044, 39);
             this.panel10.TabIndex = 63;
             // 
             // button1
@@ -129,7 +132,8 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(1010, 5);
+            this.button1.Location = new System.Drawing.Point(957, 5);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 30);
             this.button1.TabIndex = 35;
@@ -144,8 +148,9 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1097, 41);
+            this.panel1.Size = new System.Drawing.Size(1044, 41);
             this.panel1.TabIndex = 62;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -154,6 +159,7 @@
             this.pictureBox12.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox12.Image")));
             this.pictureBox12.Location = new System.Drawing.Point(25, 5);
+            this.pictureBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(27, 26);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -167,7 +173,7 @@
             this.label33.Dock = System.Windows.Forms.DockStyle.Left;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label33.Location = new System.Drawing.Point(14, 14);
+            this.label33.Location = new System.Drawing.Point(13, 14);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(10, 472);
             this.label33.TabIndex = 15;
@@ -179,6 +185,7 @@
             this.btnInitWA.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInitWA.ForeColor = System.Drawing.Color.White;
             this.btnInitWA.Location = new System.Drawing.Point(69, 139);
+            this.btnInitWA.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnInitWA.Name = "btnInitWA";
             this.btnInitWA.Size = new System.Drawing.Size(220, 38);
             this.btnInitWA.TabIndex = 56;
@@ -192,7 +199,8 @@
             this.btnSTart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSTart.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSTart.ForeColor = System.Drawing.Color.White;
-            this.btnSTart.Location = new System.Drawing.Point(69, 381);
+            this.btnSTart.Location = new System.Drawing.Point(69, 382);
+            this.btnSTart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSTart.Name = "btnSTart";
             this.btnSTart.Size = new System.Drawing.Size(220, 38);
             this.btnSTart.TabIndex = 57;
@@ -203,7 +211,8 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(127, 200);
+            this.pictureBox3.Location = new System.Drawing.Point(127, 199);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(100, 175);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -218,7 +227,8 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4});
-            this.dataGridView2.Location = new System.Drawing.Point(693, 600);
+            this.dataGridView2.Location = new System.Drawing.Point(693, 601);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
@@ -237,9 +247,10 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
             this.panel2.Controls.Add(this.label100);
-            this.panel2.Location = new System.Drawing.Point(402, 237);
+            this.panel2.Location = new System.Drawing.Point(376, 238);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(647, 35);
+            this.panel2.Size = new System.Drawing.Size(647, 34);
             this.panel2.TabIndex = 60;
             // 
             // label100
@@ -263,8 +274,9 @@
             this.materialButton1.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.materialButton1.ForeColor = System.Drawing.Color.White;
             this.materialButton1.Location = new System.Drawing.Point(243, 38);
+            this.materialButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.materialButton1.Name = "materialButton1";
-            this.materialButton1.Size = new System.Drawing.Size(46, 38);
+            this.materialButton1.Size = new System.Drawing.Size(45, 38);
             this.materialButton1.TabIndex = 61;
             this.materialButton1.Text = "📂";
             this.materialButton1.UseVisualStyleBackColor = false;
@@ -274,24 +286,22 @@
             // 
             this.materialCard2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.materialCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard2.Controls.Add(this.panel3);
             this.materialCard2.Controls.Add(this.materialCheckbox2);
             this.materialCard2.Controls.Add(this.panel9);
             this.materialCard2.Controls.Add(this.materialCheckbox1);
-            this.materialCard2.Controls.Add(this.label3);
             this.materialCard2.Controls.Add(this.materialLabel10);
             this.materialCard2.Controls.Add(this.txtdelayAfterEveryMessageTo);
             this.materialCard2.Controls.Add(this.materialLabel11);
             this.materialCard2.Controls.Add(this.txtdelayAfterEveryMessageFrom);
             this.materialCard2.Controls.Add(this.materialLabel12);
-            this.materialCard2.Controls.Add(this.materialLabel13);
-            this.materialCard2.Controls.Add(this.materialLabel14);
             this.materialCard2.Controls.Add(this.txtdelayAfterMessagesTo);
             this.materialCard2.Controls.Add(this.materialLabel15);
             this.materialCard2.Controls.Add(this.txtdelayAfterMessagesFrom);
             this.materialCard2.Controls.Add(this.materialLabel16);
             this.materialCard2.Depth = 0;
             this.materialCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard2.Location = new System.Drawing.Point(402, 38);
+            this.materialCard2.Location = new System.Drawing.Point(376, 38);
             this.materialCard2.Margin = new System.Windows.Forms.Padding(13, 14, 13, 14);
             this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard2.Name = "materialCard2";
@@ -299,10 +309,57 @@
             this.materialCard2.Size = new System.Drawing.Size(647, 139);
             this.materialCard2.TabIndex = 62;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.materialLabel13);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.materialLabel14);
+            this.panel3.Location = new System.Drawing.Point(222, 50);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(409, 22);
+            this.panel3.TabIndex = 5;
+            // 
+            // materialLabel13
+            // 
+            this.materialLabel13.AutoSize = true;
+            this.materialLabel13.Dock = System.Windows.Forms.DockStyle.Left;
+            this.materialLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.materialLabel13.Location = new System.Drawing.Point(161, 0);
+            this.materialLabel13.Name = "materialLabel13";
+            this.materialLabel13.Size = new System.Drawing.Size(115, 18);
+            this.materialLabel13.TabIndex = 23;
+            this.materialLabel13.Text = "members added";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label3.Location = new System.Drawing.Point(137, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(24, 18);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "10";
+            // 
+            // materialLabel14
+            // 
+            this.materialLabel14.AutoSize = true;
+            this.materialLabel14.Dock = System.Windows.Forms.DockStyle.Left;
+            this.materialLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.materialLabel14.Location = new System.Drawing.Point(0, 0);
+            this.materialLabel14.Name = "materialLabel14";
+            this.materialLabel14.Size = new System.Drawing.Size(137, 18);
+            this.materialLabel14.TabIndex = 9;
+            this.materialLabel14.Text = "seconds after every\r\n";
+            // 
             // materialCheckbox2
             // 
             this.materialCheckbox2.AutoSize = true;
-            this.materialCheckbox2.Location = new System.Drawing.Point(22, 100);
+            this.materialCheckbox2.Location = new System.Drawing.Point(21, 100);
+            this.materialCheckbox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.materialCheckbox2.Name = "materialCheckbox2";
             this.materialCheckbox2.Size = new System.Drawing.Size(18, 17);
             this.materialCheckbox2.TabIndex = 48;
@@ -313,6 +370,7 @@
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
             this.panel9.Controls.Add(this.materialLabel17);
             this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(647, 32);
             this.panel9.TabIndex = 47;
@@ -332,29 +390,19 @@
             // materialCheckbox1
             // 
             this.materialCheckbox1.AutoSize = true;
-            this.materialCheckbox1.Location = new System.Drawing.Point(22, 51);
+            this.materialCheckbox1.Location = new System.Drawing.Point(21, 50);
+            this.materialCheckbox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.materialCheckbox1.Name = "materialCheckbox1";
             this.materialCheckbox1.Size = new System.Drawing.Size(18, 17);
             this.materialCheckbox1.TabIndex = 47;
             this.materialCheckbox1.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(353, 51);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 18);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "10";
             // 
             // materialLabel10
             // 
             this.materialLabel10.AutoSize = true;
             this.materialLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.materialLabel10.Location = new System.Drawing.Point(222, 98);
+            this.materialLabel10.Location = new System.Drawing.Point(221, 98);
             this.materialLabel10.Name = "materialLabel10";
             this.materialLabel10.Size = new System.Drawing.Size(253, 18);
             this.materialLabel10.TabIndex = 18;
@@ -382,7 +430,7 @@
             // 
             // txtdelayAfterEveryMessageFrom
             // 
-            this.txtdelayAfterEveryMessageFrom.Location = new System.Drawing.Point(90, 96);
+            this.txtdelayAfterEveryMessageFrom.Location = new System.Drawing.Point(91, 96);
             this.txtdelayAfterEveryMessageFrom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtdelayAfterEveryMessageFrom.Name = "txtdelayAfterEveryMessageFrom";
             this.txtdelayAfterEveryMessageFrom.Size = new System.Drawing.Size(44, 22);
@@ -394,33 +442,11 @@
             this.materialLabel12.AutoSize = true;
             this.materialLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.materialLabel12.Location = new System.Drawing.Point(46, 98);
+            this.materialLabel12.Location = new System.Drawing.Point(45, 98);
             this.materialLabel12.Name = "materialLabel12";
             this.materialLabel12.Size = new System.Drawing.Size(38, 18);
             this.materialLabel12.TabIndex = 14;
             this.materialLabel12.Text = "Wait";
-            // 
-            // materialLabel13
-            // 
-            this.materialLabel13.AutoSize = true;
-            this.materialLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.materialLabel13.Location = new System.Drawing.Point(374, 50);
-            this.materialLabel13.Name = "materialLabel13";
-            this.materialLabel13.Size = new System.Drawing.Size(115, 18);
-            this.materialLabel13.TabIndex = 11;
-            this.materialLabel13.Text = "members added";
-            // 
-            // materialLabel14
-            // 
-            this.materialLabel14.AutoSize = true;
-            this.materialLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.materialLabel14.Location = new System.Drawing.Point(222, 51);
-            this.materialLabel14.Name = "materialLabel14";
-            this.materialLabel14.Size = new System.Drawing.Size(141, 18);
-            this.materialLabel14.TabIndex = 9;
-            this.materialLabel14.Text = "seconds after every ";
             // 
             // txtdelayAfterMessagesTo
             // 
@@ -444,7 +470,7 @@
             // 
             // txtdelayAfterMessagesFrom
             // 
-            this.txtdelayAfterMessagesFrom.Location = new System.Drawing.Point(90, 51);
+            this.txtdelayAfterMessagesFrom.Location = new System.Drawing.Point(91, 50);
             this.txtdelayAfterMessagesFrom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtdelayAfterMessagesFrom.Name = "txtdelayAfterMessagesFrom";
             this.txtdelayAfterMessagesFrom.Size = new System.Drawing.Size(44, 22);
@@ -456,7 +482,7 @@
             this.materialLabel16.AutoSize = true;
             this.materialLabel16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel16.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.materialLabel16.Location = new System.Drawing.Point(46, 51);
+            this.materialLabel16.Location = new System.Drawing.Point(45, 50);
             this.materialLabel16.Name = "materialLabel16";
             this.materialLabel16.Size = new System.Drawing.Size(38, 18);
             this.materialLabel16.TabIndex = 5;
@@ -466,8 +492,9 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(295, 38);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 38);
+            this.pictureBox1.Size = new System.Drawing.Size(76, 38);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 63;
             this.pictureBox1.TabStop = false;
@@ -476,7 +503,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(766, 637);
+            this.label6.Location = new System.Drawing.Point(712, 638);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 16);
             this.label6.TabIndex = 8;
@@ -488,7 +515,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(829, 637);
+            this.label4.Location = new System.Drawing.Point(776, 638);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(102, 16);
             this.label4.TabIndex = 9;
@@ -499,8 +526,9 @@
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(304, 146);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(82, 27);
+            this.pictureBox2.Size = new System.Drawing.Size(67, 27);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 64;
             this.pictureBox2.TabStop = false;
@@ -509,7 +537,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(904, 637);
+            this.label2.Location = new System.Drawing.Point(851, 638);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 16);
             this.label2.TabIndex = 6;
@@ -521,7 +549,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(963, 637);
+            this.label1.Location = new System.Drawing.Point(909, 638);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 16);
             this.label1.TabIndex = 7;
@@ -533,7 +561,7 @@
             this.lblRunStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRunStatus.AutoSize = true;
             this.lblRunStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRunStatus.Location = new System.Drawing.Point(571, 517);
+            this.lblRunStatus.Location = new System.Drawing.Point(517, 517);
             this.lblRunStatus.Name = "lblRunStatus";
             this.lblRunStatus.Size = new System.Drawing.Size(102, 16);
             this.lblRunStatus.TabIndex = 9;
@@ -544,7 +572,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(508, 517);
+            this.label7.Location = new System.Drawing.Point(455, 517);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 16);
             this.label7.TabIndex = 8;
@@ -555,7 +583,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(508, 484);
+            this.label5.Location = new System.Drawing.Point(455, 484);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 16);
             this.label5.TabIndex = 6;
@@ -567,7 +595,7 @@
             this.lblInitStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblInitStatus.AutoSize = true;
             this.lblInitStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInitStatus.Location = new System.Drawing.Point(571, 484);
+            this.lblInitStatus.Location = new System.Drawing.Point(517, 484);
             this.lblInitStatus.Name = "lblInitStatus";
             this.lblInitStatus.Size = new System.Drawing.Size(102, 16);
             this.lblInitStatus.TabIndex = 7;
@@ -585,12 +613,12 @@
             this.Column1,
             this.ChatName,
             this.Status});
-            this.gridStatus.Location = new System.Drawing.Point(402, 267);
+            this.gridStatus.Location = new System.Drawing.Point(376, 267);
             this.gridStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridStatus.Name = "gridStatus";
             this.gridStatus.RowHeadersWidth = 51;
             this.gridStatus.RowTemplate.Height = 24;
-            this.gridStatus.Size = new System.Drawing.Size(647, 211);
+            this.gridStatus.Size = new System.Drawing.Size(647, 210);
             this.gridStatus.TabIndex = 67;
             // 
             // Column1
@@ -647,11 +675,11 @@
             this.materialCard1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialCard1.Location = new System.Drawing.Point(0, 81);
-            this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard1.Margin = new System.Windows.Forms.Padding(13, 14, 13, 14);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
-            this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(1097, 500);
+            this.materialCard1.Padding = new System.Windows.Forms.Padding(13, 14, 13, 14);
+            this.materialCard1.Size = new System.Drawing.Size(1044, 500);
             this.materialCard1.TabIndex = 61;
             // 
             // button4
@@ -661,6 +689,7 @@
             this.button4.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Location = new System.Drawing.Point(69, 38);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(173, 38);
             this.button4.TabIndex = 80;
@@ -683,8 +712,9 @@
             this.button3.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(69, 425);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(106, 38);
+            this.button3.Size = new System.Drawing.Size(107, 38);
             this.button3.TabIndex = 70;
             this.button3.Text = "┃◀";
             this.button3.UseVisualStyleBackColor = false;
@@ -697,6 +727,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(181, 425);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(108, 38);
             this.button2.TabIndex = 69;
@@ -717,7 +748,7 @@
             this.gridTargetsGroup.Name = "gridTargetsGroup";
             this.gridTargetsGroup.RowHeadersWidth = 51;
             this.gridTargetsGroup.RowTemplate.Height = 24;
-            this.gridTargetsGroup.Size = new System.Drawing.Size(38, 34);
+            this.gridTargetsGroup.Size = new System.Drawing.Size(37, 34);
             this.gridTargetsGroup.TabIndex = 68;
             this.gridTargetsGroup.Visible = false;
             // 
@@ -732,7 +763,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1097, 581);
+            this.ClientSize = new System.Drawing.Size(1044, 581);
             this.Controls.Add(this.materialCard1);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel1);
@@ -755,6 +786,8 @@
             this.panel2.PerformLayout();
             this.materialCard2.ResumeLayout(false);
             this.materialCard2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -789,14 +822,11 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label materialLabel17;
         private System.Windows.Forms.CheckBox materialCheckbox1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label materialLabel10;
         private CustomInputs.Int32TextBox txtdelayAfterEveryMessageTo;
         private System.Windows.Forms.Label materialLabel11;
         private CustomInputs.Int32TextBox txtdelayAfterEveryMessageFrom;
         private System.Windows.Forms.Label materialLabel12;
-        private System.Windows.Forms.Label materialLabel13;
-        private System.Windows.Forms.Label materialLabel14;
         private CustomInputs.Int32TextBox txtdelayAfterMessagesTo;
         private System.Windows.Forms.Label materialLabel15;
         private CustomInputs.Int32TextBox txtdelayAfterMessagesFrom;
@@ -822,5 +852,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label materialLabel13;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label materialLabel14;
     }
 }

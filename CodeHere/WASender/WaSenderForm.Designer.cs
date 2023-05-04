@@ -103,6 +103,7 @@
             this.dataGridView6 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AttachWithMainMessage5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel60 = new System.Windows.Forms.Panel();
             this.button56 = new System.Windows.Forms.Button();
             this.materialButton4 = new System.Windows.Forms.Button();
@@ -125,6 +126,7 @@
             this.dataGridView7 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AttachWithMainMessage6 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel65 = new System.Windows.Forms.Panel();
             this.button80 = new System.Windows.Forms.Button();
             this.materialButton5 = new System.Windows.Forms.Button();
@@ -147,6 +149,7 @@
             this.dataGridView8 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AttachWithMainMessage7 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel71 = new System.Windows.Forms.Panel();
             this.button22 = new System.Windows.Forms.Button();
             this.materialButton6 = new System.Windows.Forms.Button();
@@ -169,6 +172,7 @@
             this.dataGridView9 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AttachWithMainMessage8 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel77 = new System.Windows.Forms.Panel();
             this.button24 = new System.Windows.Forms.Button();
             this.materialButton7 = new System.Windows.Forms.Button();
@@ -191,6 +195,7 @@
             this.dataGridView10 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AttachWithMainMessage9 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel83 = new System.Windows.Forms.Panel();
             this.button26 = new System.Windows.Forms.Button();
             this.materialButton8 = new System.Windows.Forms.Button();
@@ -1178,6 +1183,7 @@
             this.panel57.Padding = new System.Windows.Forms.Padding(5, 0, 0, 25);
             this.panel57.Size = new System.Drawing.Size(473, 557);
             this.panel57.TabIndex = 56;
+            this.panel57.Paint += new System.Windows.Forms.PaintEventHandler(this.panel57_Paint);
             // 
             // panel58
             // 
@@ -1258,7 +1264,7 @@
             this.groupBox21.Location = new System.Drawing.Point(5, 111);
             this.groupBox21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox21.Name = "groupBox21";
-            this.groupBox21.Padding = new System.Windows.Forms.Padding(7, 10, 7, 2);
+            this.groupBox21.Padding = new System.Windows.Forms.Padding(7, 5, 7, 2);
             this.groupBox21.Size = new System.Drawing.Size(468, 421);
             this.groupBox21.TabIndex = 1;
             this.groupBox21.TabStop = false;
@@ -1270,9 +1276,10 @@
             this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView6.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn22,
-            this.dataGridViewTextBoxColumn23});
+            this.dataGridViewTextBoxColumn23,
+            this.AttachWithMainMessage5});
             this.dataGridView6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView6.Location = new System.Drawing.Point(7, 71);
+            this.dataGridView6.Location = new System.Drawing.Point(7, 66);
             this.dataGridView6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView6.MultiSelect = false;
             this.dataGridView6.Name = "dataGridView6";
@@ -1298,10 +1305,20 @@
             this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
             this.dataGridViewTextBoxColumn23.Width = 125;
             // 
+            // AttachWithMainMessage5
+            // 
+            this.AttachWithMainMessage5.FillWeight = 250F;
+            this.AttachWithMainMessage5.HeaderText = "Attach With Main Message";
+            this.AttachWithMainMessage5.MinimumWidth = 6;
+            this.AttachWithMainMessage5.Name = "AttachWithMainMessage5";
+            this.AttachWithMainMessage5.ReadOnly = true;
+            this.AttachWithMainMessage5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.AttachWithMainMessage5.Width = 125;
+            // 
             // panel60
             // 
             this.panel60.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel60.Location = new System.Drawing.Point(7, 61);
+            this.panel60.Location = new System.Drawing.Point(7, 56);
             this.panel60.Name = "panel60";
             this.panel60.Size = new System.Drawing.Size(454, 10);
             this.panel60.TabIndex = 62;
@@ -1328,7 +1345,7 @@
             this.materialButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.materialButton4.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.materialButton4.ForeColor = System.Drawing.Color.White;
-            this.materialButton4.Location = new System.Drawing.Point(7, 25);
+            this.materialButton4.Location = new System.Drawing.Point(7, 20);
             this.materialButton4.Name = "materialButton4";
             this.materialButton4.Size = new System.Drawing.Size(454, 36);
             this.materialButton4.TabIndex = 56;
@@ -1565,7 +1582,8 @@
             this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView7.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn10});
+            this.dataGridViewTextBoxColumn10,
+            this.AttachWithMainMessage6});
             this.dataGridView7.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView7.Location = new System.Drawing.Point(7, 71);
             this.dataGridView7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1592,6 +1610,16 @@
             this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.Width = 125;
+            // 
+            // AttachWithMainMessage6
+            // 
+            this.AttachWithMainMessage6.FillWeight = 250F;
+            this.AttachWithMainMessage6.HeaderText = "Attach With Main Message";
+            this.AttachWithMainMessage6.MinimumWidth = 6;
+            this.AttachWithMainMessage6.Name = "AttachWithMainMessage6";
+            this.AttachWithMainMessage6.ReadOnly = true;
+            this.AttachWithMainMessage6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.AttachWithMainMessage6.Width = 125;
             // 
             // panel65
             // 
@@ -1859,7 +1887,8 @@
             this.dataGridView8.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView8.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12});
+            this.dataGridViewTextBoxColumn12,
+            this.AttachWithMainMessage7});
             this.dataGridView8.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView8.Location = new System.Drawing.Point(7, 71);
             this.dataGridView8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1886,6 +1915,16 @@
             this.dataGridViewTextBoxColumn12.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             this.dataGridViewTextBoxColumn12.Width = 125;
+            // 
+            // AttachWithMainMessage7
+            // 
+            this.AttachWithMainMessage7.FillWeight = 250F;
+            this.AttachWithMainMessage7.HeaderText = "Attach With Main Message";
+            this.AttachWithMainMessage7.MinimumWidth = 6;
+            this.AttachWithMainMessage7.Name = "AttachWithMainMessage7";
+            this.AttachWithMainMessage7.ReadOnly = true;
+            this.AttachWithMainMessage7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.AttachWithMainMessage7.Width = 125;
             // 
             // panel71
             // 
@@ -2153,7 +2192,8 @@
             this.dataGridView9.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView9.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14});
+            this.dataGridViewTextBoxColumn14,
+            this.AttachWithMainMessage8});
             this.dataGridView9.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView9.Location = new System.Drawing.Point(7, 71);
             this.dataGridView9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -2180,6 +2220,16 @@
             this.dataGridViewTextBoxColumn14.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.Width = 125;
+            // 
+            // AttachWithMainMessage8
+            // 
+            this.AttachWithMainMessage8.FillWeight = 250F;
+            this.AttachWithMainMessage8.HeaderText = "Attach With Main Message";
+            this.AttachWithMainMessage8.MinimumWidth = 6;
+            this.AttachWithMainMessage8.Name = "AttachWithMainMessage8";
+            this.AttachWithMainMessage8.ReadOnly = true;
+            this.AttachWithMainMessage8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.AttachWithMainMessage8.Width = 125;
             // 
             // panel77
             // 
@@ -2448,7 +2498,8 @@
             this.dataGridView10.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView10.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn16});
+            this.dataGridViewTextBoxColumn16,
+            this.AttachWithMainMessage9});
             this.dataGridView10.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView10.Location = new System.Drawing.Point(7, 71);
             this.dataGridView10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -2475,6 +2526,16 @@
             this.dataGridViewTextBoxColumn16.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
             this.dataGridViewTextBoxColumn16.Width = 125;
+            // 
+            // AttachWithMainMessage9
+            // 
+            this.AttachWithMainMessage9.FillWeight = 250F;
+            this.AttachWithMainMessage9.HeaderText = "Attach With Main Message";
+            this.AttachWithMainMessage9.MinimumWidth = 6;
+            this.AttachWithMainMessage9.Name = "AttachWithMainMessage9";
+            this.AttachWithMainMessage9.ReadOnly = true;
+            this.AttachWithMainMessage9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.AttachWithMainMessage9.Width = 125;
             // 
             // panel83
             // 
@@ -5015,19 +5076,6 @@
         private System.Windows.Forms.Button btnUploadExcelGroup;
         private System.Windows.Forms.Button button54;
         private System.Windows.Forms.Button btnDownloadSampleGroup;
-        private System.Windows.Forms.GroupBox groupBox21;
-        private System.Windows.Forms.DataGridView dataGridView6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
-        private System.Windows.Forms.Panel panel60;
-        private System.Windows.Forms.Button button56;
-        private System.Windows.Forms.Button materialButton4;
-        private System.Windows.Forms.Panel panel61;
-        private System.Windows.Forms.GroupBox groupBox22;
-        private System.Windows.Forms.Panel panel62;
-        private System.Windows.Forms.WebBrowser webBrowser6;
-        private System.Windows.Forms.Panel panel63;
-        private System.Windows.Forms.Button button58;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel64;
@@ -5036,8 +5084,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.DataGridView dataGridView7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.Panel panel65;
         private System.Windows.Forms.Button button80;
         private System.Windows.Forms.Button materialButton5;
@@ -5055,8 +5101,6 @@
         private System.Windows.Forms.Button button100;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.DataGridView dataGridView8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.Panel panel71;
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.Button materialButton6;
@@ -5074,8 +5118,6 @@
         private System.Windows.Forms.Button button120;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.DataGridView dataGridView9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.Panel panel77;
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button materialButton7;
@@ -5093,8 +5135,6 @@
         private System.Windows.Forms.Button button140;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.DataGridView dataGridView10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private System.Windows.Forms.Panel panel83;
         private System.Windows.Forms.Button button26;
         private System.Windows.Forms.Button materialButton8;
@@ -5161,11 +5201,36 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Button button28;
         private System.Windows.Forms.Button button29;
         private System.Windows.Forms.Button button33;
         private System.Windows.Forms.Button button34;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn AttachWithMainMessage6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn AttachWithMainMessage7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn AttachWithMainMessage8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn AttachWithMainMessage9;
+        private System.Windows.Forms.GroupBox groupBox21;
+        private System.Windows.Forms.DataGridView dataGridView6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn AttachWithMainMessage5;
+        private System.Windows.Forms.Panel panel60;
+        private System.Windows.Forms.Button button56;
+        private System.Windows.Forms.Button materialButton4;
+        private System.Windows.Forms.Panel panel61;
+        private System.Windows.Forms.Button button23;
+        private System.Windows.Forms.GroupBox groupBox22;
+        private System.Windows.Forms.Panel panel62;
+        private System.Windows.Forms.WebBrowser webBrowser6;
+        private System.Windows.Forms.Panel panel63;
+        private System.Windows.Forms.Button button58;
     }
 }
-

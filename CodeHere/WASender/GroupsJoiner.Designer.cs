@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GroupsJoiner));
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            this.button4 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -46,14 +47,11 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.materialLabel17 = new System.Windows.Forms.Label();
             this.materialCheckbox1 = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.materialLabel10 = new System.Windows.Forms.Label();
             this.txtdelayAfterEveryMessageTo = new WASender.CustomInputs.Int32TextBox();
             this.materialLabel11 = new System.Windows.Forms.Label();
             this.txtdelayAfterEveryMessageFrom = new WASender.CustomInputs.Int32TextBox();
             this.materialLabel12 = new System.Windows.Forms.Label();
-            this.materialLabel13 = new System.Windows.Forms.Label();
-            this.materialLabel14 = new System.Windows.Forms.Label();
             this.txtdelayAfterMessagesTo = new WASender.CustomInputs.Int32TextBox();
             this.materialLabel15 = new System.Windows.Forms.Label();
             this.txtdelayAfterMessagesFrom = new WASender.CustomInputs.Int32TextBox();
@@ -77,7 +75,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.materialLabel13 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.materialLabel14 = new System.Windows.Forms.Label();
             this.materialCard1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTargetsGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -90,6 +91,7 @@
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialCard1
@@ -121,6 +123,20 @@
             this.materialCard1.Size = new System.Drawing.Size(1097, 501);
             this.materialCard1.TabIndex = 9;
             this.materialCard1.Paint += new System.Windows.Forms.PaintEventHandler(this.materialCard1_Paint);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(69, 37);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(173, 38);
+            this.button4.TabIndex = 85;
+            this.button4.Text = "Load From Save";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // progressBar1
             // 
@@ -163,37 +179,37 @@
             this.gridTargetsGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.gridTargetsGroup.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridTargetsGroup.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridTargetsGroup.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.gridTargetsGroup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridTargetsGroup.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn21,
             this.dataGridViewTextBoxColumn22});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridTargetsGroup.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridTargetsGroup.DefaultCellStyle = dataGridViewCellStyle5;
             this.gridTargetsGroup.Location = new System.Drawing.Point(692, 485);
             this.gridTargetsGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridTargetsGroup.Name = "gridTargetsGroup";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gridTargetsGroup.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridTargetsGroup.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.gridTargetsGroup.RowHeadersWidth = 51;
             this.gridTargetsGroup.RowTemplate.Height = 24;
             this.gridTargetsGroup.Size = new System.Drawing.Size(73, 70);
@@ -238,17 +254,15 @@
             // 
             this.materialCard2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.materialCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard2.Controls.Add(this.panel3);
             this.materialCard2.Controls.Add(this.materialCheckbox2);
             this.materialCard2.Controls.Add(this.panel9);
             this.materialCard2.Controls.Add(this.materialCheckbox1);
-            this.materialCard2.Controls.Add(this.label3);
             this.materialCard2.Controls.Add(this.materialLabel10);
             this.materialCard2.Controls.Add(this.txtdelayAfterEveryMessageTo);
             this.materialCard2.Controls.Add(this.materialLabel11);
             this.materialCard2.Controls.Add(this.txtdelayAfterEveryMessageFrom);
             this.materialCard2.Controls.Add(this.materialLabel12);
-            this.materialCard2.Controls.Add(this.materialLabel13);
-            this.materialCard2.Controls.Add(this.materialLabel14);
             this.materialCard2.Controls.Add(this.txtdelayAfterMessagesTo);
             this.materialCard2.Controls.Add(this.materialLabel15);
             this.materialCard2.Controls.Add(this.txtdelayAfterMessagesFrom);
@@ -302,17 +316,6 @@
             this.materialCheckbox1.TabIndex = 47;
             this.materialCheckbox1.UseVisualStyleBackColor = true;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(353, 51);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 18);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "10";
-            // 
             // materialLabel10
             // 
             this.materialLabel10.AutoSize = true;
@@ -363,28 +366,6 @@
             this.materialLabel12.Size = new System.Drawing.Size(38, 18);
             this.materialLabel12.TabIndex = 14;
             this.materialLabel12.Text = "Wait";
-            // 
-            // materialLabel13
-            // 
-            this.materialLabel13.AutoSize = true;
-            this.materialLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.materialLabel13.Location = new System.Drawing.Point(374, 50);
-            this.materialLabel13.Name = "materialLabel13";
-            this.materialLabel13.Size = new System.Drawing.Size(97, 18);
-            this.materialLabel13.TabIndex = 11;
-            this.materialLabel13.Text = "groups joined";
-            // 
-            // materialLabel14
-            // 
-            this.materialLabel14.AutoSize = true;
-            this.materialLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.materialLabel14.Location = new System.Drawing.Point(222, 51);
-            this.materialLabel14.Name = "materialLabel14";
-            this.materialLabel14.Size = new System.Drawing.Size(141, 18);
-            this.materialLabel14.TabIndex = 9;
-            this.materialLabel14.Text = "seconds after every ";
             // 
             // txtdelayAfterMessagesTo
             // 
@@ -650,19 +631,51 @@
             this.panel1.Size = new System.Drawing.Size(1097, 41);
             this.panel1.TabIndex = 23;
             // 
-            // button4
+            // panel3
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(69, 37);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(173, 38);
-            this.button4.TabIndex = 85;
-            this.button4.Text = "Load From Save";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.panel3.Controls.Add(this.materialLabel13);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.materialLabel14);
+            this.panel3.Location = new System.Drawing.Point(222, 51);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(409, 22);
+            this.panel3.TabIndex = 50;
+            // 
+            // materialLabel13
+            // 
+            this.materialLabel13.AutoSize = true;
+            this.materialLabel13.Dock = System.Windows.Forms.DockStyle.Left;
+            this.materialLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.materialLabel13.Location = new System.Drawing.Point(161, 0);
+            this.materialLabel13.Name = "materialLabel13";
+            this.materialLabel13.Size = new System.Drawing.Size(97, 18);
+            this.materialLabel13.TabIndex = 23;
+            this.materialLabel13.Text = "groups joined";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label3.Location = new System.Drawing.Point(137, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(24, 18);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "10";
+            // 
+            // materialLabel14
+            // 
+            this.materialLabel14.AutoSize = true;
+            this.materialLabel14.Dock = System.Windows.Forms.DockStyle.Left;
+            this.materialLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.materialLabel14.Location = new System.Drawing.Point(0, 0);
+            this.materialLabel14.Name = "materialLabel14";
+            this.materialLabel14.Size = new System.Drawing.Size(137, 18);
+            this.materialLabel14.TabIndex = 9;
+            this.materialLabel14.Text = "seconds after every\r\n";
             // 
             // GroupsJoiner
             // 
@@ -701,6 +714,8 @@
             this.panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -723,14 +738,11 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label materialLabel17;
         private System.Windows.Forms.CheckBox materialCheckbox1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label materialLabel10;
         private CustomInputs.Int32TextBox txtdelayAfterEveryMessageTo;
         private System.Windows.Forms.Label materialLabel11;
         private CustomInputs.Int32TextBox txtdelayAfterEveryMessageFrom;
         private System.Windows.Forms.Label materialLabel12;
-        private System.Windows.Forms.Label materialLabel13;
-        private System.Windows.Forms.Label materialLabel14;
         private CustomInputs.Int32TextBox txtdelayAfterMessagesTo;
         private System.Windows.Forms.Label materialLabel15;
         private CustomInputs.Int32TextBox txtdelayAfterMessagesFrom;
@@ -753,5 +765,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label materialLabel13;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label materialLabel14;
     }
 }

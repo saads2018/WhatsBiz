@@ -57,10 +57,10 @@ namespace WASender
 
             InitializeComponent();
             this.Refresh();
-
+            initializeResolution();
             size = this.Width;
             selectedIndex = -1;
-              wASenderGroupTransModel = new WASenderGroupTransModel();
+            wASenderGroupTransModel = new WASenderGroupTransModel();
             wASenderGroupTransModel.groupList = new List<GroupModel>();
 
             wASenderSingleTransModel = new WASenderSingleTransModel();
@@ -126,19 +126,40 @@ namespace WASender
         }
 
 
-       /* protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams createParams = base.CreateParams;
-                createParams.ExStyle |= 0x02000000;
-                return createParams;
-            }
-        }*/
+        /* protected override CreateParams CreateParams
+         {
+             get
+             {
+                 CreateParams createParams = base.CreateParams;
+                 createParams.ExStyle |= 0x02000000;
+                 return createParams;
+             }
+         }*/
 
+        private void initializeResolution()
+        {
+            if (Program.resWidth < this.Width)
+            {
+                this.Width = Program.resWidth - 150;
+            }
+
+            if (Program.resHeight <= 600)
+            {
+                this.panel25.Height -= 80;
+                this.gridTargets.Height -= 80;
+
+                this.groupBox1.Dock = DockStyle.None;
+                this.groupBox1.Location = new System.Drawing.Point(this.button15.Location.X+5, this.button15.Location.Y+30);
+                this.dataGridView1.Height = 85;
+                this.button16.Top -= 40;
+                //this.groupBox1.Height -= 120;
+                //this.dataGridView1.Height = 85;
+                //this.btnAddFileOne.Height -= 10;
+            }
+        }
         public void startCampaign(IndividualContacts contacts)
         {
-            for (int i =0;i<contacts.ContactNames.Count;i++)
+            for (int i = 0; i < contacts.ContactNames.Count; i++)
             {
                 gridTargets.Rows.Add();
                 gridTargets.Rows[i].Cells[0].Value = contacts.Numbers[i];
@@ -158,7 +179,7 @@ namespace WASender
             }
         }
 
-        
+
         private void setBrowserDefaultHtml(WebBrowser _WebBrowser)
         {
             _WebBrowser.DocumentText = Storage.DocumentHtmlString;
@@ -517,11 +538,11 @@ namespace WASender
             }
 
             this.Refresh();
-           /* dataGridView1.Columns[2].Visible = false;
-            dataGridView2.Columns[2].Visible = false;
-            dataGridView3.Columns[2].Visible = false;
-            dataGridView4.Columns[2].Visible = false;
-            dataGridView5.Columns[2].Visible = false;*/
+            /* dataGridView1.Columns[2].Visible = false;
+             dataGridView2.Columns[2].Visible = false;
+             dataGridView3.Columns[2].Visible = false;
+             dataGridView4.Columns[2].Visible = false;
+             dataGridView5.Columns[2].Visible = false;*/
             this.Refresh();
         }
 
@@ -632,10 +653,10 @@ namespace WASender
             string version = fvi.FileVersion;
             this.Text = "WhatsBiz " + version;
 
-/*            label1.Text = Strings.SoftwareVersion;
-*/            /*  tabMain.TabPages[0].Text = Strings.ContectSender;
-              tabMain.TabPages[1].Text = Strings.GroupSender;
-              tabMain.TabPages[2].Text = Strings.Tools;*/
+            /*            label1.Text = Strings.SoftwareVersion;
+            */            /*  tabMain.TabPages[0].Text = Strings.ContectSender;
+                          tabMain.TabPages[1].Text = Strings.GroupSender;
+                          tabMain.TabPages[2].Text = Strings.Tools;*/
             /*            materialLabel1.Text = Strings.Target;
             *//*            materialLabel10.Text = Strings.Target;
             */            /*  btnUploadExcel.Text = Strings.UploadSampleExcel;
@@ -647,11 +668,11 @@ namespace WASender
             tabControl2.TabPages[3].Text = Strings.MessageFour;
             tabControl2.TabPages[4].Text = Strings.MessageFive;
 
-           /* groupBox1.Text = Strings.Attachments;
-            groupBox2.Text = Strings.Attachments;
-            groupBox3.Text = Strings.Attachments;
-            groupBox4.Text = Strings.Attachments;
-            groupBox5.Text = Strings.Attachments;*/
+            /* groupBox1.Text = Strings.Attachments;
+             groupBox2.Text = Strings.Attachments;
+             groupBox3.Text = Strings.Attachments;
+             groupBox4.Text = Strings.Attachments;
+             groupBox5.Text = Strings.Attachments;*/
 
             btnAddFileOne.Text = Strings.Addfile;
             btnAddFileTwo.Text = Strings.Addfile;
@@ -672,44 +693,44 @@ namespace WASender
             txtMsgFourGroup.Hint = Strings.YourFourthmessage;
             txtMsgFiveGroup.Hint = Strings.YourFifthmessage;
 
-           /* De.Text = Strings.DelaySettings;
-            materialLabel3.Text = Strings.Wait;
-            materialLabel9.Text = Strings.Wait;
-            materialLabel5.Text = Strings.secondsafterevery;
-            materialLabel4.Text = Strings.to;
-            materialLabel8.Text = Strings.to;
-            materialLabel6.Text = Strings.Messages;
-            materialLabel7.Text = Strings.secondsbeforeeverymessage;
-*/
+            /* De.Text = Strings.DelaySettings;
+             materialLabel3.Text = Strings.Wait;
+             materialLabel9.Text = Strings.Wait;
+             materialLabel5.Text = Strings.secondsafterevery;
+             materialLabel4.Text = Strings.to;
+             materialLabel8.Text = Strings.to;
+             materialLabel6.Text = Strings.Messages;
+             materialLabel7.Text = Strings.secondsbeforeeverymessage;
+ */
             materialButton1.Text = Strings.Clear;
-/*            btnStart.Text = Strings.StartCampaign;
-*/
+            /*            btnStart.Text = Strings.StartCampaign;
+            */
             /*contextMenuStrip1.Items[0].Text = Strings.AddKeyMarkers;
             contextMenuStrip1.Items[1].Text = Strings.RandomNumber;*/
 
 
-/*            btnStartGroup.Text = Strings.UploadSampleExcel;
-*//*            materialLabel1.Text = Strings.Target;
-*//*            gridTargetsGroup.Columns[0].HeaderText = Strings.GroupNames;
-*/
-          /*  gridTargets.Columns[0].HeaderText = Strings.Number;
-            gridTargets.Columns[1].HeaderText = Strings.Name;*/
+            /*            btnStartGroup.Text = Strings.UploadSampleExcel;
+            *//*            materialLabel1.Text = Strings.Target;
+            *//*            gridTargetsGroup.Columns[0].HeaderText = Strings.GroupNames;
+            */
+            /*  gridTargets.Columns[0].HeaderText = Strings.Number;
+              gridTargets.Columns[1].HeaderText = Strings.Name;*/
 
             btnDownloadSampleGroup.Text = Strings.DownloadSample;
-/*            materialLabel18.Text = Strings.Message;
-*//*            materialLabel2.Text = Strings.Message;
-*//*
-            materialTabControl1.TabPages[0].Text = Strings.MessageOne;
-            materialTabControl1.TabPages[1].Text = Strings.MessageTwo;
-            materialTabControl1.TabPages[2].Text = Strings.MessageThree;
-            materialTabControl1.TabPages[3].Text = Strings.MessageFour;
-            materialTabControl1.TabPages[4].Text = Strings.MessageFive;*/
+            /*            materialLabel18.Text = Strings.Message;
+            *//*            materialLabel2.Text = Strings.Message;
+            *//*
+                        materialTabControl1.TabPages[0].Text = Strings.MessageOne;
+                        materialTabControl1.TabPages[1].Text = Strings.MessageTwo;
+                        materialTabControl1.TabPages[2].Text = Strings.MessageThree;
+                        materialTabControl1.TabPages[3].Text = Strings.MessageFour;
+                        materialTabControl1.TabPages[4].Text = Strings.MessageFive;*/
 
-          /*  groupBox6.Text = Strings.Attachments;
-            groupBox7.Text = Strings.Attachments;
-            groupBox8.Text = Strings.Attachments;
-            groupBox9.Text = Strings.Attachments;
-            groupBox10.Text = Strings.Attachments;*/
+            /*  groupBox6.Text = Strings.Attachments;
+              groupBox7.Text = Strings.Attachments;
+              groupBox8.Text = Strings.Attachments;
+              groupBox9.Text = Strings.Attachments;
+              groupBox10.Text = Strings.Attachments;*/
 
             materialButton4.Text = Strings.Addfile;
             materialButton5.Text = Strings.Addfile;
@@ -724,98 +745,99 @@ namespace WASender
             materialLabel15.Text = Strings.to;
             materialLabel11.Text = Strings.to;
             materialLabel14.Text = Strings.secondsafterevery;
-/*            materialLabel13.Text = Strings.Messages;
-*//*            materialLabel10.Text = Strings.secondsbeforeeverymessage;
-*/            materialButton2.Text = Strings.Clear;
-/*            btnStartGroup.Text = Strings.StartCampaign;
-*/
-           /* materialLabel20.Text = Strings.GrabChatList;
-            materialLabel21.Text = Strings.ClickbellowButton;
-            materialLabel23.Text = Strings.ScanQRCode;
-            materialLabel24.Text = Strings.WaitfortheExcel;
+            /*            materialLabel13.Text = Strings.Messages;
+            *//*            materialLabel10.Text = Strings.secondsbeforeeverymessage;
+            */
+            materialButton2.Text = Strings.Clear;
+            /*            btnStartGroup.Text = Strings.StartCampaign;
+            */
+            /* materialLabel20.Text = Strings.GrabChatList;
+             materialLabel21.Text = Strings.ClickbellowButton;
+             materialLabel23.Text = Strings.ScanQRCode;
+             materialLabel24.Text = Strings.WaitfortheExcel;
 
-            materialButton3.Text = Strings.GrabNow;
-            materialButton9.Text = Strings.GrabNow;
-            materialButton10.Text = Strings.GrabNow;
+             materialButton3.Text = Strings.GrabNow;
+             materialButton9.Text = Strings.GrabNow;
+             materialButton10.Text = Strings.GrabNow;
 
-            materialButton12.Text = Strings.StartNow;
-            materialButton11.Text = Strings.StartNow;
-            materialButton15.Text = Strings.StartNow;
+             materialButton12.Text = Strings.StartNow;
+             materialButton11.Text = Strings.StartNow;
+             materialButton15.Text = Strings.StartNow;
 
-            materialLabel28.Text = Strings.GrabGroupMembers;
-            materialLabel27.Text = Strings.ClickbellowButtonScanQRCode;
-            materialLabel26.Text = Strings.OpenAnyGroup;
-            materialLabel25.Text = Strings.WaitfortheExcel;
-            materialLabel32.Text = Strings.GrabWhatsAppGroupLinksfromwebpage;
-            materialLabel31.Text = Strings.ClickbellowButtonScanQRCode;
-            materialLabel30.Text = Strings.OpenAnywebpagewheregivengrouplinks;
-            materialLabel29.Text = Strings.ThenClickonSTARTButton;
-            materialLabel35.Text = Strings.AutoGroupJoiner;
-            materialLabel34.Text = Strings.AddUploadGroupLinks;
-            materialLabel33.Text = Strings.ScanWAQRCode;
-            materialLabel22.Text = Strings.ThenClickonSTARTButton;
-            materialLabel39.Text = Strings.WhatsAppAutoResponderBot;
-            materialLabel38.Text = Strings.SetRules;
-            materialLabel37.Text = Strings.AddReplyMessages;
-            materialLabel36.Text = Strings.ThenClickonSTARTButton;
+             materialLabel28.Text = Strings.GrabGroupMembers;
+             materialLabel27.Text = Strings.ClickbellowButtonScanQRCode;
+             materialLabel26.Text = Strings.OpenAnyGroup;
+             materialLabel25.Text = Strings.WaitfortheExcel;
+             materialLabel32.Text = Strings.GrabWhatsAppGroupLinksfromwebpage;
+             materialLabel31.Text = Strings.ClickbellowButtonScanQRCode;
+             materialLabel30.Text = Strings.OpenAnywebpagewheregivengrouplinks;
+             materialLabel29.Text = Strings.ThenClickonSTARTButton;
+             materialLabel35.Text = Strings.AutoGroupJoiner;
+             materialLabel34.Text = Strings.AddUploadGroupLinks;
+             materialLabel33.Text = Strings.ScanWAQRCode;
+             materialLabel22.Text = Strings.ThenClickonSTARTButton;
+             materialLabel39.Text = Strings.WhatsAppAutoResponderBot;
+             materialLabel38.Text = Strings.SetRules;
+             materialLabel37.Text = Strings.AddReplyMessages;
+             materialLabel36.Text = Strings.ThenClickonSTARTButton;
 
-            label5.Text = Strings.WhatsAppNumberFilter;
-            label4.Text = Strings.AddUploadNumbers;
-            label9.Text = Strings.ContactListGrabber;
-            label7.Text = Strings.HitGrabNowButton;
-            label3.Text = Strings.ScanWAQRCode;
-            label2.Text = Strings.ThenClickonSTARTButton;
-            label8.Text = Strings.ClickbellowButtonScanQRCode;
-            label6.Text = Strings.WaitfortheExcel;
+             label5.Text = Strings.WhatsAppNumberFilter;
+             label4.Text = Strings.AddUploadNumbers;
+             label9.Text = Strings.ContactListGrabber;
+             label7.Text = Strings.HitGrabNowButton;
+             label3.Text = Strings.ScanWAQRCode;
+             label2.Text = Strings.ThenClickonSTARTButton;
+             label8.Text = Strings.ClickbellowButtonScanQRCode;
+             label6.Text = Strings.WaitfortheExcel;
 
-            label13.Text = Strings.GrabActiveGroupMembers;
+             label13.Text = Strings.GrabActiveGroupMembers;
 
-            label12.Text = Strings.ClickbellowButtonScanQRCode;*/
+             label12.Text = Strings.ClickbellowButtonScanQRCode;*/
             label11.Text = Strings.OpenAnyGroup;
-         /*   label10.Text = Strings.WaitfortheExcel;
-            materialButton17.Text = Strings.GrabNow;
+            /*   label10.Text = Strings.WaitfortheExcel;
+               materialButton17.Text = Strings.GrabNow;
 
-            materialButton18.Text = Strings.GrabNow;
-            materialButton16.Text = Strings.GrabNow;
+               materialButton18.Text = Strings.GrabNow;
+               materialButton16.Text = Strings.GrabNow;
 
-            label17.Text = Strings.GoogleMapDataEExtractor;
-            label16.Text = Strings.One + Strings.OpenBrowser;
-            // Search Your QUery on G Map
-            label15.Text = Strings.Two + Strings.SearchYourQUeryonGMap;
-            label14.Text = Strings.Three + Strings.HitStart;*/
+               label17.Text = Strings.GoogleMapDataEExtractor;
+               label16.Text = Strings.One + Strings.OpenBrowser;
+               // Search Your QUery on G Map
+               label15.Text = Strings.Two + Strings.SearchYourQUeryonGMap;
+               label14.Text = Strings.Three + Strings.HitStart;*/
 
-           /* addCountryCodeToolStripMenuItem.Text = Strings.AddCountryCode;
-            importNumbersToolStripMenuItem.Text = Strings.CopyPasteNumber;*/
+            /* addCountryCodeToolStripMenuItem.Text = Strings.AddCountryCode;
+             importNumbersToolStripMenuItem.Text = Strings.CopyPasteNumber;*/
 
             // contextMenuStrip1.Items[2].Text = Strings.AddButtons;
-/*            groupBox11.Text = Strings.Buttons;
-*/            //label18.Text = Strings.ButtonMessage;
+            /*            groupBox11.Text = Strings.Buttons;
+            */            //label18.Text = Strings.ButtonMessage;
             materialButton19.Text = Strings.AddButton;
             materialButton20.Text = Strings.AddButton;
             materialButton21.Text = Strings.AddButton;
             materialButton22.Text = Strings.AddButton;
             materialButton23.Text = Strings.AddButton;
 
-           /* materialButton26.Text = Strings.AddButton;
-            materialButton27.Text = Strings.AddButton;
-            materialButton28.Text = Strings.AddButton;
-            materialButton29.Text = Strings.AddButton;
-            materialButton30.Text = Strings.AddButton;*/
+            /* materialButton26.Text = Strings.AddButton;
+             materialButton27.Text = Strings.AddButton;
+             materialButton28.Text = Strings.AddButton;
+             materialButton29.Text = Strings.AddButton;
+             materialButton30.Text = Strings.AddButton;*/
 
             contextMenuStrip3.Items[0].Text = Strings.AddCaption;
-/*
-            label21.Text = Strings.BulkAddGroupMembers;
-            label20.Text = Strings.ClickButtonbellow;
-            label19.Text = Strings.UploadNumbersExcel;
-            label18.Text = Strings.SelectGroupandGo;
-            materialButton24.Text = Strings.StartNow;
-            label25.Text = Strings.GroupFinder;
-            label23.Text = Strings.EnterYourSubject;
-            label24.Text = Strings.ClickButtonbellow;
-            label22.Text = Strings.StartFinding;*/
+            /*
+                        label21.Text = Strings.BulkAddGroupMembers;
+                        label20.Text = Strings.ClickButtonbellow;
+                        label19.Text = Strings.UploadNumbersExcel;
+                        label18.Text = Strings.SelectGroupandGo;
+                        materialButton24.Text = Strings.StartNow;
+                        label25.Text = Strings.GroupFinder;
+                        label23.Text = Strings.EnterYourSubject;
+                        label24.Text = Strings.ClickButtonbellow;
+                        label22.Text = Strings.StartFinding;*/
 
-/*            materialButton25.Text = Strings.StartNow;
-*/
+            /*            materialButton25.Text = Strings.StartNow;
+            */
             changeGridHeaders(dataGridView1);
             changeGridHeaders(dataGridView2);
             changeGridHeaders(dataGridView3);
@@ -845,22 +867,22 @@ namespace WASender
             label1.ForeColor = System.Drawing.Color.White;
         }
 
-      /*  private void tabMain_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (tabMain.SelectedIndex == 0)
-            {
-                lblSection.Text = Strings.ContectSender;
-            }
-            if (tabMain.SelectedIndex == 1)
-            {
-                lblSection.Text = Strings.GroupSender;
-            }
-            if (tabMain.SelectedIndex == 2)
-            {
-                lblSection.Text = Strings.Tools;
-            }
+        /*  private void tabMain_SelectedIndexChanged(object sender, EventArgs e)
+          {
+              if (tabMain.SelectedIndex == 0)
+              {
+                  lblSection.Text = Strings.ContectSender;
+              }
+              if (tabMain.SelectedIndex == 1)
+              {
+                  lblSection.Text = Strings.GroupSender;
+              }
+              if (tabMain.SelectedIndex == 2)
+              {
+                  lblSection.Text = Strings.Tools;
+              }
 
-        }*/
+          }*/
 
         private void chkDarkMode_CheckedChanged(object sender, EventArgs e)
         {
@@ -910,13 +932,15 @@ namespace WASender
 
         private void setCounter()
         {
-/*            lblCount.Text = (gridTargets.Rows.Count - 1).ToString();
-*/        }
+            /*            lblCount.Text = (gridTargets.Rows.Count - 1).ToString();
+            */
+        }
 
         private void setCounterGroup()
         {
-/*            lblCountGroup.Text = (gridTargetsGroup.Rows.Count - 1).ToString();
-*/        }
+            /*            lblCountGroup.Text = (gridTargetsGroup.Rows.Count - 1).ToString();
+            */
+        }
 
         private void gridTargets_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
@@ -1276,12 +1300,12 @@ namespace WASender
                 if (mesageModel != null)
                 {
                     mesageModel.validationFailures = new MesageModelValidator().Validate(mesageModel).Errors;
-                }  
+                }
             }
 
             wASenderSingleTransModel.validationFailures = new WASenderSingleTransModelValidator().Validate(wASenderSingleTransModel).Errors;
 
-            if(wASenderSingleTransModel.validationFailures.Count==0 && onlySave==true)
+            if (wASenderSingleTransModel.validationFailures.Count == 0 && onlySave == true)
             {
                 DialogResultModel promptValue = Utils.ShowDialog(Strings.PleaseEnterCampaignName, Strings.CampaignName);
                 if (promptValue.CampaignName == null)
@@ -1306,7 +1330,7 @@ namespace WASender
                 }
 
             }
-            
+
             if (showValidationErrorIfAny())
             {
                 if (onlySave == false)
@@ -1328,11 +1352,11 @@ namespace WASender
         public void gmapDataReturn(List<GMapModel> gmapModel)
         {
             this.Show();
-           /* gridTargets.Rows.Add();
-            for (int i = 0; i < gmapModel.Where(x => x.mobilenumber != "" && x.mobilenumber != null).Count(); i++)
-            {
-                gridTargets.Rows.Add();
-            }*/
+            /* gridTargets.Rows.Add();
+             for (int i = 0; i < gmapModel.Where(x => x.mobilenumber != "" && x.mobilenumber != null).Count(); i++)
+             {
+                 gridTargets.Rows.Add();
+             }*/
 
             int j = 0;
             foreach (var item in gmapModel.Where(x => x.mobilenumber != "" && x.mobilenumber != null))
@@ -1343,8 +1367,9 @@ namespace WASender
                     MobileNumber = MobileNumber.Replace("+", "");
                     MobileNumber = MobileNumber.Replace(" ", "");
                     MobileNumber = MobileNumber.Replace(" ", "");
-/*                    gridTargets.Rows[j].Cells[0].Value = MobileNumber;
-*/                    j++;
+                    /*                    gridTargets.Rows[j].Cells[0].Value = MobileNumber;
+                    */
+                    j++;
                 }
                 catch (Exception)
                 {
@@ -1608,7 +1633,7 @@ namespace WASender
             groupContacts.ContactNames = new List<string>();
             groupContacts.GroupID = new List<string>();
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK && openFileDialog.SafeFileName!=null)
+            if (openFileDialog.ShowDialog() == DialogResult.OK && openFileDialog.SafeFileName != null)
             {
                 gridTargetsGroup.Rows.Clear();
                 string file = openFileDialog.FileName;
@@ -1656,21 +1681,22 @@ namespace WASender
                 string Json;
                 groupContacts.Name = openFileDialog.SafeFileName;
 
-                    if (contacts == null)
-                    {
-                        contacts = new List<GroupContact>();
-                    }
+                if (contacts == null)
+                {
+                    contacts = new List<GroupContact>();
+                }
 
-                    if(groupContacts.Name!="")
-                    {
-                        contacts.Add(groupContacts);
-                        Json = JsonConvert.SerializeObject(contacts, Formatting.Indented);
-/*                        File.WriteAllText("fileSaves" + "\\" + "Groups.json", Json);
-*/                    }
-                    
+                if (groupContacts.Name != "")
+                {
+                    contacts.Add(groupContacts);
+                    Json = JsonConvert.SerializeObject(contacts, Formatting.Indented);
+                    /*                        File.WriteAllText("fileSaves" + "\\" + "Groups.json", Json);
+                    */
+                }
+
 
                 btnUploadExcelGroup.Text = openFileDialog.SafeFileName;
-                button8.Text = openFileDialog.SafeFileName; 
+                button8.Text = openFileDialog.SafeFileName;
                 button10.Text = openFileDialog.SafeFileName;
                 button12.Text = openFileDialog.SafeFileName;
                 button14.Text = openFileDialog.SafeFileName;
@@ -1760,23 +1786,24 @@ namespace WASender
 
         private void btnStartGroup_Click(object sender, EventArgs e)
         {
-/*            if(fi!=null||wASenderGroupTransModel!=null)
-*/            ValidateControlsGroup();
+            /*            if(fi!=null||wASenderGroupTransModel!=null)
+            */
+            ValidateControlsGroup();
         }
 
         private void materialButton3_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void materialButton9_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void materialButton10_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void materialButton2_Click(object sender, EventArgs e)
@@ -1857,8 +1884,9 @@ namespace WASender
 
         private void materialButton13_Click(object sender, EventArgs e)
         {
-/*            contextMenuStrip1.Show(materialButton13, new Point(0, materialButton13.Height));
-*/        }
+            /*            contextMenuStrip1.Show(materialButton13, new Point(0, materialButton13.Height));
+            */
+        }
 
         private void keyMarkersToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1927,8 +1955,8 @@ namespace WASender
             }
             else if (label4.ForeColor == Color.FromArgb(37, 171, 134))
 
-                {
-                    int tabIndex = tabControl1.SelectedIndex;
+            {
+                int tabIndex = tabControl1.SelectedIndex;
                 if (tabIndex == 0)
                 {
                     txtMsgOneGroup.Text += paramVals;
@@ -1960,8 +1988,9 @@ namespace WASender
 
         private void materialButton14_Click(object sender, EventArgs e)
         {
-/*            contextMenuStrip1.Show(materialButton13, new Point(0, materialButton13.Height));
-*/        }
+            /*            contextMenuStrip1.Show(materialButton13, new Point(0, materialButton13.Height));
+            */
+        }
 
         private void materialButton16_Click(object sender, EventArgs e)
         {
@@ -2008,12 +2037,12 @@ namespace WASender
 
         private void materialButton16_Click_1(object sender, EventArgs e)
         {
-            
+
         }
 
         private void materialButton17_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void addCountryCodeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2035,7 +2064,7 @@ namespace WASender
 
         private void materialButton18_Click(object sender, EventArgs e)
         {
-            
+
 
         }
         public void reEnableAutoReply()
@@ -2067,7 +2096,7 @@ namespace WASender
                 this.Controls.Add(p);
                 p.BringToFront();
 
-                if(getButtonList().Count<5)
+                if (getButtonList().Count < 5)
                 {
                     ButtonsModel buttonsModel = new ButtonsModel();
                     buttonsModel.buttonTypeEnum = enums.ButtonTypeEnum.NONE;
@@ -2083,7 +2112,7 @@ namespace WASender
 
         private List<ButtonsModel> getButtonList()
         {
-            List<ButtonsModel> buttonsList=new List<ButtonsModel>();
+            List<ButtonsModel> buttonsList = new List<ButtonsModel>();
 
             if (label8.ForeColor == Color.FromArgb(37, 171, 134))
             {
@@ -2114,7 +2143,7 @@ namespace WASender
             else if (label4.ForeColor == Color.FromArgb(37, 171, 134))
             {
                 int MainTabIndex = tabControl1.SelectedIndex;
-              
+
                 if (MainTabIndex == 0)
                 {
                     buttonsList = buttonsModelList6;
@@ -2393,7 +2422,7 @@ namespace WASender
 
         private void materialButton3_Click_1(object sender, EventArgs e)
         {
-          
+
         }
 
         private void materialButton20_Click(object sender, EventArgs e)
@@ -2706,7 +2735,7 @@ namespace WASender
 
         private void materialButton25_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void materialCard2_Paint(object sender, PaintEventArgs e)
@@ -2790,11 +2819,11 @@ namespace WASender
 
         private void panel6_MouseMove(object sender, MouseEventArgs e)
         {
-           /* if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }*/
+            /* if (e.Button == MouseButtons.Left)
+             {
+                 ReleaseCapture();
+                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+             }*/
         }
 
         protected override void WndProc(ref Message m)
@@ -2916,7 +2945,7 @@ namespace WASender
                                 }
 
                                 gridTargets.Rows[globalCounter].Cells[0].Value = MobileNumber;
-                                gridTargets.Rows[globalCounter].Cells[1].Value = String.IsNullOrWhiteSpace(name) ? "Unknown":name;
+                                gridTargets.Rows[globalCounter].Cells[1].Value = String.IsNullOrWhiteSpace(name) ? "Unknown" : name;
                                 individualContacts.Numbers.Add(MobileNumber);
                                 individualContacts.ContactNames.Add(name);
                                 try
@@ -2969,12 +2998,13 @@ namespace WASender
             {
                 contacts = new List<IndividualContacts>();
             }
-            if(individualContacts.Name!="")
+            if (individualContacts.Name != "")
             {
                 contacts.Add(individualContacts);
                 Json = JsonConvert.SerializeObject(contacts, Formatting.Indented);
-/*                File.WriteAllText("fileSaves" + "\\" + "IndividualContacts.json", Json);
-*/            }           
+                /*                File.WriteAllText("fileSaves" + "\\" + "IndividualContacts.json", Json);
+                */
+            }
         }
 
 
@@ -3021,7 +3051,7 @@ namespace WASender
                     }
                 }
             }
-            }
+        }
 
         private void btnDownloadSample_Click(object sender, EventArgs e)
         {
@@ -3129,7 +3159,7 @@ namespace WASender
             label54.ForeColor = Color.FromArgb(37, 171, 134);
 
             saveCampaign();
-            
+
             label54.ForeColor = Color.White;
         }
 
@@ -3155,9 +3185,9 @@ namespace WASender
 
         private void label21_Click_1(object sender, EventArgs e)
         {
-            
+
         }
- 
+
         private void button36_Click(object sender, EventArgs e)
         {
             LoadGroups();
@@ -3272,7 +3302,7 @@ namespace WASender
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Utils.showAlert("In order to use the free buttons, a situation is created\n in which the sender will apparently receive a\n message from the contact, don't worry, only you \nwill see it, In addition, at the moment the message will\n only be displayed to Android owners only", Alerts.Alert.enmType.Info,250);
+            Utils.showAlert("In order to use the free buttons, a situation is created\n in which the sender will apparently receive a\n message from the contact, don't worry, only you \nwill see it, In addition, at the moment the message will\n only be displayed to Android owners only", Alerts.Alert.enmType.Info, 250);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -3330,33 +3360,38 @@ namespace WASender
 
         }
 
+        private void panel57_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void WaSenderForm_KeyPress(object sender, KeyPressEventArgs e)
         {
 
         }
 
-    
-        
+
+
         private void OpenCampaign()
         {
             try
             {
-                    if (label8.ForeColor == Color.FromArgb(37, 171, 134))
-                    {
+                if (label8.ForeColor == Color.FromArgb(37, 171, 134))
+                {
 
                     #region SingleSender
-                        try
+                    try
+                    {
+                        string fileData = File.ReadAllText(fileSaves + "\\" + "SingleSender.json");
+                        var wASenderSingleTransModelList = JsonConvert.DeserializeObject<List<WASenderSingleTransModel>>(fileData);
+
+                        if (wASenderSingleTransModelList == null)
                         {
-                            string fileData = File.ReadAllText(fileSaves + "\\" + "SingleSender.json");
-                            var wASenderSingleTransModelList = JsonConvert.DeserializeObject<List<WASenderSingleTransModel>>(fileData);
-                            
-                            if (wASenderSingleTransModelList == null)
-                            {
-                                MessageBox.Show("No Campaigns Saved Yet!");
-                            }
-                            else
-                            {
-                                selectedIndex = -1;
+                            MessageBox.Show("No Campaigns Saved Yet!");
+                        }
+                        else
+                        {
+                            selectedIndex = -1;
 
                             using (Panel p = new Panel())
                             {
@@ -3373,10 +3408,10 @@ namespace WASender
 
 
                             if (selectedIndex != -1)
-                                {
-                                    clearAll();
-                                    WASenderSingleTransModel _tmpwASenderSingleTransModel = wASenderSingleTransModelList[selectedIndex];
-                                    wASenderSingleTransModel = _tmpwASenderSingleTransModel;
+                            {
+                                clearAll();
+                                WASenderSingleTransModel _tmpwASenderSingleTransModel = wASenderSingleTransModelList[selectedIndex];
+                                wASenderSingleTransModel = _tmpwASenderSingleTransModel;
 
                                 #region GridColumns
                                 var globalCounter = gridTargets.Rows.Count - 1;
@@ -3660,20 +3695,20 @@ namespace WASender
                                 #endregion
                             }
 
-                            }
                         }
-                        catch (Exception ex)
-                        {
-
-                        }
-                        #endregion
                     }
-                    else if (label4.ForeColor == Color.FromArgb(37, 171, 134))
+                    catch (Exception ex)
                     {
 
+                    }
+                    #endregion
+                }
+                else if (label4.ForeColor == Color.FromArgb(37, 171, 134))
+                {
 
-                        string fileData = File.ReadAllText(fileSaves + "\\" + "GroupSender.json");
-                        var wASenderGroupTransModelList = JsonConvert.DeserializeObject<List<WASenderGroupTransModel>>(fileData);
+
+                    string fileData = File.ReadAllText(fileSaves + "\\" + "GroupSender.json");
+                    var wASenderGroupTransModelList = JsonConvert.DeserializeObject<List<WASenderGroupTransModel>>(fileData);
 
                     if (wASenderGroupTransModelList == null)
                     {
@@ -3919,16 +3954,16 @@ namespace WASender
                             #endregion
                         }
                     }
-                    }
-
-
-                }
-                catch (Exception ex)
-                {
-
                 }
 
-            
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
         }
         private void saveCampaign()
         {
@@ -3936,7 +3971,7 @@ namespace WASender
             {
                 #region SingleSender
                 ValidateControls(true);
-                
+
 
                 #endregion
             }
@@ -3964,7 +3999,7 @@ namespace WASender
             {
                 OpenCampaign();
             }
-           
+
         }
 
 
@@ -4022,7 +4057,7 @@ namespace WASender
 
         private void materialButton31_Click(object sender, EventArgs e)
         {
-            
+
         }
     }
 
