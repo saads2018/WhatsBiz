@@ -55,13 +55,10 @@ namespace WASender
 
         private void initializeResolution()
         {
-            /*if (Program.resScale <= 100)
+            if (Program.resScale <= 800)
             {
-                this.pictureBox1.Width = 57;
-                this.pictureBox2.Width = 42;
-                this.label3.Left = 293;
-                this.materialLabel13.Left = 313;
-            }*/
+                this.Width = Program.resWidth - 30 ;
+            }
         }
         protected override CreateParams CreateParams
         {

@@ -34,10 +34,18 @@ namespace WASender
         public GeneralSettings(MainNavPage main)
         {
             InitializeComponent();
+            initializeResolution();
             init();
             navPage = main;
         }
 
+        public void initializeResolution()
+        {
+            if(Program.resWidth <= 800)
+            {
+                this.Width = Program.resWidth-40;
+            }
+        }
         private Bitmap FormFade()
         {
 

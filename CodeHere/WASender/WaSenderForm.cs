@@ -147,14 +147,25 @@ namespace WASender
             {
                 this.panel25.Height -= 80;
                 this.gridTargets.Height -= 80;
+                this.panel20.Height -= 80;
+                this.gridTargetsGroup.Height -= 80;
 
-                this.groupBox1.Dock = DockStyle.None;
-                this.groupBox1.Location = new System.Drawing.Point(this.button15.Location.X+5, this.button15.Location.Y+30);
-                this.dataGridView1.Height = 85;
-                this.button16.Top -= 40;
-                //this.groupBox1.Height -= 120;
-                //this.dataGridView1.Height = 85;
-                //this.btnAddFileOne.Height -= 10;
+                foreach(Control c in controlsResolution)
+                {
+                    c.Dock = DockStyle.None;
+                    c.Location = new System.Drawing.Point(this.button15.Location.X + 5, this.button15.Location.Y + 30);
+                    c.Height -= 90;
+                    c.Width -= 10;
+
+                    foreach(Control x in c.Controls)
+                    {
+                        if (x.Name.Contains("dataGridView"))
+                            x.Height = 65;
+
+                        if (x.Text == "Add Keymarker" || x.Text == "Add File" || x.Text == "Add Button")
+                            x.Height -= 7;
+                    }
+                }
             }
         }
         public void startCampaign(IndividualContacts contacts)

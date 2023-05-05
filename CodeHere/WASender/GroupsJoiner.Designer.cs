@@ -43,6 +43,10 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.materialLabel13 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.materialLabel14 = new System.Windows.Forms.Label();
             this.materialCheckbox2 = new System.Windows.Forms.CheckBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.materialLabel17 = new System.Windows.Forms.Label();
@@ -75,15 +79,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.materialLabel13 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.materialLabel14 = new System.Windows.Forms.Label();
             this.materialCard1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridTargetsGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.materialCard2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridStatus)).BeginInit();
@@ -91,7 +92,6 @@
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialCard1
@@ -120,7 +120,7 @@
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(1097, 501);
+            this.materialCard1.Size = new System.Drawing.Size(1044, 501);
             this.materialCard1.TabIndex = 9;
             this.materialCard1.Paint += new System.Windows.Forms.PaintEventHandler(this.materialCard1_Paint);
             // 
@@ -235,17 +235,18 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(304, 145);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(82, 27);
+            this.pictureBox2.Size = new System.Drawing.Size(67, 27);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 64;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(295, 37);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 38);
+            this.pictureBox1.Size = new System.Drawing.Size(76, 38);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 63;
             this.pictureBox1.TabStop = false;
@@ -269,13 +270,59 @@
             this.materialCard2.Controls.Add(this.materialLabel16);
             this.materialCard2.Depth = 0;
             this.materialCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard2.Location = new System.Drawing.Point(402, 37);
+            this.materialCard2.Location = new System.Drawing.Point(375, 37);
             this.materialCard2.Margin = new System.Windows.Forms.Padding(13, 14, 13, 14);
             this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard2.Name = "materialCard2";
             this.materialCard2.Padding = new System.Windows.Forms.Padding(13, 14, 13, 14);
             this.materialCard2.Size = new System.Drawing.Size(647, 139);
             this.materialCard2.TabIndex = 62;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.materialLabel13);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.materialLabel14);
+            this.panel3.Location = new System.Drawing.Point(222, 51);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(409, 22);
+            this.panel3.TabIndex = 50;
+            // 
+            // materialLabel13
+            // 
+            this.materialLabel13.AutoSize = true;
+            this.materialLabel13.Dock = System.Windows.Forms.DockStyle.Left;
+            this.materialLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.materialLabel13.Location = new System.Drawing.Point(161, 0);
+            this.materialLabel13.Name = "materialLabel13";
+            this.materialLabel13.Size = new System.Drawing.Size(97, 18);
+            this.materialLabel13.TabIndex = 23;
+            this.materialLabel13.Text = "groups joined";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label3.Location = new System.Drawing.Point(137, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(24, 18);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "10";
+            // 
+            // materialLabel14
+            // 
+            this.materialLabel14.AutoSize = true;
+            this.materialLabel14.Dock = System.Windows.Forms.DockStyle.Left;
+            this.materialLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.materialLabel14.Location = new System.Drawing.Point(0, 0);
+            this.materialLabel14.Name = "materialLabel14";
+            this.materialLabel14.Size = new System.Drawing.Size(137, 18);
+            this.materialLabel14.TabIndex = 9;
+            this.materialLabel14.Text = "seconds after every\r\n";
             // 
             // materialCheckbox2
             // 
@@ -425,7 +472,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
             this.panel2.Controls.Add(this.label100);
-            this.panel2.Location = new System.Drawing.Point(402, 236);
+            this.panel2.Location = new System.Drawing.Point(375, 235);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(647, 38);
             this.panel2.TabIndex = 60;
@@ -451,7 +498,7 @@
             this.gridStatus.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
-            this.gridStatus.Location = new System.Drawing.Point(402, 269);
+            this.gridStatus.Location = new System.Drawing.Point(375, 268);
             this.gridStatus.Name = "gridStatus";
             this.gridStatus.RowHeadersWidth = 51;
             this.gridStatus.RowTemplate.Height = 24;
@@ -528,7 +575,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(336, 631);
+            this.label7.Location = new System.Drawing.Point(283, 631);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 16);
             this.label7.TabIndex = 8;
@@ -540,7 +587,7 @@
             this.lblRunStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRunStatus.AutoSize = true;
             this.lblRunStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRunStatus.Location = new System.Drawing.Point(399, 631);
+            this.lblRunStatus.Location = new System.Drawing.Point(346, 631);
             this.lblRunStatus.Name = "lblRunStatus";
             this.lblRunStatus.Size = new System.Drawing.Size(102, 16);
             this.lblRunStatus.TabIndex = 9;
@@ -551,7 +598,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(349, 660);
+            this.label5.Location = new System.Drawing.Point(296, 660);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 16);
             this.label5.TabIndex = 6;
@@ -563,7 +610,7 @@
             this.lblInitStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblInitStatus.AutoSize = true;
             this.lblInitStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInitStatus.Location = new System.Drawing.Point(399, 660);
+            this.lblInitStatus.Location = new System.Drawing.Point(346, 660);
             this.lblInitStatus.Name = "lblInitStatus";
             this.lblInitStatus.Size = new System.Drawing.Size(102, 16);
             this.lblInitStatus.TabIndex = 7;
@@ -577,7 +624,7 @@
             this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(480, 6);
+            this.label22.Location = new System.Drawing.Point(454, 6);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(121, 26);
             this.label22.TabIndex = 3;
@@ -591,7 +638,7 @@
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel10.Location = new System.Drawing.Point(0, 41);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(1097, 40);
+            this.panel10.Size = new System.Drawing.Size(1044, 40);
             this.panel10.TabIndex = 53;
             // 
             // button1
@@ -601,7 +648,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(1010, 5);
+            this.button1.Location = new System.Drawing.Point(957, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 30);
             this.button1.TabIndex = 35;
@@ -628,60 +675,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1097, 41);
+            this.panel1.Size = new System.Drawing.Size(1044, 41);
             this.panel1.TabIndex = 23;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.materialLabel13);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.materialLabel14);
-            this.panel3.Location = new System.Drawing.Point(222, 51);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(409, 22);
-            this.panel3.TabIndex = 50;
-            // 
-            // materialLabel13
-            // 
-            this.materialLabel13.AutoSize = true;
-            this.materialLabel13.Dock = System.Windows.Forms.DockStyle.Left;
-            this.materialLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.materialLabel13.Location = new System.Drawing.Point(161, 0);
-            this.materialLabel13.Name = "materialLabel13";
-            this.materialLabel13.Size = new System.Drawing.Size(97, 18);
-            this.materialLabel13.TabIndex = 23;
-            this.materialLabel13.Text = "groups joined";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(137, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 18);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "10";
-            // 
-            // materialLabel14
-            // 
-            this.materialLabel14.AutoSize = true;
-            this.materialLabel14.Dock = System.Windows.Forms.DockStyle.Left;
-            this.materialLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.materialLabel14.Location = new System.Drawing.Point(0, 0);
-            this.materialLabel14.Name = "materialLabel14";
-            this.materialLabel14.Size = new System.Drawing.Size(137, 18);
-            this.materialLabel14.TabIndex = 9;
-            this.materialLabel14.Text = "seconds after every\r\n";
             // 
             // GroupsJoiner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1097, 581);
+            this.ClientSize = new System.Drawing.Size(1044, 581);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.lblInitStatus);
             this.Controls.Add(this.panel1);
@@ -704,6 +705,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.materialCard2.ResumeLayout(false);
             this.materialCard2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -714,8 +717,6 @@
             this.panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

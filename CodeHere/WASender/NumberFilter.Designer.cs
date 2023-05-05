@@ -64,6 +64,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.materialLabel13 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.materialLabel14 = new System.Windows.Forms.Label();
             this.txtdelayAfterEveryMessageTo = new WASender.CustomInputs.Int32TextBox();
             this.materialLabel11 = new System.Windows.Forms.Label();
             this.txtdelayAfterEveryMessageFrom = new WASender.CustomInputs.Int32TextBox();
@@ -74,10 +78,6 @@
             this.gridTargetsGroup = new System.Windows.Forms.DataGridView();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.materialLabel13 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.materialLabel14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel9.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -89,8 +89,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.materialCard2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridTargetsGroup)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridTargetsGroup)).BeginInit();
             this.SuspendLayout();
             // 
             // materialButton1
@@ -193,7 +193,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
             this.panel2.Controls.Add(this.label100);
-            this.panel2.Location = new System.Drawing.Point(402, 237);
+            this.panel2.Location = new System.Drawing.Point(375, 237);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(647, 34);
             this.panel2.TabIndex = 60;
@@ -225,7 +225,7 @@
             this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(419, 6);
+            this.label22.Location = new System.Drawing.Point(393, 6);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(239, 26);
             this.label22.TabIndex = 3;
@@ -239,7 +239,7 @@
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel10.Location = new System.Drawing.Point(0, 41);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(1097, 40);
+            this.panel10.Size = new System.Drawing.Size(1044, 40);
             this.panel10.TabIndex = 60;
             // 
             // button1
@@ -249,7 +249,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(1010, 5);
+            this.button1.Location = new System.Drawing.Point(957, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 30);
             this.button1.TabIndex = 35;
@@ -277,7 +277,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1097, 41);
+            this.panel1.Size = new System.Drawing.Size(1044, 41);
             this.panel1.TabIndex = 59;
             // 
             // pictureBox12
@@ -332,7 +332,7 @@
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(1097, 501);
+            this.materialCard1.Size = new System.Drawing.Size(1044, 501);
             this.materialCard1.TabIndex = 58;
             // 
             // button4
@@ -390,7 +390,7 @@
             this.lblInitStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblInitStatus.AutoSize = true;
             this.lblInitStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInitStatus.Location = new System.Drawing.Point(963, 637);
+            this.lblInitStatus.Location = new System.Drawing.Point(910, 637);
             this.lblInitStatus.Name = "lblInitStatus";
             this.lblInitStatus.Size = new System.Drawing.Size(102, 16);
             this.lblInitStatus.TabIndex = 7;
@@ -401,7 +401,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(904, 637);
+            this.label5.Location = new System.Drawing.Point(851, 637);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 16);
             this.label5.TabIndex = 6;
@@ -413,7 +413,7 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(304, 146);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(82, 27);
+            this.pictureBox2.Size = new System.Drawing.Size(67, 27);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 64;
             this.pictureBox2.TabStop = false;
@@ -423,7 +423,7 @@
             this.lblRunStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRunStatus.AutoSize = true;
             this.lblRunStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRunStatus.Location = new System.Drawing.Point(829, 637);
+            this.lblRunStatus.Location = new System.Drawing.Point(776, 637);
             this.lblRunStatus.Name = "lblRunStatus";
             this.lblRunStatus.Size = new System.Drawing.Size(102, 16);
             this.lblRunStatus.TabIndex = 9;
@@ -441,7 +441,7 @@
             this.Column1,
             this.ChatName,
             this.Status});
-            this.gridStatus.Location = new System.Drawing.Point(402, 270);
+            this.gridStatus.Location = new System.Drawing.Point(375, 270);
             this.gridStatus.Name = "gridStatus";
             this.gridStatus.RowHeadersWidth = 51;
             this.gridStatus.RowTemplate.Height = 24;
@@ -475,7 +475,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(766, 637);
+            this.label7.Location = new System.Drawing.Point(713, 637);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 16);
             this.label7.TabIndex = 8;
@@ -487,7 +487,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(295, 38);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 38);
+            this.pictureBox1.Size = new System.Drawing.Size(76, 38);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 63;
             this.pictureBox1.TabStop = false;
@@ -511,13 +511,59 @@
             this.materialCard2.Controls.Add(this.materialLabel16);
             this.materialCard2.Depth = 0;
             this.materialCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard2.Location = new System.Drawing.Point(402, 38);
+            this.materialCard2.Location = new System.Drawing.Point(375, 38);
             this.materialCard2.Margin = new System.Windows.Forms.Padding(13, 14, 13, 14);
             this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard2.Name = "materialCard2";
             this.materialCard2.Padding = new System.Windows.Forms.Padding(13, 14, 13, 14);
             this.materialCard2.Size = new System.Drawing.Size(647, 139);
             this.materialCard2.TabIndex = 62;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.materialLabel13);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.materialLabel14);
+            this.panel3.Location = new System.Drawing.Point(222, 51);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(409, 22);
+            this.panel3.TabIndex = 49;
+            // 
+            // materialLabel13
+            // 
+            this.materialLabel13.AutoSize = true;
+            this.materialLabel13.Dock = System.Windows.Forms.DockStyle.Left;
+            this.materialLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.materialLabel13.Location = new System.Drawing.Point(161, 0);
+            this.materialLabel13.Name = "materialLabel13";
+            this.materialLabel13.Size = new System.Drawing.Size(113, 18);
+            this.materialLabel13.TabIndex = 23;
+            this.materialLabel13.Text = "numbers filtered";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label3.Location = new System.Drawing.Point(137, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(24, 18);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "10";
+            // 
+            // materialLabel14
+            // 
+            this.materialLabel14.AutoSize = true;
+            this.materialLabel14.Dock = System.Windows.Forms.DockStyle.Left;
+            this.materialLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.materialLabel14.Location = new System.Drawing.Point(0, 0);
+            this.materialLabel14.Name = "materialLabel14";
+            this.materialLabel14.Size = new System.Drawing.Size(137, 18);
+            this.materialLabel14.TabIndex = 9;
+            this.materialLabel14.Text = "seconds after every\r\n";
             // 
             // txtdelayAfterEveryMessageTo
             // 
@@ -619,57 +665,11 @@
             this.Column3.Name = "Column3";
             this.Column3.Width = 125;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.materialLabel13);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.materialLabel14);
-            this.panel3.Location = new System.Drawing.Point(222, 51);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(409, 22);
-            this.panel3.TabIndex = 49;
-            // 
-            // materialLabel13
-            // 
-            this.materialLabel13.AutoSize = true;
-            this.materialLabel13.Dock = System.Windows.Forms.DockStyle.Left;
-            this.materialLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.materialLabel13.Location = new System.Drawing.Point(161, 0);
-            this.materialLabel13.Name = "materialLabel13";
-            this.materialLabel13.Size = new System.Drawing.Size(113, 18);
-            this.materialLabel13.TabIndex = 23;
-            this.materialLabel13.Text = "numbers filtered";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(137, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 18);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "10";
-            // 
-            // materialLabel14
-            // 
-            this.materialLabel14.AutoSize = true;
-            this.materialLabel14.Dock = System.Windows.Forms.DockStyle.Left;
-            this.materialLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.materialLabel14.Location = new System.Drawing.Point(0, 0);
-            this.materialLabel14.Name = "materialLabel14";
-            this.materialLabel14.Size = new System.Drawing.Size(137, 18);
-            this.materialLabel14.TabIndex = 9;
-            this.materialLabel14.Text = "seconds after every\r\n";
-            // 
             // NumberFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1097, 581);
+            this.ClientSize = new System.Drawing.Size(1044, 581);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.materialCard1);
@@ -697,9 +697,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.materialCard2.ResumeLayout(false);
             this.materialCard2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridTargetsGroup)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridTargetsGroup)).EndInit();
             this.ResumeLayout(false);
 
         }

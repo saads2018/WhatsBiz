@@ -1,4 +1,7 @@
-﻿namespace WASender
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
+
+namespace WASender
 {
     partial class WaSenderForm
     {
@@ -6,6 +9,8 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        List<Control> controlsResolution;
+
 
         /// <summary>
         /// Clean up any resources being used.
@@ -29,6 +34,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.controlsResolution = new List<Control>();
+
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WaSenderForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -1269,6 +1276,7 @@
             this.groupBox21.TabIndex = 1;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "Attachments";
+            this.controlsResolution.Add(this.groupBox21);
             // 
             // dataGridView6
             // 
@@ -1575,6 +1583,7 @@
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Attachments";
+            this.controlsResolution.Add(this.groupBox6);
             // 
             // dataGridView7
             // 
@@ -1880,6 +1889,7 @@
             this.groupBox8.TabIndex = 1;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Attachments";
+            this.controlsResolution.Add(this.groupBox8);
             // 
             // dataGridView8
             // 
@@ -2185,6 +2195,7 @@
             this.groupBox9.TabIndex = 1;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Attachments";
+            this.controlsResolution.Add(this.groupBox9);
             // 
             // dataGridView9
             // 
@@ -2491,6 +2502,7 @@
             this.groupBox10.TabIndex = 1;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Attachments";
+            this.controlsResolution.Add(this.groupBox10);
             // 
             // dataGridView10
             // 
@@ -3263,6 +3275,7 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Attachments";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.controlsResolution.Add(this.groupBox1);
             // 
             // dataGridView1
             // 
@@ -3570,6 +3583,7 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Attachments";
+            this.controlsResolution.Add(this.groupBox2);
             // 
             // dataGridView2
             // 
@@ -3876,6 +3890,7 @@
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Attachments";
+            this.controlsResolution.Add(this.groupBox3);
             // 
             // dataGridView3
             // 
@@ -4181,6 +4196,7 @@
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Attachments";
+            this.controlsResolution.Add(this.groupBox5);
             // 
             // dataGridView4
             // 
@@ -4487,6 +4503,7 @@
             this.groupBox14.TabIndex = 1;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Attachments";
+            this.controlsResolution.Add(this.groupBox14);
             // 
             // dataGridView5
             // 
