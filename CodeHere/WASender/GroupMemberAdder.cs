@@ -55,10 +55,10 @@ namespace WASender
 
         private void initializeResolution()
         {
-            if (Program.resScale <= 800)
+           /* if (Program.resScale <= 800)
             {
                 this.Width = Program.resWidth - 30 ;
-            }
+            }*/
         }
         protected override CreateParams CreateParams
         {

@@ -36,8 +36,10 @@ namespace WaAutoReplyBot
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.lblInitStatus = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtLog = new System.Windows.Forms.TextBox();
@@ -107,29 +109,12 @@ namespace WaAutoReplyBot
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
-            this.panel10.Controls.Add(this.button2);
             this.panel10.Controls.Add(this.label22);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel10.Location = new System.Drawing.Point(0, 41);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(830, 40);
+            this.panel10.Size = new System.Drawing.Size(830, 52);
             this.panel10.TabIndex = 61;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(171, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(59, 26);
-            this.button2.TabIndex = 96;
-            this.button2.Text = "Import Rule";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Visible = false;
-            this.button2.VisibleChanged += new System.EventHandler(this.button2_VisibleChanged);
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // label22
             // 
@@ -138,12 +123,56 @@ namespace WaAutoReplyBot
             this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(298, 7);
+            this.label22.Location = new System.Drawing.Point(320, 12);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(198, 26);
             this.label22.TabIndex = 3;
             this.label22.Text = "Auto Responder Bot";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Microsoft Tai Le", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(378, 292);
+            this.button4.Name = "button4";
+            this.button4.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.button4.Size = new System.Drawing.Size(36, 35);
+            this.button4.TabIndex = 98;
+            this.button4.Text = "?";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(17, 292);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(171, 35);
+            this.button3.TabIndex = 97;
+            this.button3.Text = "Import Rules";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(196, 292);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(176, 35);
+            this.button2.TabIndex = 96;
+            this.button2.Text = "Export Rules";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.VisibleChanged += new System.EventHandler(this.button2_VisibleChanged);
+            this.button2.Click += new System.EventHandler(this.ExportRule_Click);
             // 
             // lblInitStatus
             // 
@@ -176,11 +205,11 @@ namespace WaAutoReplyBot
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLog.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txtLog.Location = new System.Drawing.Point(415, 48);
+            this.txtLog.Location = new System.Drawing.Point(418, 50);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
-            this.txtLog.Size = new System.Drawing.Size(395, 233);
+            this.txtLog.Size = new System.Drawing.Size(395, 277);
             this.txtLog.TabIndex = 13;
             // 
             // gridRulesets
@@ -194,14 +223,14 @@ namespace WaAutoReplyBot
             this.gridRulesets.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.gridRulesets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridRulesets.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.gridRulesets.Location = new System.Drawing.Point(12, 47);
+            this.gridRulesets.Location = new System.Drawing.Point(17, 50);
             this.gridRulesets.MultiSelect = false;
             this.gridRulesets.Name = "gridRulesets";
             this.gridRulesets.RowHeadersWidth = 51;
             this.gridRulesets.RowTemplate.Height = 24;
             this.gridRulesets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridRulesets.ShowEditingIcon = false;
-            this.gridRulesets.Size = new System.Drawing.Size(397, 234);
+            this.gridRulesets.Size = new System.Drawing.Size(397, 236);
             this.gridRulesets.TabIndex = 16;
             this.gridRulesets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridRulesets_CellClick);
             this.gridRulesets.DoubleClick += new System.EventHandler(this.gridRulesets_DoubleClick);
@@ -212,7 +241,7 @@ namespace WaAutoReplyBot
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
             this.panel2.Controls.Add(this.label100);
-            this.panel2.Location = new System.Drawing.Point(415, 12);
+            this.panel2.Location = new System.Drawing.Point(418, 17);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(395, 38);
             this.panel2.TabIndex = 78;
@@ -235,7 +264,7 @@ namespace WaAutoReplyBot
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(12, 12);
+            this.panel3.Location = new System.Drawing.Point(17, 17);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(397, 38);
             this.panel3.TabIndex = 79;
@@ -257,6 +286,9 @@ namespace WaAutoReplyBot
             // materialCard3
             // 
             this.materialCard3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard3.Controls.Add(this.button4);
+            this.materialCard3.Controls.Add(this.button2);
+            this.materialCard3.Controls.Add(this.button3);
             this.materialCard3.Controls.Add(this.materialButton1);
             this.materialCard3.Controls.Add(this.materialButton4);
             this.materialCard3.Controls.Add(this.materialButton2);
@@ -267,12 +299,12 @@ namespace WaAutoReplyBot
             this.materialCard3.Depth = 0;
             this.materialCard3.Dock = System.Windows.Forms.DockStyle.Top;
             this.materialCard3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard3.Location = new System.Drawing.Point(0, 81);
+            this.materialCard3.Location = new System.Drawing.Point(0, 93);
             this.materialCard3.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard3.Name = "materialCard3";
             this.materialCard3.Padding = new System.Windows.Forms.Padding(14, 14, 14, 3);
-            this.materialCard3.Size = new System.Drawing.Size(830, 388);
+            this.materialCard3.Size = new System.Drawing.Size(830, 435);
             this.materialCard3.TabIndex = 62;
             this.materialCard3.Paint += new System.Windows.Forms.PaintEventHandler(this.materialCard3_Paint);
             // 
@@ -282,7 +314,7 @@ namespace WaAutoReplyBot
             this.materialButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.materialButton1.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.materialButton1.ForeColor = System.Drawing.Color.White;
-            this.materialButton1.Location = new System.Drawing.Point(12, 340);
+            this.materialButton1.Location = new System.Drawing.Point(15, 386);
             this.materialButton1.Name = "materialButton1";
             this.materialButton1.Size = new System.Drawing.Size(397, 36);
             this.materialButton1.TabIndex = 95;
@@ -297,7 +329,7 @@ namespace WaAutoReplyBot
             this.materialButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.materialButton4.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.materialButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
-            this.materialButton4.Location = new System.Drawing.Point(415, 340);
+            this.materialButton4.Location = new System.Drawing.Point(418, 386);
             this.materialButton4.Name = "materialButton4";
             this.materialButton4.Size = new System.Drawing.Size(395, 36);
             this.materialButton4.TabIndex = 92;
@@ -311,7 +343,7 @@ namespace WaAutoReplyBot
             this.materialButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.materialButton2.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.materialButton2.ForeColor = System.Drawing.Color.White;
-            this.materialButton2.Location = new System.Drawing.Point(12, 287);
+            this.materialButton2.Location = new System.Drawing.Point(15, 344);
             this.materialButton2.Name = "materialButton2";
             this.materialButton2.Size = new System.Drawing.Size(798, 36);
             this.materialButton2.TabIndex = 80;
@@ -346,7 +378,7 @@ namespace WaAutoReplyBot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(830, 467);
+            this.ClientSize = new System.Drawing.Size(830, 528);
             this.Controls.Add(this.materialCard3);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel1);
@@ -404,6 +436,8 @@ namespace WaAutoReplyBot
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem ExportRule;
         private System.Windows.Forms.SaveFileDialog savesampleExceldialog;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
 

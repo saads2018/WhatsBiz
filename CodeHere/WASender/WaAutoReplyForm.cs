@@ -1627,54 +1627,143 @@ namespace WaAutoReplyBot
 
         private void ExportRule_Click(object sender, System.EventArgs e)
         {
-            /*var index = gridRulesets.CurrentCell.RowIndex;
-            RuleTransactionModel rule = ruleTransactionModelList[index];
-
-            File.Copy("ChatListTemplate.xlsx", NewFileName, true);
-
-            var newFile = new FileInfo(NewFileName);
-            ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
-
-            using (ExcelPackage xlPackage = new ExcelPackage(newFile))
+            if(ruleTransactionModelList.Count==0)
             {
-                var ws = xlPackage.Workbook.Worksheets[0];
-
-                ws.Cells[1, 1].Value = "User Input";
-                ws.Cells[1, 2].Value = "Operators Enum";
-                ws.Cells[1, 3].Value = "Is Active";
-                ws.Cells[1, 4].Value = "Is Saved";
-                ws.Cells[1, 5].Value = "Is Edit Mode";
-                ws.Cells[1, 6].Value = "My Property";
-                ws.Cells[1, 7].Value = "Is Fallback";
-
-                ws.Cells[2, 1].Value = rule.userInput;
-                ws.Cells[2, 2].Value = rule.operatorsEnum;
-                ws.Cells[2, 3].Value = rule.IsActive;
-                ws.Cells[2, 4].Value = rule.IsSaved;
-                ws.Cells[2, 5].Value = rule.IsEditMode;
-                ws.Cells[2, 6].Value = rule.MyProperty;
-                ws.Cells[2, 7].Value = rule.IsFallBack;
+                MessageBox.Show("Please First Add At Least One Rule To Export!", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                var index = gridRulesets.CurrentCell.RowIndex;
 
 
-               *//* for (int i = 0; i < .Count(); i++)
+                String FolderPath = Config.GetTempFolderPath();
+                String file = Path.Combine(FolderPath, "ChatList_" + Guid.NewGuid().ToString() + ".xlsx");
+
+                string NewFileName = file.ToString();
+
+                File.Copy("ChatListTemplate.xlsx", NewFileName, true);
+
+                var newFile = new FileInfo(NewFileName);
+                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+
+                using (ExcelPackage xlPackage = new ExcelPackage(newFile))
                 {
-                    ws.Cells[i + 2, 1].Value = wAPI_ContactModel[i].number;
-                    ws.Cells[i + 2, 2].Value = String.IsNullOrWhiteSpace(wAPI_ContactModel[i].Name) ? "Unknown" : wAPI_ContactModel[i].Name;
-                    contacts1.ContactNames.Add(wAPI_ContactModel[i].Name);
-                    contacts1.Numbers.Add(ws.Cells[i + 2, 2].Value.ToString());
-                }*//*
-                xlPackage.Save();*/
-           // }
+                    var ws = xlPackage.Workbook.Worksheets[0];
 
-           
+                    ws.Cells[1, 1].Value = "Rule #";
+                    ws.Cells[1, 1].Worksheet.Column(1).Width = 7;
+                    ws.Cells[1, 2].Value = "User Input";
+                    ws.Cells[1, 2].Worksheet.Column(2).Width = 18;
+                    ws.Cells[1, 3].Value = "Operators Enum";
+                    ws.Cells[1, 3].Worksheet.Column(3).Width = 18;
+                    ws.Cells[1, 4].Value = "Is Active";
+                    ws.Cells[1, 4].Worksheet.Column(4).Width = 18;
+                    ws.Cells[1, 5].Value = "Is Saved";
+                    ws.Cells[1, 5].Worksheet.Column(5).Width = 18;
+                    ws.Cells[1, 6].Value = "Is Edit Mode";
+                    ws.Cells[1, 6].Worksheet.Column(6).Width = 18;
+                    ws.Cells[1, 7].Value = "My Property";
+                    ws.Cells[1, 7].Worksheet.Column(7).Width = 18;
+                    ws.Cells[1, 8].Value = "Is Fallback";
+                    ws.Cells[1, 8].Worksheet.Column(8).Width = 18;
+                    ws.Cells[1, 9].Value = "Messages";
+                    ws.Cells[1, 9].Worksheet.Column(9).Width = 100;
+                    ws.Cells[1, 10].Value = "Pause/Delay (Days)";
+                    ws.Cells[1, 10].Worksheet.Column(10).Width = 20;
 
-           /* savesampleExceldialog.FileName = rule.userInput + ".xlsx";
-            if (savesampleExceldialog.ShowDialog() == DialogResult.OK)
-            {
-                File.Copy("ChatListTemplate.xlsx", savesampleExceldialog.FileName, true);
-                Utils.showAlert("The Automatic Reply Bot Rule Has Been Saved Successfully!", WASender.Alerts.Alert.enmType.Success);
-            }*/
+                    int rowCount = 2;
 
+                    for (int i = 0; i < ruleTransactionModelList.Count; i++)
+                    {
+                        RuleTransactionModel rule = ruleTransactionModelList[i];
+                        int messageNo = 1;
+
+                        ws.Cells[rowCount, 1].Value = i + 1;
+                        ws.Cells[rowCount, 2].Value = rule.userInput;
+                        ws.Cells[rowCount, 3].Value = rule.operatorsEnum;
+                        ws.Cells[rowCount, 4].Value = rule.IsActive;
+                        ws.Cells[rowCount, 5].Value = rule.IsSaved;
+                        ws.Cells[rowCount, 6].Value = rule.IsEditMode;
+                        ws.Cells[rowCount, 7].Value = rule.MyProperty;
+                        ws.Cells[rowCount, 8].Value = rule.IsFallBack;
+                        ws.Cells[rowCount, 10].Value = getPause().Where(x => x.RuleID == i).FirstOrDefault().DaysCount;
+
+
+                        foreach (var message in rule.messages)
+                        {
+                            ws.Cells[rowCount, 9].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                            ws.Cells[rowCount, 9].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Red);
+                            ws.Cells[rowCount++, 9].Value = "Message #" + messageNo++;
+                            ws.Cells[rowCount, 9].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                            ws.Cells[rowCount, 9].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGreen);
+                            ws.Cells[rowCount++, 9].Value = "LongMessage";
+                            ws.Cells[rowCount++, 9].Value = message.LongMessage;
+                            ws.Cells[rowCount, 9].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                            ws.Cells[rowCount, 9].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightSalmon);
+                            ws.Cells[rowCount++, 9].Value = "Files";
+
+                            if (message.Files.Count == 0)
+                                ws.Cells[rowCount++, 9].Value = "NONE";
+                            else
+                            {
+                                foreach (var x in message.Files)
+                                    ws.Cells[rowCount++, 9].Value = x;
+                            }
+
+                            ws.Cells[rowCount, 9].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                            ws.Cells[rowCount, 9].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightCoral);
+                            ws.Cells[rowCount++, 9].Value = "IsEditMode";
+                            ws.Cells[rowCount++, 9].Value = message.IsEditMode;
+                            ws.Cells[rowCount, 9].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                            ws.Cells[rowCount, 9].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightBlue);
+                            ws.Cells[rowCount++, 9].Value = "Buttons";
+
+                            int btnNo = 1;
+
+                            if (message.buttons.Count == 0)
+                                ws.Cells[rowCount++, 9].Value = "NONE";
+                            else
+                            {
+
+                                foreach (var x in message.buttons)
+                                {
+                                    ws.Cells[rowCount, 9].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                                    ws.Cells[rowCount, 9].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightYellow);
+                                    ws.Cells[rowCount++, 9].Value = "Button #" + btnNo++;
+                                    ws.Cells[rowCount++, 9].Value = "id";
+                                    ws.Cells[rowCount++, 9].Value = x.id;
+                                    ws.Cells[rowCount++, 9].Value = "text";
+                                    ws.Cells[rowCount++, 9].Value = x.text;
+                                    ws.Cells[rowCount++, 9].Value = "url";
+                                    ws.Cells[rowCount++, 9].Value = x.url;
+                                    ws.Cells[rowCount++, 9].Value = "phoneNumber";
+                                    ws.Cells[rowCount++, 9].Value = x.phoneNumber;
+                                    ws.Cells[rowCount++, 9].Value = "editMode";
+                                    ws.Cells[rowCount++, 9].Value = x.editMode;
+                                    ws.Cells[rowCount++, 9].Value = "buttonTypeEnum";
+                                    ws.Cells[rowCount++, 9].Value = x.buttonTypeEnum;
+                                }
+                            }
+
+                        }
+                        ws.Cells[rowCount, 9].Worksheet.Row(rowCount).Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                        ws.Cells[rowCount, 9].Worksheet.Row(rowCount++).Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Gray);
+                    }
+
+                    xlPackage.Save();
+                }
+
+
+
+                savesampleExceldialog.FileName = "rules.xlsx";
+
+                if (savesampleExceldialog.ShowDialog() == DialogResult.OK)
+                {
+                    File.Copy(NewFileName, savesampleExceldialog.FileName, true);
+                    Utils.showAlert("The Bot Rules Have Been Saved Successfully!", WASender.Alerts.Alert.enmType.Success);
+                }
+            }
+            
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
@@ -1688,6 +1777,152 @@ namespace WaAutoReplyBot
         private void WaAutoReplyForm_VisibleChanged(object sender, EventArgs e)
         {
             this.Refresh();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = Strings.SelectExcel;
+            openFileDialog.DefaultExt = "xlsx";
+            openFileDialog.Filter = "Excel Files|*.xlsx;";
+            openFileDialog.Multiselect = false;
+
+            List<RuleTransactionModel> rules = new List<RuleTransactionModel>();
+
+            List<string> pauses = new List<string>();
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string file = openFileDialog.FileName;
+                var fiSingle = new FileInfo(file);
+                if (fiSingle.Extension != ".xlsx")
+                {
+                    Utils.showAlert(Strings.PleaseselectExcelfilesformatonly, WASender.Alerts.Alert.enmType.Error);
+                    return;
+                }
+
+                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+                using (var package = new ExcelPackage(fiSingle))
+                {
+                    try
+                    {
+                        ExcelWorksheet worksheet = package.Workbook.Worksheets.FirstOrDefault();
+
+                        var ColumnsCOunt = worksheet.Dimension.Columns;
+
+                        int largest = 0;
+
+                        for (int i = 2; i < worksheet.Dimension.Rows; i++)
+                        {
+                            if (worksheet.Cells[i, 1].Value!=null && !String.IsNullOrWhiteSpace(worksheet.Cells[i,1].Value.ToString()))
+                            {
+                                int x = Int32.Parse(worksheet.Cells[i, 1].Value.ToString());
+                                if(x>largest)
+                                {
+                                    largest = x;
+                                }
+                            }
+                        }
+
+                        int rowCount = 1;
+                        for (int i = 0; i < largest; i++)
+                        {
+
+                            try
+                            {
+                                rowCount++;
+                                RuleTransactionModel rule = new RuleTransactionModel();
+
+                                rule.userInput = worksheet.Cells[rowCount, 2].Value.ToString();
+                                rule.operatorsEnum = (OperatorsEnum) Enum.Parse(typeof(OperatorsEnum),worksheet.Cells[rowCount, 3].Value.ToString());
+                                rule.IsActive = (bool)worksheet.Cells[rowCount, 4].Value;
+                                rule.IsSaved = (bool)worksheet.Cells[rowCount, 5].Value;
+                                rule.IsEditMode = false;
+                                rule.MyProperty = Int32.Parse(worksheet.Cells[rowCount, 7].Value.ToString());
+                                rule.IsFallBack = (bool)worksheet.Cells[rowCount, 8].Value;
+                                pauses.Add(worksheet.Cells[rowCount, 10].Value.ToString());
+                                rowCount += 2;
+                                rule.messages = new List<MessageModel>();
+
+                                bool end = false;
+
+                                do
+                                {
+                                    MessageModel messageModel = new MessageModel();
+                                    
+                                    messageModel.LongMessage = worksheet.Cells[rowCount, 9].Value.ToString();
+                                    rowCount += 2;
+                                    messageModel.Files = new List<string>();
+
+                                    if (!(worksheet.Cells[rowCount, 9].Value.ToString() == "NONE"))
+                                    {
+                                        while (!worksheet.Cells[rowCount, 9].Value.ToString().Contains("IsEditMode"))
+                                        {
+                                            messageModel.Files.Add(worksheet.Cells[rowCount++, 9].Value.ToString());
+                                        }
+                                        rowCount++;
+                                    }
+                                    else
+                                        rowCount += 2;
+
+                                    rowCount += 2;
+                                    messageModel.buttons = new List<ButtonsModel>();
+
+                                    if (!(worksheet.Cells[rowCount, 9].Value.ToString() == "NONE"))
+                                    {
+                                        while (worksheet.Cells[rowCount, 9].Value!=null && worksheet.Cells[rowCount, 9].Value.ToString().Contains("Button #"))
+                                        {
+                                            ButtonsModel buttonsModel = new ButtonsModel();
+                                            rowCount += 2;
+                                            buttonsModel.id = worksheet.Cells[rowCount, 9].Value.ToString();
+                                            rowCount += 2;
+                                            buttonsModel.text = worksheet.Cells[rowCount, 9].Value.ToString();
+                                            rowCount += 2;
+                                            buttonsModel.url = worksheet.Cells[rowCount, 9].Value == null ? "" : worksheet.Cells[rowCount, 9].Value.ToString();
+                                            rowCount += 2;
+                                            buttonsModel.phoneNumber = worksheet.Cells[rowCount, 9].Value == null ? "" : worksheet.Cells[rowCount, 9].Value.ToString();
+                                            rowCount += 2;
+                                            buttonsModel.editMode = (bool)worksheet.Cells[rowCount, 9].Value;
+                                            rowCount += 2;
+                                            buttonsModel.buttonTypeEnum = (ButtonTypeEnum)Enum.Parse(typeof(ButtonTypeEnum), worksheet.Cells[rowCount++, 9].Value.ToString());
+
+                                            messageModel.buttons.Add(buttonsModel);
+                                        }
+
+                                    }
+                                    else
+                                        rowCount++;
+
+                                    rule.messages.Add(messageModel);
+
+                                    if (worksheet.Cells[rowCount, 9].Value==null)
+                                        end = true;
+                                    else
+                                        rowCount += 2;
+
+                                } while (!end);
+                                rules.Add(rule);
+                            }
+                            catch (Exception ex)
+                            {
+                                string ss = "";
+                            }
+                        }
+
+                        for(int j = 0;j < rules.Count;j++)
+                            AddRuleTRansaction(rules[j], pauses[j]);
+                    }
+                    catch (Exception ex)
+                    {
+                        Utils.showAlert("Incorrect Format", WASender.Alerts.Alert.enmType.Error);
+                    }
+                }
+              }
+            }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Utils.showAlert("Please Export A Rule To View The Format Of The Excel File \n(For Importing Rules)", WASender.Alerts.Alert.enmType.Info);
         }
 
         private void button2_Click_1(object sender, EventArgs e)
