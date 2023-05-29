@@ -96,7 +96,6 @@ namespace WaAutoReplyBot
 
         private Bitmap FormFade()
         {
-
             Bitmap bmp = new Bitmap(this.ClientRectangle.Width, this.ClientRectangle.Height);
             using (Graphics G = Graphics.FromImage(bmp))
             {
