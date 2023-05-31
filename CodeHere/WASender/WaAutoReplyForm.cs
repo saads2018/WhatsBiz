@@ -46,26 +46,27 @@ namespace WaAutoReplyBot
         List<UnReadMessagesModel> sendMessagesList = new List<UnReadMessagesModel>();
         Logger logger;
         bool _AutoOpen = false;
-
+        MainNavPage mainNavPage;
         string welcome = "Hey how are you doing?";
 
        /* protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams createParams = base.CreateParams;
-                createParams.ExStyle |= 0x02000000;
-                return createParams;
-            }
-        }*/
-        public WaAutoReplyForm(WaSenderForm _WaSenderForm, bool isAutoOpen = false)
+         {
+             get
+             {
+                 CreateParams createParams = base.CreateParams;
+                 createParams.ExStyle |= 0x02000000;
+                 return createParams;
+             }
+         }*/
+        public WaAutoReplyForm(WaSenderForm _WaSenderForm, bool isAutoOpen = false, MainNavPage mainNavPage = null)
         {
 
             logger = new Logger("AutoReplyBot");
             WaSenderForm = _WaSenderForm;
-           // _AutoOpen = isAutoOpen;
+            // _AutoOpen = isAutoOpen;
             InitializeComponent();
             contextMenuStrip1.Visible = false;
+            this.mainNavPage = mainNavPage;
             //WaitForReopen();
         }
 
@@ -1431,7 +1432,7 @@ namespace WaAutoReplyBot
                     //{
                     //    driver.Url = "https://web.whatsapp.com";
 
-                    //    //if (!WAPIHelper.IsWAPIInjected(driver))
+                    //    //if (!WAPIHelsper.IsWAPIInjected(driver))
                     //    //{
                     //    //    WAPIHelper.injectWapi(driver);
                     //    //    WAPIHelper.validateNumber(driver, "918600398330");
@@ -1454,10 +1455,13 @@ namespace WaAutoReplyBot
                     ChangeInitStatus(InitStatusEnum.Unable);
                     if (ex.Message.Contains("session not created"))
                     {
-                        DialogResult dr = MessageBox.Show("Your Chrome Driver and Google Chrome Version Is not same, Click 'Yes botton' to view detail info ", "Error ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
+                        DialogResult dr = MessageBox.Show("Your Chrome Driver and Google Chrome Version Is not same, Click 'Yes botton' to Update it from Settings ", "Error ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
                         if (dr == DialogResult.Yes)
                         {
-                            System.Diagnostics.Process.Start("https://medium.com/fusionqa/selenium-webdriver-error-sessionnotcreatederror-session-not-created-this-version-of-7b3a8acd7072");
+                            //System.Diagnostics.Process.Start("https://medium.com/fusionqa/selenium-webdriver-error-sessionnotcreatederror-session-not-created-this-version-of-7b3a8acd7072");
+                            this.Hide();
+                            GeneralSettings generalSettings = new GeneralSettings(this.mainNavPage);
+                            generalSettings.ShowDialog();
                         }
                     }
 

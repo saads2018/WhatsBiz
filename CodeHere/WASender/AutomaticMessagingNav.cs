@@ -65,7 +65,7 @@ namespace WASender
 
         private void button4_Click(object sender, EventArgs e)
         {
-            WaSenderForm senderForm1 = new WaSenderForm();
+            WaSenderForm senderForm1 = new WaSenderForm(this.mainNavPage);
             senderForm1.Show();
         }
 

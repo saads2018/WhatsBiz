@@ -33,6 +33,7 @@ namespace WASender
         private bool IsPaused = false;
         Logger logger;
         private bool IsStopped = true;
+        MainNavPage mainNavPage;
 
         protected override CreateParams CreateParams
         {
@@ -44,7 +45,7 @@ namespace WASender
             }
         }
 
-        public RunSingle(WASenderSingleTransModel _wASenderSingleTransModel, WaSenderForm _waSenderForm)
+        public RunSingle(WASenderSingleTransModel _wASenderSingleTransModel, WaSenderForm _waSenderForm, MainNavPage mainNavPage)
         {
             InitializeComponent();
             logger = new Logger("RunSingle");
@@ -57,6 +58,8 @@ namespace WASender
                 driver = Utils.Driver;
                 initWA();
             }
+
+            this.mainNavPage = mainNavPage;
         }
 
         private void RunForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -123,13 +126,15 @@ namespace WASender
                 ChangeInitStatus(InitStatusEnum.Unable);
                 if (ex.Message.Contains("session not created"))
                 {
-                    DialogResult dr = MessageBox.Show("Your Chrome Driver and Google Chrome Version Is not same, Click 'Yes botton' to view detail info ", "Error ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
+                    DialogResult dr = MessageBox.Show("Your Chrome Driver and Google Chrome Version Is not same, Click 'Yes botton' to Update it from Settings ", "Error ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
                     if (dr == DialogResult.Yes)
                     {
-                        System.Diagnostics.Process.Start("https://medium.com/fusionqa/selenium-webdriver-error-sessionnotcreatederror-session-not-created-this-version-of-7b3a8acd7072");
+                        //System.Diagnostics.Process.Start("https://medium.com/fusionqa/selenium-webdriver-error-sessionnotcreatederror-session-not-created-this-version-of-7b3a8acd7072");
+                        this.Hide();
+                        GeneralSettings generalSettings = new GeneralSettings(this.mainNavPage);
+                        generalSettings.ShowDialog();
                     }
                 }
-
                 else if (ex.Message.Contains("invalid argument: user data directory is already in use"))
                 {
                     Config.KillChromeDriverProcess();

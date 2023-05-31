@@ -895,7 +895,7 @@ namespace WASender
 
             if(button4.Text== "Start Campaign")
             {
-                WaSenderForm wASenderForm = new WaSenderForm();
+                WaSenderForm wASenderForm = new WaSenderForm(this.main);
                 wASenderForm.startCampaign(newContact);
                 wASenderForm.Show();
             }
@@ -909,8 +909,8 @@ namespace WASender
                     this.Controls.Add(p);
                     p.BringToFront();
 
-                    WaSenderForm senderForm = new WaSenderForm();
-                    GroupsJoiner groupsJoiner = new GroupsJoiner(senderForm);
+                    WaSenderForm senderForm = new WaSenderForm(this.main);
+                    GroupsJoiner groupsJoiner = new GroupsJoiner(senderForm,this.main);
                     groupsJoiner.LoadFile(newContact);
                     groupsJoiner.ShowDialog();
                     this.Refresh();

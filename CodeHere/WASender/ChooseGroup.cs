@@ -148,10 +148,16 @@ namespace WASender
                 materialListBox1.Items.Add(lbitem);
             }
         }
-        public ChooseGroup(GetGroupMember _getGroupMember, List<WAPI_GroupModel> _wAPI_GroupModel)
+        public ChooseGroup(GetGroupMember _getGroupMember, List<WAPI_GroupModel> _wAPI_GroupModel, bool _MultiSelect = false)
         {
             InitializeComponent();
             getGroupMember = _getGroupMember;
+
+            if (_MultiSelect == true)
+            {
+                materialListBox1.SelectionMode = SelectionMode.MultiSimple;
+            }
+
             init(_wAPI_GroupModel);
         }
 
@@ -181,8 +187,15 @@ namespace WASender
             {
                 MaterialSkin.MaterialListBoxItem lbitem = new MaterialSkin.MaterialListBoxItem();
                 lbitem.Text = item.GroupName;
-                materialListBox1.Items.Add(lbitem);
+
+                //ListBoxItem 
+
+                // materialListBox1.Items.Add(item.GroupName);
             }
+            materialListBox1.DataSource = wAPI_GroupModel;
+            materialListBox1.ValueMember = "GroupId";
+            materialListBox1.DisplayMember = "GroupName";
+            //materialListBox1.MultiSelect = true;
         }
 
         private void init(List<WASenderSingleTransModel> _wASenderSingleList)
@@ -215,6 +228,8 @@ namespace WASender
         {
             this.Text = Strings.ChooseGroup;
             materialButton1.Text = Strings.Select;
+            //materialTextBox21.Hint = Strings.Search;
+
         }
 
         private void materialButton1_Click(object sender, EventArgs e)
@@ -228,15 +243,22 @@ namespace WASender
             {
                 if (this.getGroupMember != null)
                 {
-                    this.getGroupMember.ReturnBack(materialListBox1.SelectedIndex);
+                    List<WAPI_GroupModel> _WAPI_GroupModel = new List<WAPI_GroupModel>();
+                    foreach (WAPI_GroupModel item in materialListBox1.SelectedItems)
+                    {
+                        _WAPI_GroupModel.Add(item);
+                    }
+                    this.getGroupMember.ReturnBack(_WAPI_GroupModel);
                 }
                 else if (groupMemberAdder != null && cond == null)
                 {
-                    this.groupMemberAdder.ReturnBack(materialListBox1.SelectedIndex);
+                    var item = (WAPI_GroupModel)materialListBox1.SelectedItems[0];
+                    this.groupMemberAdder.ReturnBack(item);
                 }
                 else if (groupMemberAdder != null)
                 {
-                    this.groupMemberAdder.Return(materialListBox1.SelectedIndex);
+                    var item = (WAPI_GroupModel)materialListBox1.SelectedItems[0];
+                    this.groupMemberAdder.ReturnBack(item);
                 }
                 else if (senderForm != null)
                 {
@@ -258,6 +280,13 @@ namespace WASender
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void materialTextBox21_TextChanged(object sender, EventArgs e)
+        {
+            materialListBox1.DataSource = wAPI_GroupModel.Where(x => x.GroupName.ToUpper().Contains(materialTextBox21.Text.ToUpper())).ToList();
+            materialListBox1.ValueMember = "GroupId";
+            materialListBox1.DisplayMember = "GroupName";
         }
     }
 }

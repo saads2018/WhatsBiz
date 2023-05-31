@@ -34,6 +34,7 @@ namespace WASender
     public partial class WaSenderForm : MaterialForm
     {
         MaterialSkin.MaterialSkinManager materialSkinManager;
+        MainNavPage mainNavPage;
         WASenderSingleTransModel wASenderSingleTransModel;
         WASenderGroupTransModel wASenderGroupTransModel;
         GeneralSettingsModel generalSettingsModel;
@@ -52,7 +53,7 @@ namespace WASender
         WebBrowser _browser6, _browser7, _browser8, _browser9, _browser10;
 
         int size;
-        public WaSenderForm()
+        public WaSenderForm(MainNavPage mainNavPage)
         {
 
             InitializeComponent();
@@ -66,6 +67,7 @@ namespace WASender
             wASenderSingleTransModel = new WASenderSingleTransModel();
             wASenderSingleTransModel.contactList = new List<ContactModel>();
             this.FormBorderStyle = FormBorderStyle.None;
+            this.mainNavPage = mainNavPage;
             //groupBox11.Hide();
             //groupBox12.Hide();
             //groupBox13.Hide();
@@ -1232,7 +1234,7 @@ namespace WASender
                     wASenderGroupTransModel.CampaignName = "Untitled";
                     wASenderGroupTransModel.MessageSendingType = 1;
 
-                    RunGroup run = new RunGroup(wASenderGroupTransModel, this);
+                    RunGroup run = new RunGroup(wASenderGroupTransModel, this,this.mainNavPage);
                     run.ShowDialog();
                     this.Refresh();
 
@@ -1348,7 +1350,7 @@ namespace WASender
                 {
                     wASenderSingleTransModel.CampaignName = "Untitled";
                     wASenderSingleTransModel.MessageSendingType = 1;
-                    RunSingle run = new RunSingle(wASenderSingleTransModel, this);
+                    RunSingle run = new RunSingle(wASenderSingleTransModel, this,this.mainNavPage);
                     run.ShowDialog();
                     this.Refresh();
 
@@ -1879,7 +1881,7 @@ namespace WASender
 
         private void materialButton11_Click_1(object sender, EventArgs e)
         {
-            GroupsJoiner groupsJoiner = new GroupsJoiner(this);
+            GroupsJoiner groupsJoiner = new GroupsJoiner(this,this.mainNavPage);
             this.Hide();
             groupsJoiner.ShowDialog();
             this.Refresh();
@@ -1887,7 +1889,7 @@ namespace WASender
 
         private void materialButton12_Click(object sender, EventArgs e)
         {
-            WaAutoReplyBot.WaAutoReplyForm waAutoReplyForm = new WaAutoReplyBot.WaAutoReplyForm(this);
+            WaAutoReplyBot.WaAutoReplyForm waAutoReplyForm = new WaAutoReplyBot.WaAutoReplyForm(this,false,this.mainNavPage);
             this.Hide();
             waAutoReplyForm.ShowDialog();
             this.Refresh();
@@ -2040,7 +2042,7 @@ namespace WASender
 
         private void materialButton15_Click_1(object sender, EventArgs e)
         {
-            NumberFilter numberFilter = new NumberFilter(this);
+            NumberFilter numberFilter = new NumberFilter(this,this.mainNavPage);
             this.Hide();
             numberFilter.ShowDialog();
             this.Refresh();
@@ -2081,7 +2083,7 @@ namespace WASender
         public void reEnableAutoReply()
         {
             Thread.Sleep(TimeSpan.FromSeconds(5));
-            WaAutoReplyBot.WaAutoReplyForm waAutoReplyForm = new WaAutoReplyBot.WaAutoReplyForm(this, true);
+            WaAutoReplyBot.WaAutoReplyForm waAutoReplyForm = new WaAutoReplyBot.WaAutoReplyForm(this, true,this.mainNavPage);
             this.Hide();
             waAutoReplyForm.ShowDialog();
             this.Refresh();

@@ -30,14 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChooseGroup));
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            this.materialListBox1 = new System.Windows.Forms.ListBox();
             this.materialButton1 = new System.Windows.Forms.Button();
             this.label33 = new System.Windows.Forms.Label();
-            this.materialListBox1 = new MaterialSkin.Controls.MaterialListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label22 = new System.Windows.Forms.Label();
+            this.materialTextBox21 = new MaterialSkin.Controls.MaterialTextBox2();
             this.materialCard1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
@@ -47,19 +48,33 @@
             // materialCard1
             // 
             this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.Controls.Add(this.materialTextBox21);
+            this.materialCard1.Controls.Add(this.materialListBox1);
             this.materialCard1.Controls.Add(this.materialButton1);
             this.materialCard1.Controls.Add(this.label33);
-            this.materialCard1.Controls.Add(this.materialListBox1);
             this.materialCard1.Depth = 0;
             this.materialCard1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(0, 81);
+            this.materialCard1.Location = new System.Drawing.Point(0, 79);
             this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(437, 347);
+            this.materialCard1.Size = new System.Drawing.Size(437, 341);
             this.materialCard1.TabIndex = 0;
+            // 
+            // materialListBox1
+            // 
+            this.materialListBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialListBox1.Font = new System.Drawing.Font("Microsoft Tai Le", 9F);
+            this.materialListBox1.FormattingEnabled = true;
+            this.materialListBox1.ItemHeight = 19;
+            this.materialListBox1.Location = new System.Drawing.Point(49, 74);
+            this.materialListBox1.Name = "materialListBox1";
+            this.materialListBox1.Size = new System.Drawing.Size(349, 213);
+            this.materialListBox1.TabIndex = 1;
             // 
             // materialButton1
             // 
@@ -67,9 +82,9 @@
             this.materialButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.materialButton1.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.materialButton1.ForeColor = System.Drawing.Color.White;
-            this.materialButton1.Location = new System.Drawing.Point(49, 297);
+            this.materialButton1.Location = new System.Drawing.Point(49, 293);
             this.materialButton1.Name = "materialButton1";
-            this.materialButton1.Size = new System.Drawing.Size(349, 38);
+            this.materialButton1.Size = new System.Drawing.Size(349, 34);
             this.materialButton1.TabIndex = 58;
             this.materialButton1.Text = "Select";
             this.materialButton1.UseVisualStyleBackColor = false;
@@ -84,25 +99,8 @@
             this.label33.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.label33.Location = new System.Drawing.Point(14, 14);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(10, 319);
+            this.label33.Size = new System.Drawing.Size(10, 313);
             this.label33.TabIndex = 11;
-            // 
-            // materialListBox1
-            // 
-            this.materialListBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialListBox1.BackColor = System.Drawing.Color.White;
-            this.materialListBox1.BorderColor = System.Drawing.Color.LightGray;
-            this.materialListBox1.Depth = 0;
-            this.materialListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialListBox1.Location = new System.Drawing.Point(49, 14);
-            this.materialListBox1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialListBox1.Name = "materialListBox1";
-            this.materialListBox1.SelectedIndex = -1;
-            this.materialListBox1.SelectedItem = null;
-            this.materialListBox1.Size = new System.Drawing.Size(349, 276);
-            this.materialListBox1.TabIndex = 0;
             // 
             // panel1
             // 
@@ -165,11 +163,44 @@
             this.label22.Text = "Select an Option";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // materialTextBox21
+            // 
+            this.materialTextBox21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialTextBox21.AnimateReadOnly = false;
+            this.materialTextBox21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.materialTextBox21.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.materialTextBox21.Depth = 0;
+            this.materialTextBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialTextBox21.HideSelection = true;
+            this.materialTextBox21.Hint = "Search";
+            this.materialTextBox21.LeadingIcon = null;
+            this.materialTextBox21.Location = new System.Drawing.Point(49, 18);
+            this.materialTextBox21.Margin = new System.Windows.Forms.Padding(4);
+            this.materialTextBox21.MaxLength = 32767;
+            this.materialTextBox21.MouseState = MaterialSkin.MouseState.OUT;
+            this.materialTextBox21.Name = "materialTextBox21";
+            this.materialTextBox21.PasswordChar = '\0';
+            this.materialTextBox21.PrefixSuffixText = null;
+            this.materialTextBox21.ReadOnly = false;
+            this.materialTextBox21.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.materialTextBox21.SelectedText = "";
+            this.materialTextBox21.SelectionLength = 0;
+            this.materialTextBox21.SelectionStart = 0;
+            this.materialTextBox21.ShortcutsEnabled = true;
+            this.materialTextBox21.Size = new System.Drawing.Size(349, 48);
+            this.materialTextBox21.TabIndex = 59;
+            this.materialTextBox21.TabStop = false;
+            this.materialTextBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.materialTextBox21.TrailingIcon = null;
+            this.materialTextBox21.UseSystemPasswordChar = false;
+            this.materialTextBox21.TextChanged += new System.EventHandler(this.materialTextBox21_TextChanged);
+            // 
             // ChooseGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 428);
+            this.ClientSize = new System.Drawing.Size(437, 420);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.materialCard1);
@@ -192,7 +223,6 @@
         #endregion
 
         private MaterialSkin.Controls.MaterialCard materialCard1;
-        private MaterialSkin.Controls.MaterialListBox materialListBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.Button button1;
@@ -200,5 +230,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Button materialButton1;
+        private System.Windows.Forms.ListBox materialListBox1;
+        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox21;
     }
 }

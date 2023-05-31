@@ -245,10 +245,12 @@ namespace WASender
                 ChangeInitStatus(InitStatusEnum.Unable);
                 if (ex.Message.Contains("session not created"))
                 {
-                    DialogResult dr = MessageBox.Show("Your Chrome Driver and Google Chrome Version Is not same, Click 'Yes botton' to view detail info ", "Error ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
+                    DialogResult dr = MessageBox.Show("Your Chrome Driver and Google Chrome Version Is not same, Click 'Yes botton' to Update it from Settings", "Error ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
                     if (dr == DialogResult.Yes)
                     {
-                        System.Diagnostics.Process.Start("https://medium.com/fusionqa/selenium-webdriver-error-sessionnotcreatederror-session-not-created-this-version-of-7b3a8acd7072");
+                        this.Hide();
+                        GeneralSettings generalSettings = new GeneralSettings(this.mainNavPage);
+                        generalSettings.ShowDialog();
                     }
                 }
 
@@ -348,6 +350,79 @@ namespace WASender
             {
                 process.Kill();
             }*/
+        }
+
+        internal void ReturnBack(List<WAPI_GroupModel> p)
+        {
+            if (!WAPIHelper.IsWAPIInjected(driver))
+            {
+                ProjectCommon.injectWapi(driver);
+            }
+
+            List<string> members = new List<string>();
+            foreach (var group in p)
+            {
+                members.AddRange(WAPIHelper.GetGroupMembers(group, driver));
+            }
+
+            String FolderPath = Config.GetTempFolderPath();
+            String file = Path.Combine(FolderPath, "Multiple_Group_Members" + Guid.NewGuid().ToString() + ".xlsx");
+            string NewFileName = file.ToString();
+
+            File.Copy("MemberListTemplate.xlsx", NewFileName, true);
+
+
+            var newFile = new FileInfo(NewFileName);
+            ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+
+            string fileData = File.ReadAllText(fileSaves + "\\" + "IndividualContacts.json");
+
+            List<IndividualContacts> contacts = new List<IndividualContacts>();
+            int x = 1;
+
+            if (!String.IsNullOrWhiteSpace(fileData))
+            {
+                contacts = JsonConvert.DeserializeObject<List<IndividualContacts>>(fileData);
+                x = contacts.Where(y => y.Name.StartsWith("Group_Members")).ToList().Count+1;
+            }
+
+            IndividualContacts contacts1 = new IndividualContacts();
+            contacts1.ContactNames = new List<string>();
+            contacts1.Numbers = new List<string>();
+
+            using (ExcelPackage xlPackage = new ExcelPackage(newFile))
+            {
+
+                contacts1.Name = "Group_Members_"+x;
+                var ws = xlPackage.Workbook.Worksheets[0];
+
+                for (int i = 0; i < members.Count(); i++)
+                {
+                    ws.Cells[i + 1, 1].Value = members[i];
+                    contacts1.ContactNames.Add("Empty");
+                    contacts1.Numbers.Add(members[i]);
+                }
+                xlPackage.Save();
+            }
+
+            contacts.Add(contacts1);
+            importContacts = contacts1;
+            string Json = JsonConvert.SerializeObject(contacts, Formatting.Indented);
+
+            if (save)
+                File.WriteAllText(fileSaves + "\\" + "IndividualContacts.json", Json);
+
+            savesampleExceldialog.FileName = "Multiple_Group_Members.xlsx";
+
+            if (!save)
+            {
+                if (savesampleExceldialog.ShowDialog() == DialogResult.OK)
+                {
+                    File.Copy(NewFileName, savesampleExceldialog.FileName.EndsWith(".xlsx") ? savesampleExceldialog.FileName : savesampleExceldialog.FileName + ".xlsx", true);
+                    Utils.showAlert(Strings.Filedownloadedsuccessfully, Alerts.Alert.enmType.Success);
+                }
+            }
+            successTimer.Start();
         }
 
         private void materialCard2_Paint(object sender, PaintEventArgs e)
@@ -493,7 +568,7 @@ namespace WASender
                     }
 
                     wAPI_GroupModel = WAPIHelper.getMyGroups(driver);
-                    ChooseGroup ghooseGroup = new ChooseGroup(this, wAPI_GroupModel);
+                    ChooseGroup ghooseGroup = new ChooseGroup(this, wAPI_GroupModel,true);
                     ghooseGroup.ShowDialog();
                     this.Refresh();
                 }

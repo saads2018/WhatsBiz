@@ -195,7 +195,7 @@ namespace WASender
 
         private void AddButton_Load(object sender, EventArgs e)
         {
-
+            //materialComboBox1.SelectedIndex = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)

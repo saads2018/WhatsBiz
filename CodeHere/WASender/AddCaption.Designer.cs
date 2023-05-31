@@ -33,6 +33,7 @@
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label22 = new System.Windows.Forms.Label();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.button2 = new System.Windows.Forms.Button();
@@ -40,7 +41,6 @@
             this.label33 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.txtLongMessage = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             this.panel10.SuspendLayout();
@@ -87,13 +87,24 @@
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
-            this.panel10.Controls.Add(this.checkBox1);
             this.panel10.Controls.Add(this.label22);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel10.Location = new System.Drawing.Point(0, 41);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(546, 40);
             this.panel10.TabIndex = 77;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(45, 183);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(226, 24);
+            this.checkBox1.TabIndex = 77;
+            this.checkBox1.Text = "Attach With Main Message";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // label22
             // 
@@ -112,6 +123,7 @@
             // materialCard1
             // 
             this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.Controls.Add(this.checkBox1);
             this.materialCard1.Controls.Add(this.button2);
             this.materialCard1.Controls.Add(this.button16);
             this.materialCard1.Controls.Add(this.label33);
@@ -206,22 +218,11 @@
             this.txtLongMessage.SelectionLength = 0;
             this.txtLongMessage.SelectionStart = 0;
             this.txtLongMessage.ShortcutsEnabled = true;
-            this.txtLongMessage.Size = new System.Drawing.Size(484, 193);
+            this.txtLongMessage.Size = new System.Drawing.Size(484, 160);
             this.txtLongMessage.TabIndex = 72;
             this.txtLongMessage.TabStop = false;
             this.txtLongMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtLongMessage.UseSystemPasswordChar = false;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(14, 8);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(95, 20);
-            this.checkBox1.TabIndex = 77;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // AddCaption
             // 
@@ -245,6 +246,7 @@
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.materialCard1.ResumeLayout(false);
+            this.materialCard1.PerformLayout();
             this.ResumeLayout(false);
 
         }

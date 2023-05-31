@@ -33,7 +33,7 @@ namespace WASender
         Logger logger;
         private bool IsPaused = false;
         private bool IsStopped = true;
-
+        MainNavPage mainNavPage;
         protected override CreateParams CreateParams
         {
             get
@@ -43,7 +43,7 @@ namespace WASender
                 return createParams;
             }
         }
-        public RunGroup(WASenderGroupTransModel _wASenderGroupTransModel, WaSenderForm _waSenderForm)
+        public RunGroup(WASenderGroupTransModel _wASenderGroupTransModel, WaSenderForm _waSenderForm, MainNavPage mainNavPage)
         {
             logger = new Logger("RunGroup");
             InitializeComponent();
@@ -58,6 +58,7 @@ namespace WASender
                 initWA();
             }
 
+            this.mainNavPage = mainNavPage;
         }
 
         private void initWA()
@@ -104,10 +105,13 @@ namespace WASender
                 ChangeInitStatus(InitStatusEnum.Unable);
                 if (ex.Message.Contains("session not created"))
                 {
-                    DialogResult dr = MessageBox.Show("Your Chrome Driver and Google Chrome Version Is not same, Click 'Yes botton' to view detail info ", "Error ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
+                    DialogResult dr = MessageBox.Show("Your Chrome Driver and Google Chrome Version Is not same, Click 'Yes botton' to Update it from Settings ", "Error ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
                     if (dr == DialogResult.Yes)
                     {
-                        System.Diagnostics.Process.Start("https://medium.com/fusionqa/selenium-webdriver-error-sessionnotcreatederror-session-not-created-this-version-of-7b3a8acd7072");
+                        //System.Diagnostics.Process.Start("https://medium.com/fusionqa/selenium-webdriver-error-sessionnotcreatederror-session-not-created-this-version-of-7b3a8acd7072");
+                        this.Hide();
+                        GeneralSettings generalSettings = new GeneralSettings(this.mainNavPage);
+                        generalSettings.ShowDialog();
                     }
                 }
 
@@ -691,6 +695,7 @@ namespace WASender
                         {
 
                             bool AutoSend = false;
+                            bool isAlreadySent = false;
                             if (mesageModel.buttons != null && mesageModel.buttons.Count() > 0)
                             {
                                 AutoSend = true;
@@ -778,18 +783,82 @@ namespace WASender
                                 string FileName = file.filePath.Split('\\')[file.filePath.Split('\\').Length - 1];
                                 string fullBase64 = "data:" + contentType + ";base64," + filebase64;
 
-                                if (ext == ".mp4TempIgnore")
+                                if (ext == ".mp4")
                                 {
-                                    var rand = Utils.getRandom(500, 1000);
-                                    WAPIHelper.markIsComposing(driver, item.GroupId, rand);
-                                    WAPIHelper.SendVideoToGroup(driver, item.GroupId, fullBase64, file.Caption);
+                                    try
+                                    {
+                                        var rand = Utils.getRandom(500, 1000);
+                                        WAPIHelper.markIsComposing(driver, item.GroupId, rand);
+
+
+                                        if (file.attachWithMainMessage == true)
+                                        {
+                                            WAPIHelper.SendVideoToGroup(driver, item.GroupId, fullBase64, mesageModel.longMessage, mesageModel.buttons);
+                                            AutoSend = false;
+                                        }
+                                        else
+                                        {
+                                            WAPIHelper.SendVideoToGroup(driver, item.GroupId, fullBase64, file.Caption);
+                                        }
+
+                                        //WAPIHelper.SendVideoToGroup(driver, item.GroupId, fullBase64, file.Caption);
+
+                                    }
+                                    catch (Exception)
+                                    { }
+                                }
+                                else if (ext == ".ogg")
+                                {
+                                    try
+                                    {
+
+
+                                        // WAPIHelper.OpenChatopenChatBottom(driver, item.number);
+                                        //Thread.Sleep(500);
+                                        var rand = Utils.getRandom(500, 1000);
+                                        WAPIHelper.markIsComposing(driver, item.GroupId, rand);
+
+                                        fullBase64 = fullBase64.Replace("data:application/octet-stream;", "data:audio/mp3;");
+
+                                        if (file.attachWithMainMessage == true)
+                                        {
+                                            WAPIHelper.SendVideoToGroup(driver, item.GroupId, fullBase64, mesageModel.longMessage, mesageModel.buttons);
+                                            AutoSend = false;
+                                        }
+                                        else
+                                        {
+                                            WAPIHelper.SendVideoToGroup(driver, item.GroupId, fullBase64, file.Caption);
+                                        }
+
+
+                                    }
+                                    catch (Exception eeex)
+                                    {
+                                        logger.WriteLog("Is Number Valid-" + eeex.Message);
+                                    }
                                 }
                                 else
                                 {
                                     var rand = Utils.getRandom(500, 1000);
+                                    //WAPIHelper.markIsComposing(driver, item.GroupId, rand);
+
                                     WAPIHelper.markIsComposing(driver, item.GroupId, rand);
-                                    WAPIHelper.SendAttachmentToGroup(driver, item.GroupId, fullBase64, FileName, file.Caption);
+
+
+                                    if (file.attachWithMainMessage == true)
+                                    {
+                                        WAPIHelper.SendVideoToGroup(driver, item.GroupId, fullBase64, mesageModel.longMessage, mesageModel.buttons);
+                                        AutoSend = false;
+                                        isAlreadySent = true;
+                                    }
+                                    else
+                                    {
+                                        WAPIHelper.SendAttachmentToGroup(driver, item.GroupId, fullBase64, FileName, file.Caption);
+                                    }
+
+                                    // WAPIHelper.SendAttachmentToGroup(driver, item.GroupId, fullBase64, FileName, file.Caption);
                                 }
+
 
                                 if (isFirstMessage == true)
                                 {
@@ -801,15 +870,18 @@ namespace WASender
 
                             if (AutoSend == false)
                             {
-                                var rand = Utils.getRandom(500, 1000);
-                                WAPIHelper.markIsComposing(driver, item.GroupId, rand);
-                                if (NewMessage.Contains("http://") || NewMessage.Contains("https://"))
+                                if (isAlreadySent == false)
                                 {
-                                    WAPIHelper.sendTextMessageWithPreview(driver, item.GroupId, NewMessage, true);
-                                }
-                                else
-                                {
-                                    WAPIHelper.SendMessage(driver, item.GroupId, NewMessage, true);
+                                    var rand = Utils.getRandom(500, 1000);
+                                    WAPIHelper.markIsComposing(driver, item.GroupId, rand);
+                                    if (NewMessage.Contains("http://") || NewMessage.Contains("https://"))
+                                    {
+                                        WAPIHelper.sendTextMessageWithPreview(driver, item.GroupId, NewMessage, true);
+                                    }
+                                    else
+                                    {
+                                        WAPIHelper.SendMessage(driver, item.GroupId, NewMessage, true);
+                                    }
                                 }
                             }
                             else

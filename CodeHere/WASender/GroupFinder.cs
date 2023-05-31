@@ -224,7 +224,7 @@ namespace WASender
                 }
             }
 
-            GroupsJoiner groupsJoiner = new GroupsJoiner(this.waSenderForm, links);
+            GroupsJoiner groupsJoiner = new GroupsJoiner(this.waSenderForm,this.mainNavPage,links);
             this.Hide();
             groupsJoiner.ShowDialog();
             this.Refresh();

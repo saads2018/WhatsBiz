@@ -857,7 +857,7 @@ namespace WASender
                 }
             }
 
-            WaSenderForm wASenderForm = new WaSenderForm();
+            WaSenderForm wASenderForm = new WaSenderForm(this.main);
             wASenderForm.startCampaign(newContact);
             wASenderForm.Show();
 

@@ -31,11 +31,14 @@ namespace WASender
         public static extern bool ReleaseCapture();
         private Size sizeNormal;
 
+        WaSenderForm senderForm;
+
 
         public MainNavPage()
         {
             InitializeComponent();
             NativeWinAPI.appear(this);
+            senderForm = new WaSenderForm(this);
 
             this.sizeNormal = this.flowLayoutPanel1.Size;
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -243,7 +246,6 @@ namespace WASender
         }
 
  
-        WaSenderForm senderForm = new WaSenderForm();
 
        
        
@@ -428,7 +430,7 @@ namespace WASender
 
         private void button6_Click(object sender, EventArgs e)
         {
-            WaAutoReplyForm bot = new WaAutoReplyForm(senderForm);
+            WaAutoReplyForm bot = new WaAutoReplyForm(senderForm,false,this);
             bot.Show();
         }
 
@@ -492,7 +494,7 @@ namespace WASender
                 this.Controls.Add(p);
                 p.BringToFront();
 
-                GroupsJoiner joiner = new GroupsJoiner(senderForm);
+                GroupsJoiner joiner = new GroupsJoiner(senderForm,this);
                 joiner.ShowDialog();
                 this.Refresh();
             }
@@ -508,7 +510,7 @@ namespace WASender
                 this.Controls.Add(p);
                 p.BringToFront();
 
-                NumberFilter number = new NumberFilter(senderForm);
+                NumberFilter number = new NumberFilter(senderForm,this);
                 number.ShowDialog();
                 this.Refresh();
             }

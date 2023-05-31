@@ -24,7 +24,7 @@ namespace WASender
             this.waSenderForm = _waSenderForm;
             this.captionModel = _captionModel;
 
-            checkBox1.Hide();
+            //checkBox1.Hide();
         }
 
         protected override CreateParams CreateParams

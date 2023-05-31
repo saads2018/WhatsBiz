@@ -114,10 +114,12 @@ namespace WASender
                 ChangeInitStatus(InitStatusEnum.Unable);
                 if (ex.Message.Contains("session not created"))
                 {
-                    DialogResult dr = MessageBox.Show("Your Chrome Driver and Google Chrome Version Is not same, Click 'Yes botton' to view detail info ", "Error ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
+                    DialogResult dr = MessageBox.Show("Your Chrome Driver and Google Chrome Version Is not same, Click 'Yes botton' to Update it from Settings", "Error ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
                     if (dr == DialogResult.Yes)
                     {
-                        System.Diagnostics.Process.Start("https://medium.com/fusionqa/selenium-webdriver-error-sessionnotcreatederror-session-not-created-this-version-of-7b3a8acd7072");
+                        this.Hide();
+                        GeneralSettings generalSettings = new GeneralSettings(this.mainNavPage);
+                        generalSettings.ShowDialog();
                     }
                 }
 
@@ -463,9 +465,9 @@ namespace WASender
             }
         }
 
-        public void ReturnBack(int index)
+        public void ReturnBack(WAPI_GroupModel index)
         {
-            wAPI_SelectedGroup = wAPI_GroupModel[index];
+            wAPI_SelectedGroup = index;
 
             if (wAPI_GroupModel != null && wAPI_GroupModel.Count() > 0)
             {

@@ -36,14 +36,15 @@ namespace WASender
         System.Windows.Forms.Timer timerRunner;
         Logger logger;
         private bool IsStopped = true;
-
+        MainNavPage mainNavPage;
 
        
-        public GroupsJoiner(WaSenderForm _waSenderForm, List<string> links = null)
+        public GroupsJoiner(WaSenderForm _waSenderForm, MainNavPage mainNavPage, List<string> links = null)
         {
             InitializeComponent();
             initializeResolution();
             logger = new Logger("GroupJoiner");
+            this.mainNavPage = mainNavPage;
             selectedIndex = -1;
             waSenderForm = _waSenderForm;
             if (links != null)
@@ -149,10 +150,13 @@ namespace WASender
                 ChangeInitStatus(InitStatusEnum.Unable);
                 if (ex.Message.Contains("session not created"))
                 {
-                    DialogResult dr = MessageBox.Show("Your Chrome Driver and Google Chrome Version Is not same, Click 'Yes botton' to view detail info ", "Error ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
+                    DialogResult dr = MessageBox.Show("Your Chrome Driver and Google Chrome Version Is not same, Click 'Yes botton' to Update it from Settings ", "Error ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
                     if (dr == DialogResult.Yes)
                     {
-                        System.Diagnostics.Process.Start("https://medium.com/fusionqa/selenium-webdriver-error-sessionnotcreatederror-session-not-created-this-version-of-7b3a8acd7072");
+                        //System.Diagnostics.Process.Start("https://medium.com/fusionqa/selenium-webdriver-error-sessionnotcreatederror-session-not-created-this-version-of-7b3a8acd7072");
+                        this.Hide();
+                        GeneralSettings generalSettings = new GeneralSettings(this.mainNavPage);
+                        generalSettings.ShowDialog();
                     }
                 }
 
