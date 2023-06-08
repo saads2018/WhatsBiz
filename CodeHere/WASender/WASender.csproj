@@ -609,6 +609,12 @@
     <Compile Include="KeyMarker.Designer.cs">
       <DependentUpon>KeyMarker.cs</DependentUpon>
     </Compile>
+    <Compile Include="LinkedInDataExtractor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LinkedInDataExtractor.Designer.cs">
+      <DependentUpon>LinkedInDataExtractor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Loading.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -628,6 +634,7 @@
     <Compile Include="Model\CaptionModel.cs" />
     <Compile Include="Model\ColorSchemeenum.cs" />
     <Compile Include="Model\GMapGlobal.cs" />
+    <Compile Include="Model\LinkedInDivs.cs" />
     <Compile Include="Model\RulePause.cs" />
     <Compile Include="MyMaterialForm.cs">
       <SubType>Form</SubType>
@@ -790,6 +797,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KeyMarker.resx">
       <DependentUpon>KeyMarker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LinkedInDataExtractor.resx">
+      <DependentUpon>LinkedInDataExtractor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Loading.resx">
       <DependentUpon>Loading.cs</DependentUpon>

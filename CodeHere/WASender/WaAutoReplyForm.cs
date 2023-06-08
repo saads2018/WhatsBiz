@@ -1784,144 +1784,155 @@ namespace WaAutoReplyBot
 
         private void button3_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = Strings.SelectExcel;
-            openFileDialog.DefaultExt = "xlsx";
-            openFileDialog.Filter = "Excel Files|*.xlsx;";
-            openFileDialog.Multiselect = false;
-
-            List<RuleTransactionModel> rules = new List<RuleTransactionModel>();
-
-            List<string> pauses = new List<string>();
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                string file = openFileDialog.FileName;
-                var fiSingle = new FileInfo(file);
-                if (fiSingle.Extension != ".xlsx")
-                {
-                    Utils.showAlert(Strings.PleaseselectExcelfilesformatonly, WASender.Alerts.Alert.enmType.Error);
-                    return;
-                }
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Title = Strings.SelectExcel;
+                openFileDialog.DefaultExt = "xlsx";
+                openFileDialog.Filter = "Excel Files|*.xlsx;";
+                openFileDialog.Multiselect = false;
 
-                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
-                using (var package = new ExcelPackage(fiSingle))
+                List<RuleTransactionModel> rules = new List<RuleTransactionModel>();
+
+                List<string> pauses = new List<string>();
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    try
+                    string file = openFileDialog.FileName;
+                    var fiSingle = new FileInfo(file);
+                    if (fiSingle.Extension != ".xlsx")
                     {
-                        ExcelWorksheet worksheet = package.Workbook.Worksheets.FirstOrDefault();
+                        Utils.showAlert(Strings.PleaseselectExcelfilesformatonly, WASender.Alerts.Alert.enmType.Error);
+                        return;
+                    }
 
-                        var ColumnsCOunt = worksheet.Dimension.Columns;
-
-                        int largest = 0;
-
-                        for (int i = 2; i < worksheet.Dimension.Rows; i++)
+                    ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+                    using (var package = new ExcelPackage(fiSingle))
+                    {
+                        try
                         {
-                            if (worksheet.Cells[i, 1].Value!=null && !String.IsNullOrWhiteSpace(worksheet.Cells[i,1].Value.ToString()))
+                            ExcelWorksheet worksheet = package.Workbook.Worksheets.FirstOrDefault();
+
+                            var ColumnsCOunt = worksheet.Dimension.Columns;
+
+                            int largest = 0;
+
+                            for (int i = 2; i < worksheet.Dimension.Rows; i++)
                             {
-                                int x = Int32.Parse(worksheet.Cells[i, 1].Value.ToString());
-                                if(x>largest)
+                                if (worksheet.Cells[i, 1].Value != null && !String.IsNullOrWhiteSpace(worksheet.Cells[i, 1].Value.ToString()))
                                 {
-                                    largest = x;
+                                    int x = Int32.Parse(worksheet.Cells[i, 1].Value.ToString());
+                                    if (x > largest)
+                                    {
+                                        largest = x;
+                                    }
                                 }
                             }
-                        }
 
-                        int rowCount = 1;
-                        for (int i = 0; i < largest; i++)
-                        {
-
-                            try
+                            int rowCount = 1;
+                            for (int i = 0; i < largest; i++)
                             {
-                                rowCount++;
-                                RuleTransactionModel rule = new RuleTransactionModel();
 
-                                rule.userInput = worksheet.Cells[rowCount, 2].Value.ToString();
-                                rule.operatorsEnum = (OperatorsEnum) Enum.Parse(typeof(OperatorsEnum),worksheet.Cells[rowCount, 3].Value.ToString());
-                                rule.IsActive = (bool)worksheet.Cells[rowCount, 4].Value;
-                                rule.IsSaved = (bool)worksheet.Cells[rowCount, 5].Value;
-                                rule.IsEditMode = false;
-                                rule.MyProperty = Int32.Parse(worksheet.Cells[rowCount, 7].Value.ToString());
-                                rule.IsFallBack = (bool)worksheet.Cells[rowCount, 8].Value;
-                                pauses.Add(worksheet.Cells[rowCount, 10].Value.ToString());
-                                rowCount += 2;
-                                rule.messages = new List<MessageModel>();
-
-                                bool end = false;
-
-                                do
+                                try
                                 {
-                                    MessageModel messageModel = new MessageModel();
-                                    
-                                    messageModel.LongMessage = worksheet.Cells[rowCount, 9].Value.ToString();
+                                    rowCount++;
+                                    RuleTransactionModel rule = new RuleTransactionModel();
+
+                                    rule.userInput = worksheet.Cells[rowCount, 2].Value.ToString();
+                                    rule.operatorsEnum = (OperatorsEnum)Enum.Parse(typeof(OperatorsEnum), worksheet.Cells[rowCount, 3].Value.ToString());
+                                    rule.IsActive = (bool)worksheet.Cells[rowCount, 4].Value;
+                                    rule.IsSaved = (bool)worksheet.Cells[rowCount, 5].Value;
+                                    rule.IsEditMode = false;
+                                    rule.MyProperty = Int32.Parse(worksheet.Cells[rowCount, 7].Value.ToString());
+                                    rule.IsFallBack = (bool)worksheet.Cells[rowCount, 8].Value;
+                                    pauses.Add(worksheet.Cells[rowCount, 10].Value.ToString());
                                     rowCount += 2;
-                                    messageModel.Files = new List<string>();
+                                    rule.messages = new List<MessageModel>();
 
-                                    if (!(worksheet.Cells[rowCount, 9].Value.ToString() == "NONE"))
+                                    bool end = false;
+
+                                    do
                                     {
-                                        while (!worksheet.Cells[rowCount, 9].Value.ToString().Contains("IsEditMode"))
-                                        {
-                                            messageModel.Files.Add(worksheet.Cells[rowCount++, 9].Value.ToString());
-                                        }
-                                        rowCount++;
-                                    }
-                                    else
+                                        MessageModel messageModel = new MessageModel();
+
+                                        messageModel.LongMessage = worksheet.Cells[rowCount, 9].Value.ToString();
                                         rowCount += 2;
+                                        messageModel.Files = new List<string>();
 
-                                    rowCount += 2;
-                                    messageModel.buttons = new List<ButtonsModel>();
-
-                                    if (!(worksheet.Cells[rowCount, 9].Value.ToString() == "NONE"))
-                                    {
-                                        while (worksheet.Cells[rowCount, 9].Value!=null && worksheet.Cells[rowCount, 9].Value.ToString().Contains("Button #"))
+                                        if (!(worksheet.Cells[rowCount, 9].Value.ToString() == "NONE"))
                                         {
-                                            ButtonsModel buttonsModel = new ButtonsModel();
-                                            rowCount += 2;
-                                            buttonsModel.id = worksheet.Cells[rowCount, 9].Value.ToString();
-                                            rowCount += 2;
-                                            buttonsModel.text = worksheet.Cells[rowCount, 9].Value.ToString();
-                                            rowCount += 2;
-                                            buttonsModel.url = worksheet.Cells[rowCount, 9].Value == null ? "" : worksheet.Cells[rowCount, 9].Value.ToString();
-                                            rowCount += 2;
-                                            buttonsModel.phoneNumber = worksheet.Cells[rowCount, 9].Value == null ? "" : worksheet.Cells[rowCount, 9].Value.ToString();
-                                            rowCount += 2;
-                                            buttonsModel.editMode = (bool)worksheet.Cells[rowCount, 9].Value;
-                                            rowCount += 2;
-                                            buttonsModel.buttonTypeEnum = (ButtonTypeEnum)Enum.Parse(typeof(ButtonTypeEnum), worksheet.Cells[rowCount++, 9].Value.ToString());
-
-                                            messageModel.buttons.Add(buttonsModel);
+                                            while (!worksheet.Cells[rowCount, 9].Value.ToString().Contains("IsEditMode"))
+                                            {
+                                                messageModel.Files.Add(worksheet.Cells[rowCount++, 9].Value.ToString());
+                                            }
+                                            rowCount++;
                                         }
+                                        else
+                                            rowCount += 2;
 
-                                    }
-                                    else
-                                        rowCount++;
-
-                                    rule.messages.Add(messageModel);
-
-                                    if (worksheet.Cells[rowCount, 9].Value==null)
-                                        end = true;
-                                    else
                                         rowCount += 2;
+                                        messageModel.buttons = new List<ButtonsModel>();
 
-                                } while (!end);
-                                rules.Add(rule);
+                                        if (!(worksheet.Cells[rowCount, 9].Value.ToString() == "NONE"))
+                                        {
+                                            while (worksheet.Cells[rowCount, 9].Value != null && worksheet.Cells[rowCount, 9].Value.ToString().Contains("Button #"))
+                                            {
+                                                ButtonsModel buttonsModel = new ButtonsModel();
+                                                rowCount += 2;
+                                                buttonsModel.id = worksheet.Cells[rowCount, 9].Value.ToString();
+                                                rowCount += 2;
+                                                buttonsModel.text = worksheet.Cells[rowCount, 9].Value.ToString();
+                                                rowCount += 2;
+                                                buttonsModel.url = worksheet.Cells[rowCount, 9].Value == null ? "" : worksheet.Cells[rowCount, 9].Value.ToString();
+                                                rowCount += 2;
+                                                buttonsModel.phoneNumber = worksheet.Cells[rowCount, 9].Value == null ? "" : worksheet.Cells[rowCount, 9].Value.ToString();
+                                                rowCount += 2;
+                                                buttonsModel.editMode = (bool)worksheet.Cells[rowCount, 9].Value;
+                                                rowCount += 2;
+                                                buttonsModel.buttonTypeEnum = (ButtonTypeEnum)Enum.Parse(typeof(ButtonTypeEnum), worksheet.Cells[rowCount++, 9].Value.ToString());
+
+                                                messageModel.buttons.Add(buttonsModel);
+                                            }
+
+                                        }
+                                        else
+                                            rowCount++;
+
+                                        rule.messages.Add(messageModel);
+
+                                        if (worksheet.Cells[rowCount, 9].Value == null)
+                                            end = true;
+                                        else
+                                            rowCount += 2;
+
+                                    } while (!end);
+                                    rules.Add(rule);
+                                }
+                                catch (Exception ex)
+                                {
+                                    string ss = "";
+                                    Utils.showAlert("Incorrect Format", WASender.Alerts.Alert.enmType.Error);
+                                    return;
+                                }
                             }
-                            catch (Exception ex)
-                            {
-                                string ss = "";
-                            }
+
+                            for (int j = 0; j < rules.Count; j++)
+                                AddRuleTRansaction(rules[j], pauses[j]);
                         }
-
-                        for(int j = 0;j < rules.Count;j++)
-                            AddRuleTRansaction(rules[j], pauses[j]);
-                    }
-                    catch (Exception ex)
-                    {
-                        Utils.showAlert("Incorrect Format", WASender.Alerts.Alert.enmType.Error);
+                        catch (Exception ex)
+                        {
+                            Utils.showAlert("Incorrect Format", WASender.Alerts.Alert.enmType.Error);
+                            return;
+                        }
                     }
                 }
-              }
             }
+            catch
+            {
+                Utils.showAlert("Incorrect Format", WASender.Alerts.Alert.enmType.Error);
+                return;
+            }
+        }
 
         private void button4_Click(object sender, EventArgs e)
         {

@@ -467,6 +467,7 @@ namespace WASender
                 GeneralSettingsModel generalSettingsModel = JsonConvert.DeserializeObject<GeneralSettingsModel>(json);
                 try
                 {
+                    
                     if (generalSettingsModel.ChromeProfilePath != null && generalSettingsModel.ChromeProfilePath != "")
                     {
                         options.BinaryLocation = generalSettingsModel.ChromeProfilePath + "\\chrome.exe";

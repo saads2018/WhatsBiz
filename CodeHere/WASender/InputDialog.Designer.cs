@@ -86,6 +86,7 @@
             this.materialMaskedTextBox1.UseSystemPasswordChar = false;
             this.materialMaskedTextBox1.ValidatingType = null;
             this.materialMaskedTextBox1.Click += new System.EventHandler(this.materialMaskedTextBox1_Click);
+            this.materialMaskedTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.materialMaskedTextBox1_KeyUp);
             // 
             // panel1
             // 
@@ -163,7 +164,7 @@
             this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard2.Name = "materialCard2";
             this.materialCard2.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard2.Size = new System.Drawing.Size(480, 136);
+            this.materialCard2.Size = new System.Drawing.Size(480, 134);
             this.materialCard2.TabIndex = 56;
             // 
             // btnInitWA
@@ -172,7 +173,7 @@
             this.btnInitWA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInitWA.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInitWA.ForeColor = System.Drawing.Color.White;
-            this.btnInitWA.Location = new System.Drawing.Point(41, 83);
+            this.btnInitWA.Location = new System.Drawing.Point(41, 82);
             this.btnInitWA.Name = "btnInitWA";
             this.btnInitWA.Size = new System.Drawing.Size(422, 38);
             this.btnInitWA.TabIndex = 41;
@@ -189,7 +190,7 @@
             this.label33.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.label33.Location = new System.Drawing.Point(14, 14);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(10, 108);
+            this.label33.Size = new System.Drawing.Size(10, 106);
             this.label33.TabIndex = 11;
             // 
             // lblInitStatus
@@ -208,7 +209,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 217);
+            this.ClientSize = new System.Drawing.Size(480, 212);
             this.Controls.Add(this.materialCard2);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel1);

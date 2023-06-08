@@ -56,7 +56,7 @@ namespace WASender
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Sorry An Error Occured, Please Try Again Or Update Your Chrome Driver In Settings!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Sorry An Error Occured, Please Close Other Instances Of Your Chrome Driver And Try Again Or Update Your Chrome Driver In Settings! \n \n Error Message:\n " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 

@@ -691,11 +691,15 @@ namespace WASender
 
 
                 //new ChromeDriverUpdater.ChromeDriverUpdater().Update(Config.WAPIFolderFolder() + "\\chromedriver.exe");  
+
+                if (Directory.Exists(Directory.GetCurrentDirectory() + "\\Chrome"))
+                    Directory.Delete(Directory.GetCurrentDirectory() + "\\Chrome",true);
+                
                 new DriverManager().SetUpDriver(new ChromeConfig());
                 Task.Delay(1000);
 
                 var chromeDirectoryFirst = Directory.GetDirectories(Directory.GetCurrentDirectory()+"\\Chrome");
-                var chromeDirectorySecond = Directory.GetDirectories(chromeDirectoryFirst[0]);
+                var chromeDirectorySecond = Directory.GetDirectories(chromeDirectoryFirst.FirstOrDefault());
                 File.Copy(chromeDirectorySecond[0] + "\\chromedriver.exe", Config.WAPIFolderFolder() + "\\chromedriver.exe", true);
 
                 MaterialSnackBar SnackBarMessage = new MaterialSnackBar("Done 👍👍👍👍", Strings.OK, true);

@@ -10,9 +10,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using WaAutoReplyBot;
 using WASender.Models;
+using SelectionMode = System.Windows.Forms.SelectionMode;
 
 namespace WASender
 {
@@ -84,12 +86,14 @@ namespace WASender
             groupContacts = _groupContacts;
             initLanguage();
 
+            List<string> names = new List<string>();
+
             foreach (var item in groupContacts)
             {
-                MaterialSkin.MaterialListBoxItem lbitem = new MaterialSkin.MaterialListBoxItem();
-                lbitem.Text = item.Name.Replace(".xlsx","");
-                materialListBox1.Items.Add(lbitem);
+                names.Add(item.Name.Replace(".xlsx", ""));
             }
+
+            materialListBox1.DataSource = names;
         }
         
         private void init(string cond)
@@ -104,12 +108,14 @@ namespace WASender
                 if (!String.IsNullOrWhiteSpace(filedata))
                     contacts = JsonConvert.DeserializeObject<List<IndividualContacts>>(filedata);
 
+                List<string> names = new List<string>();
+
                 foreach (var item in contacts)
                 {
-                    MaterialSkin.MaterialListBoxItem lbitem = new MaterialSkin.MaterialListBoxItem();
-                    lbitem.Text = item.Name.Replace(".xlsx", "");
-                    materialListBox1.Items.Add(lbitem);
+                    names.Add(item.Name.Replace(".xlsx", ""));
                 }
+
+                materialListBox1.DataSource = names;
             }
             else
             {
@@ -118,13 +124,15 @@ namespace WASender
                 
                 if(!String.IsNullOrWhiteSpace(filedata))
                     contacts = JsonConvert.DeserializeObject<List<GroupContact>>(filedata);
-               
+
+                List<string> names = new List<string>();
+
                 foreach (var item in contacts)
                 {
-                    MaterialSkin.MaterialListBoxItem lbitem = new MaterialSkin.MaterialListBoxItem();
-                    lbitem.Text = item.Name.Replace(".xlsx","");
-                    materialListBox1.Items.Add(lbitem);
+                    names.Add(item.Name.Replace(".xlsx", ""));
                 }
+
+                materialListBox1.DataSource = names;
             }
             
         }
@@ -141,12 +149,14 @@ namespace WASender
             individualContacts = _individualContacts;
             initLanguage();
 
+            List<string> names = new List<string>();
+
             foreach (var item in individualContacts)
             {
-                MaterialSkin.MaterialListBoxItem lbitem = new MaterialSkin.MaterialListBoxItem();
-                lbitem.Text = item.Name.Replace(".xlsx", "");
-                materialListBox1.Items.Add(lbitem);
+                names.Add(item.Name.Replace(".xlsx", ""));
             }
+
+            materialListBox1.DataSource = names;
         }
         public ChooseGroup(GetGroupMember _getGroupMember, List<WAPI_GroupModel> _wAPI_GroupModel, bool _MultiSelect = false)
         {

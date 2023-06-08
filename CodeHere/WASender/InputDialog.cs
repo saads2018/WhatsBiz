@@ -14,9 +14,18 @@ namespace WASender
     public partial class InputDialog : MyMaterialPopOp
     {
         GMapExtractor gMapExtractor;
+        LinkedInDataExtractor linkedInDataExtractor;
+
+
         public InputDialog(GMapExtractor _gMapExtractor)
         {
             gMapExtractor = _gMapExtractor;
+            InitializeComponent();
+        }
+
+        public InputDialog(LinkedInDataExtractor _linkedInDataExtractor)
+        {
+            linkedInDataExtractor = _linkedInDataExtractor;
             InitializeComponent();
         }
 
@@ -37,17 +46,20 @@ namespace WASender
         private void initLang()
         {
             this.Text = Strings.YourSearchterm;
-            materialMaskedTextBox1.Text = Strings.Softwarecompaniesintexas;
-            
+            //materialMaskedTextBox1.Text = Strings.Softwarecompaniesintexas;   
         }
 
-        private void materialButton1_Click(object sender, EventArgs e)
+        private void searchInput()
         {
             if (materialMaskedTextBox1.Text != "")
             {
                 try
                 {
-                    gMapExtractor.InputReturn(materialMaskedTextBox1.Text);
+                    if (gMapExtractor != null)
+                        gMapExtractor.InputReturn(materialMaskedTextBox1.Text);
+                    else if (linkedInDataExtractor != null)
+                        linkedInDataExtractor.InputReturn(materialMaskedTextBox1.Text);
+
                     this.Close();
                 }
                 catch (Exception ex)
@@ -56,6 +68,11 @@ namespace WASender
                 }
             }
         }
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+            searchInput();
+        }
+
 
         private void materialMaskedTextBox1_Click(object sender, EventArgs e)
         {
@@ -65,6 +82,12 @@ namespace WASender
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void materialMaskedTextBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                searchInput();
         }
     }
 }

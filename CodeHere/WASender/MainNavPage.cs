@@ -296,7 +296,7 @@ namespace WASender
             label54.ForeColor = Color.FromArgb(37, 171, 134);
 
             IWebDriver driver;
-            var chromeDriverService = ChromeDriverService.CreateDefaultService();
+            var chromeDriverService = ChromeDriverService.CreateDefaultService(Config.GetChromeDriverFolder());
             chromeDriverService.HideCommandPromptWindow = true;
 
 
@@ -319,7 +319,7 @@ namespace WASender
             label28.ForeColor = Color.FromArgb(37, 171, 134);
 
             IWebDriver driver;
-            var chromeDriverService = ChromeDriverService.CreateDefaultService();
+            var chromeDriverService = ChromeDriverService.CreateDefaultService(Config.GetChromeDriverFolder());
             chromeDriverService.HideCommandPromptWindow = true;
             driver = new ChromeDriver(chromeDriverService, Config.GetChromeOptionsMin());
 
@@ -576,8 +576,10 @@ namespace WASender
                 this.Controls.Add(p);
                 p.BringToFront();
 
-                GMapExtractor gMapExtractor = new GMapExtractor(senderForm,this);
+                GMapExtractor gMapExtractor = new GMapExtractor(senderForm, this);
                 gMapExtractor.ShowDialog();
+                /*LinkedInDataExtractor linkedInDataExtractor = new LinkedInDataExtractor(senderForm, this);
+                linkedInDataExtractor.ShowDialog();*/
                 this.Refresh();
             }
         }
@@ -618,7 +620,7 @@ namespace WASender
             label65.ForeColor = Color.FromArgb(37, 171, 134);
 
             IWebDriver driver;
-            var chromeDriverService = ChromeDriverService.CreateDefaultService();
+            var chromeDriverService = ChromeDriverService.CreateDefaultService(Config.GetChromeDriverFolder());
             chromeDriverService.HideCommandPromptWindow = true;
 
 
