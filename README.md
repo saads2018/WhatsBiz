@@ -1,4 +1,4 @@
-![export group members](https://github.com/saads2018/WhatsBiz/assets/71264405/2c0f3a71-01e8-4f98-9cd4-e0cb84e9d308)# WhatsBiz
+# WhatsBiz
 WhatsApp Bot with multiple tools
 
 ## Preview
