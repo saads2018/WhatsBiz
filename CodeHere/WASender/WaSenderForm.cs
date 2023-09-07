@@ -138,6 +138,7 @@ namespace WASender
              }
          }*/
 
+
         private void initializeResolution()
         {
             if (Program.resWidth < this.Width)

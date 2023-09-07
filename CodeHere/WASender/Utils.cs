@@ -1,5 +1,6 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using Microsoft.Web.WebView2.WinForms;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,78 @@ namespace WASender
     {
 
         private static OpenQA.Selenium.IWebDriver _driver;
+        private static WaSenderBrowser _waSenderBrowser { get; set; }
+
+        private static TestClass _TestClass;
+
+        public static TestClass testClass
+        {
+            get
+            {
+                if (_TestClass == null)
+                    _TestClass = new TestClass();
+
+                return _TestClass;
+            }
+            set { _TestClass = value; }
+        }
+
+        public static TabPage GetTabPageById(WaSenderBrowser browser, string id)
+        {
+            TabPage tp = null;
+            foreach (TabPage page in browser.tabControl1.TabPages)
+            {
+                var _tag = (System.Data.DataRow)page.Tag;
+                if (_tag["ID"].ToString() == id)
+                {
+                    tp = page;
+                }
+            }
+            return tp;
+        }
+
+        public static WebView2 GetWebViewById(WaSenderBrowser browser, string id)
+        {
+            WebView2 vw = null;
+            foreach (TabPage page in browser.tabControl1.TabPages)
+            {
+                var _tag = (System.Data.DataRow)page.Tag;
+                if (_tag["ID"].ToString() == id)
+                {
+                    vw = (WebView2)page.Controls.Find("webView21", true)[0];
+
+                }
+            }
+
+            return vw;
+        }
+
+
+        public static WebView2 GetActiveWebView(WaSenderBrowser browser)
+        {
+            try
+            {
+                int index = browser.tabControl1.SelectedIndex;
+                string tabName = browser.tabControl1.TabPages[index].Name;
+                TabPage tp = browser.tabControl1.SelectedTab;
+                WebView2 vw = (WebView2)tp.Controls.Find("webView21", true)[0];
+
+                return vw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static WaSenderBrowser waSenderBrowser
+        {
+            get
+            {
+                return _waSenderBrowser;
+            }
+            set { _waSenderBrowser = value; }
+        }
 
         public static OpenQA.Selenium.IWebDriver Driver
         {

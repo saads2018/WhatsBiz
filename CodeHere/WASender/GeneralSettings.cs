@@ -23,6 +23,7 @@ using WaAutoReplyBot.Models;
 using System.IO.Packaging;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
+using WASender.enums;
 
 namespace WASender
 {
@@ -31,12 +32,54 @@ namespace WASender
         WaSenderForm waSenderForm;
         GeneralSettingsModel generalSettingsModel;
         MainNavPage navPage;
+        BackgroundWorker worker;
         public GeneralSettings(MainNavPage main)
         {
             InitializeComponent();
             initializeResolution();
+            initBackgroundWorker();
             init();
             navPage = main;
+        }
+
+        public GeneralSettings()
+        {
+            InitializeComponent();
+            initializeResolution();
+            initBackgroundWorker();
+            init();
+        }
+
+        private void initBackgroundWorker()
+        {
+            worker = new BackgroundWorker();
+            worker.WorkerReportsProgress = true;
+            worker.WorkerSupportsCancellation = true;
+            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+
+            worker.DoWork += Worker_DoWork;
+        }
+
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            progressBar1.Visible = false;
+            MaterialSnackBar SnackBarMessage = new MaterialSnackBar("Done 👍👍👍👍", Strings.OK, true);
+            SnackBarMessage.Show(this);
+        }
+
+        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+            if (Directory.Exists(Directory.GetCurrentDirectory() + "\\Chrome"))
+                Directory.Delete(Directory.GetCurrentDirectory() + "\\Chrome", true);
+
+            new DriverManager().SetUpDriver(new ChromeConfig());
+            Task.Delay(1000);
+
+            var chromeDirectoryFirst = Directory.GetDirectories(Directory.GetCurrentDirectory() + "\\Chrome");
+            var chromeDirectorySecond = Directory.GetDirectories(chromeDirectoryFirst.FirstOrDefault());
+            File.Copy(chromeDirectorySecond[0] + "\\chromedriver.exe", Config.WAPIFolderFolder() + "\\chromedriver.exe", true);
+
         }
 
         public void initializeResolution()
@@ -68,6 +111,7 @@ namespace WASender
             this.Name = Strings.GeneralSettings;
             this.txtChromePath.Hint = Strings.ChromeProfilePath;
             this.btnSave.Text = Strings.Save;
+            AutoUpdater.CheckForUpdateEvent += AutoUpdater_CheckForUpdateEvent;
 
             getData();
         }
@@ -84,6 +128,14 @@ namespace WASender
         }
         private void getData()
         {
+            Dictionary<string, string> test = new Dictionary<string, string>();
+            test.Add("1", "Chrome");
+            test.Add("2", "Built In Browser");
+
+            materialComboBox1.DataSource = new BindingSource(test, null);
+            materialComboBox1.DisplayMember = "Value";
+            materialComboBox1.ValueMember = "Key";
+
             String GetGeneralSettingsFilePath = Config.GetGeneralSettingsFilePath();
 
             if (File.Exists(GetGeneralSettingsFilePath))
@@ -98,14 +150,16 @@ namespace WASender
                 {
                     txtChromePath.Text = generalSettingsModel.ChromeProfilePath;
                 }
-                if (generalSettingsModel.manuallyOpenChat != null)
+                if (generalSettingsModel.CheckNumberBeforeSending != null)
                 {
-                    //materialCheckbox1.Checked = generalSettingsModel.manuallyOpenChat;
+                    materialCheckbox1.Checked = generalSettingsModel.CheckNumberBeforeSending;
                 }
-                if (generalSettingsModel.UniqueClassName != null)
+                if (generalSettingsModel.browserType == 0)
                 {
-                    //materialTextBox21.Text = generalSettingsModel.UniqueClassName;
+                    generalSettingsModel.browserType = 1;
                 }
+
+                materialComboBox1.SelectedValue = generalSettingsModel.browserType.ToString();
             }
 
 
@@ -141,15 +195,20 @@ namespace WASender
                     return;
                 }
             }
-            //generalSettingsModel.manuallyOpenChat = materialCheckbox1.Checked;
+            generalSettingsModel.CheckNumberBeforeSending = materialCheckbox1.Checked;
             generalSettingsModel.ChromeProfilePath = txtChromePath.Text == null ? "" : txtChromePath.Text;
             //generalSettingsModel.UniqueClassName = materialTextBox21.Text;
+            generalSettingsModel.browserType = Convert.ToInt32(materialComboBox1.SelectedValue);
             string Json = JsonConvert.SerializeObject(generalSettingsModel, Formatting.Indented);
 
             File.WriteAllText(GetGeneralSettingsFilePath, Json);
 
             MaterialSnackBar SnackBarMessage1 = new MaterialSnackBar(Strings.SettingsSavedSuccessfully, Strings.OK, true);
             SnackBarMessage1.Show(this);
+            if (this.navPage != null)
+            {
+                this.navPage.checkBrowserType();
+            }
         }
 
         private void materialButton1_Click(object sender, EventArgs e)
@@ -530,7 +589,6 @@ namespace WASender
         private void materialButton6_Click(object sender, EventArgs e)
         {
             AutoUpdater.Start("https://dkdkfdjldjklgdjfldjs.000webhostapp.com/updateApp.xml");
-          
             /*try
             {
                 string UpdateFIle = Config.GetTempFolderPath() + "\\" + Guid.NewGuid().ToString() + ".zip";
@@ -572,6 +630,12 @@ namespace WASender
 
                 MessageBox.Show("Not Done 👎👎 -" + ex.Message);
             }*/
+        }
+
+        private void AutoUpdater_CheckForUpdateEvent(UpdateInfoEventArgs args)
+        {
+            if(!(args.IsUpdateAvailable))
+                MessageBox.Show("The App Is Already Up-To-Date!","Alert",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void materialButton15_Click_1(object sender, EventArgs e)
@@ -692,18 +756,8 @@ namespace WASender
 
                 //new ChromeDriverUpdater.ChromeDriverUpdater().Update(Config.WAPIFolderFolder() + "\\chromedriver.exe");  
 
-                if (Directory.Exists(Directory.GetCurrentDirectory() + "\\Chrome"))
-                    Directory.Delete(Directory.GetCurrentDirectory() + "\\Chrome",true);
-                
-                new DriverManager().SetUpDriver(new ChromeConfig());
-                Task.Delay(1000);
-
-                var chromeDirectoryFirst = Directory.GetDirectories(Directory.GetCurrentDirectory()+"\\Chrome");
-                var chromeDirectorySecond = Directory.GetDirectories(chromeDirectoryFirst.FirstOrDefault());
-                File.Copy(chromeDirectorySecond[0] + "\\chromedriver.exe", Config.WAPIFolderFolder() + "\\chromedriver.exe", true);
-
-                MaterialSnackBar SnackBarMessage = new MaterialSnackBar("Done 👍👍👍👍", Strings.OK, true);
-                SnackBarMessage.Show(this);
+                progressBar1.Visible = true;
+                worker.RunWorkerAsync();
 
             }
             catch (Exception ex)
@@ -736,6 +790,17 @@ namespace WASender
                 about.ShowDialog();
                 this.Refresh();
             }
+        }
+
+        private void materialCheckbox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            ManageAccounts form = new ManageAccounts();
+            form.ShowDialog();
         }
     }
 }

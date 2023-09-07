@@ -37,6 +37,7 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.label22 = new System.Windows.Forms.Label();
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
+            this.button3 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -57,7 +58,6 @@
             this.materialTextBox21 = new MaterialSkin.Controls.MaterialTextBox2();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.successTimer = new System.Windows.Forms.Timer(this.components);
-            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             this.panel10.SuspendLayout();
@@ -160,6 +160,20 @@
             this.materialCard2.Size = new System.Drawing.Size(990, 551);
             this.materialCard2.TabIndex = 61;
             this.materialCard2.Paint += new System.Windows.Forms.PaintEventHandler(this.materialCard2_Paint);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
+            this.button3.Location = new System.Drawing.Point(254, 372);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(194, 36);
+            this.button3.TabIndex = 82;
+            this.button3.Text = "Export: Members = 0";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // pictureBox3
             // 
@@ -346,6 +360,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(498, 433);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // GroupName
             // 
@@ -401,20 +416,6 @@
             // successTimer
             // 
             this.successTimer.Tick += new System.EventHandler(this.successTimer_Tick);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
-            this.button3.Location = new System.Drawing.Point(254, 372);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(194, 36);
-            this.button3.TabIndex = 82;
-            this.button3.Text = "Export: Members = 0";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // GroupFinder
             // 

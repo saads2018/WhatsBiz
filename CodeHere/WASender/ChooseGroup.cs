@@ -28,11 +28,19 @@ namespace WASender
         List<WASenderGroupTransModel> wASenderGroupList;
         WaSenderForm senderForm;
         List<GroupContact> groupContacts;
+        GrabGroupActiveMembers grabGroupActiveMembers;
         GroupsJoiner joiner;
         string cond;
         List<IndividualContacts> individualContacts;
         private static string fileSaves = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "fileSaves");
 
+
+        public ChooseGroup(GrabGroupActiveMembers _grabGroupActiveMembers, List<WAPI_GroupModel> _wAPI_GroupModel)
+        {
+            InitializeComponent();
+            grabGroupActiveMembers = _grabGroupActiveMembers;
+            init(_wAPI_GroupModel);
+        }
 
         public ChooseGroup(GroupMemberAdder _groupMemberAdder, List<WAPI_GroupModel> _wAPI_GroupModel)
         {
@@ -189,18 +197,25 @@ namespace WASender
 
         private void init(List<WAPI_GroupModel> _wAPI_GroupModel)
         {
-            wAPI_GroupModel = _wAPI_GroupModel;
-            initLanguage();
-
-
-            foreach (var item in wAPI_GroupModel)
+            try
             {
-                MaterialSkin.MaterialListBoxItem lbitem = new MaterialSkin.MaterialListBoxItem();
-                lbitem.Text = item.GroupName;
+                wAPI_GroupModel = _wAPI_GroupModel;
+                initLanguage();
 
-                //ListBoxItem 
 
-                // materialListBox1.Items.Add(item.GroupName);
+                foreach (var item in wAPI_GroupModel)
+                {
+                    MaterialSkin.MaterialListBoxItem lbitem = new MaterialSkin.MaterialListBoxItem();
+                    lbitem.Text = item.GroupName;
+
+                    //ListBoxItem 
+
+                    // materialListBox1.Items.Add(item.GroupName);
+                }
+            }
+            catch
+            {
+
             }
             materialListBox1.DataSource = wAPI_GroupModel;
             materialListBox1.ValueMember = "GroupId";
@@ -267,8 +282,7 @@ namespace WASender
                 }
                 else if (groupMemberAdder != null)
                 {
-                    var item = (WAPI_GroupModel)materialListBox1.SelectedItems[0];
-                    this.groupMemberAdder.ReturnBack(item);
+                    this.groupMemberAdder.Return(materialListBox1.SelectedIndex);
                 }
                 else if (senderForm != null)
                 {
@@ -281,6 +295,11 @@ namespace WASender
                 else if(joiner!=null)
                 {
                     this.joiner.Return(materialListBox1.SelectedIndex);
+                }
+                else if (grabGroupActiveMembers != null)
+                {
+                    var item = (WAPI_GroupModel)materialListBox1.SelectedItems[0];
+                    this.grabGroupActiveMembers.ReturnBack(item);
                 }
 
                 this.Hide();

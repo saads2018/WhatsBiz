@@ -1,5 +1,6 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using Microsoft.Web.WebView2.WinForms;
 using Newtonsoft.Json;
 using OfficeOpenXml;
 using OpenQA.Selenium;
@@ -17,6 +18,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WASender.enums;
+using WASender.Models;
 
 namespace WASender
 {
@@ -26,6 +28,7 @@ namespace WASender
         System.Windows.Forms.Timer timerInitChecker;
         IWebDriver driver;
         BackgroundWorker worker;
+        WAPI_GroupModel wAPI_SelectedGroup;
         CampaignStatusEnum campaignStatusEnum;
         WaSenderForm waSenderForm;
         Logger logger;
@@ -33,6 +36,12 @@ namespace WASender
         private static List<Models.ActiveMemberModel> activeMembersMain = new List<Models.ActiveMemberModel>();
         MainNavPage mainNavPage;
         IndividualContacts importContacts;
+
+        GeneralSettingsModel generalSettingsModel;
+        WaSenderBrowser browser;
+        private TestClass _testClass;
+
+        List<WAPI_GroupModel> wAPI_GroupModel;
         protected override CreateParams CreateParams
         {
             get
@@ -49,13 +58,58 @@ namespace WASender
             waSenderForm = _waSenderForm;
             this.mainNavPage = mainNavPage;
 
+            generalSettingsModel = Config.GetSettings();
             logger = new Logger("GrabAcriveMembers");
             if (Utils.Driver != null)
             {
-                Utils.SetDriver();
-                driver = Utils.Driver;
-                initWA();
+                if (generalSettingsModel.browserType == 1)
+                {
+                    Utils.SetDriver();
+                    driver = Utils.Driver;
+                    initWA();
+                }
             }
+            activeMembersMain = new List<ActiveMemberModel>();
+            if (Utils.waSenderBrowser != null)
+            {
+                browser = Utils.waSenderBrowser;
+                initWABrowser();
+            }
+            _testClass = Utils.testClass;
+            _testClass.OnUpdateStatus += _testClass_OnUpdateStatus;
+        }
+
+        private void initWABrowser()
+        {
+            ChangeInitStatus(InitStatusEnum.Initialising);
+            retryAttempt = 0;
+            if (Utils.waSenderBrowser != null)
+            {
+                browser = Utils.waSenderBrowser;
+            }
+            else
+            {
+                browser = new WaSenderBrowser();
+                Utils.waSenderBrowser = browser;
+                browser.Show();
+            }
+            checkQRScanDoneBrowser();
+        }
+
+        private void checkQRScanDoneBrowser()
+        {
+            Thread.Sleep(1000);
+            logger.WriteLog("checkQRScanDone");
+            timerInitChecker = new System.Windows.Forms.Timer();
+            timerInitChecker.Interval = 1000;
+            timerInitChecker.Tick += timerInitChecker_Tick;
+            timerInitChecker.Start();
+        }
+
+        void _testClass_OnUpdateStatus(object sender, ProgressEventArgs e)
+        {
+            ChangeInitStatus(InitStatusEnum.Stopped);
+            ChangeCampStatus(CampaignStatusEnum.Stopped);
         }
 
         private void initWA()
@@ -122,6 +176,18 @@ namespace WASender
             }
         }
 
+        public void ReturnBack(WAPI_GroupModel index)
+        {
+            wAPI_SelectedGroup = index;
+            if (wAPI_SelectedGroup != null)
+            {
+                initBackgroundWorker();
+                worker.RunWorkerAsync();
+                initTimer();
+                ChangeCampStatus(CampaignStatusEnum.Running);
+                campaignStatusEnum = CampaignStatusEnum.Running;
+            }
+        }
 
         private void ChangeInitStatus(InitStatusEnum _initStatus)
         {
@@ -159,41 +225,78 @@ namespace WASender
             timerInitChecker.Tick += timerInitChecker_Tick;
             timerInitChecker.Start();
         }
-        public void timerInitChecker_Tick(object sender, EventArgs e)
+        int retryAttempt = 0;
+        public async void timerInitChecker_Tick(object sender, EventArgs e)
         {
-            try
+            if (generalSettingsModel.browserType == 1)
             {
-                bool isElementDisplayed = AutomationCommon.IsElementPresent(By.ClassName("_1XkO3"), driver);
-                if (isElementDisplayed == true)
+                try
                 {
-                    logger.WriteLog("_1XkO3 ElementDisplayed");
-                    ChangeInitStatus(InitStatusEnum.Initialised);
+                    bool isElementDisplayed = AutomationCommon.IsElementPresent(By.ClassName("_1XkO3"), driver);
+                    if (isElementDisplayed == true)
+                    {
+                        logger.WriteLog("_1XkO3 ElementDisplayed");
+                        ChangeInitStatus(InitStatusEnum.Initialised);
+                        timerInitChecker.Stop();
+                        Activate();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ChangeInitStatus(InitStatusEnum.Unable);
+                    logger.WriteLog(ex.Message);
+                    logger.WriteLog(ex.StackTrace);
+                    timerInitChecker.Stop();
+                }
+
+                try
+                {
+                    bool isElementDisplayed = AutomationCommon.IsElementPresent(By.ClassName("_1jJ70"), driver);
+                    if (isElementDisplayed == true)
+                    {
+                        ChangeInitStatus(InitStatusEnum.Initialised);
+                        timerInitChecker.Stop();
+                        initBackgroundWorker();
+                        Activate();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ChangeInitStatus(InitStatusEnum.Unable);
                     timerInitChecker.Stop();
                 }
             }
-            catch (Exception ex)
+            else if (generalSettingsModel.browserType == 2)
             {
-                ChangeInitStatus(InitStatusEnum.Unable);
-                logger.WriteLog(ex.Message);
-                logger.WriteLog(ex.StackTrace);
-                timerInitChecker.Stop();
+                try
+                {
+                    WebView2 vw = Utils.GetActiveWebView(browser);
+
+                    bool isInitiated = await WPPHelper.isWaInited(vw);
+                    if (isInitiated)
+                    {
+                        ChangeInitStatus(InitStatusEnum.Initialised);
+                        timerInitChecker.Stop();
+                        initBackgroundWorker();
+                        Activate();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (retryAttempt == 5)
+                    {
+                        retryAttempt = 0;
+                        timerInitChecker.Stop();
+                    }
+                    else
+                    {
+                        retryAttempt++;
+                        Debug.WriteLine("Retry attempt ." + retryAttempt.ToString());
+                        Thread.Sleep(1000);
+                    }
+                }
             }
 
-            try
-            {
-                bool isElementDisplayed = AutomationCommon.IsElementPresent(By.ClassName("_1jJ70"), driver);
-                if (isElementDisplayed == true)
-                {
-                    ChangeInitStatus(InitStatusEnum.Initialised);
-                    timerInitChecker.Stop();
-                    initBackgroundWorker();
-                }
-            }
-            catch (Exception ex)
-            {
-                ChangeInitStatus(InitStatusEnum.Unable);
-                timerInitChecker.Stop();
-            }
         }
 
 
@@ -201,51 +304,48 @@ namespace WASender
 
         private void btnInitWA_Click(object sender, EventArgs e)
         {
-            ChangeInitStatus(InitStatusEnum.Initialising);
-            logger.WriteLog("ChangeInitStatus");
-            try
+
+            if (generalSettingsModel.browserType == 1)
             {
-                /* Config.KillChromeDriverProcess();
-                 var chromeDriverService = ChromeDriverService.CreateDefaultService();
-                 chromeDriverService.HideCommandPromptWindow = true;
-
-
-                 driver = new ChromeDriver(chromeDriverService, Config.GetChromeOptions());
-                 try
-                 {
-                     driver.Url = "https://web.whatsapp.com";
-                 }
-                 catch (Exception ex)
-                 {
-
-                 }*/
-                initWA();
-                checkQRScanDone();
-            }
-            catch (Exception ex)
-            {
-                logger.WriteLog(ex.Message);
-                logger.WriteLog(ex.StackTrace);
-                ChangeInitStatus(InitStatusEnum.Unable);
-                string ss = "";
-                if (ex.Message.Contains("session not created"))
+                ChangeInitStatus(InitStatusEnum.Initialising);
+                logger.WriteLog("ChangeInitStatus");
+                try
                 {
-                    DialogResult dr = MessageBox.Show("Your Chrome Driver and Google Chrome Version Is not same, Click 'Yes botton' to Update it from Settings ", "Error ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
-                    if (dr == DialogResult.Yes)
+                    initWA();
+
+                    checkQRScanDone();
+                }
+                catch (Exception ex)
+                {
+                    logger.WriteLog(ex.Message);
+                    logger.WriteLog(ex.StackTrace);
+                    ChangeInitStatus(InitStatusEnum.Unable);
+                    string ss = "";
+                    if (ex.Message.Contains("session not created"))
                     {
-                        //System.Diagnostics.Process.Start("https://medium.com/fusionqa/selenium-webdriver-error-sessionnotcreatederror-session-not-created-this-version-of-7b3a8acd7072");
-                        this.Hide();
-                        GeneralSettings generalSettings = new GeneralSettings(this.mainNavPage);
-                        generalSettings.ShowDialog();
+                        DialogResult dr = MessageBox.Show("Your Chrome Driver and Google Chrome Version Is not same, Click 'Yes botton' to Update it from Settings", "Error ", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error);
+                        if (dr == DialogResult.Yes)
+                        {
+                            this.Hide();
+                            this.waSenderForm.Show();
+                            GeneralSettings generalSettings = new GeneralSettings();
+                            generalSettings.ShowDialog();
+                        }
+                    }
+                    else if (ex.Message.Contains("invalid argument: user data directory is already in use"))
+                    {
+                        Config.KillChromeDriverProcess();
+                        MaterialSnackBar SnackBarMessage = new MaterialSnackBar("Please Close All Previous Sessions and Browsers if open, Then try again", Strings.OK, true);
+                        SnackBarMessage.Show(this);
                     }
                 }
-                else if (ex.Message.Contains("invalid argument: user data directory is already in use"))
-                {
-                    Config.KillChromeDriverProcess();
-                    MaterialSnackBar SnackBarMessage = new MaterialSnackBar("Please Close All Previous Sessions and Browsers if open, Then try again", Strings.OK, true);
-                    SnackBarMessage.Show(this);
-                }
             }
+            else if (generalSettingsModel.browserType == 2)
+            {
+                initWABrowser();
+            }
+
+
         }
 
         private void ChangeCampStatus(CampaignStatusEnum _campaignStatus)
@@ -254,7 +354,7 @@ namespace WASender
         }
 
 
-        private void materialButton1_Click(object sender, EventArgs e)
+        private async void materialButton1_Click(object sender, EventArgs e)
         {
             //activeMembers = new List<Models.ActiveMemberModel>();
             isStoped = false;
@@ -264,25 +364,46 @@ namespace WASender
                 Utils.showAlert(Strings.PleasefollowStepNo1FirstInitialiseWhatsapp, Alerts.Alert.enmType.Error);
                 return;
             }
+
             if (campaignStatusEnum != CampaignStatusEnum.Running)
             {
-                By groupHeadderBy = By.XPath("//*[@id='main']/header/div[2]/div[1]/div/span");
+                if (generalSettingsModel.browserType == 1)
+                {
+                    By groupHeadderBy = By.XPath("//*[@id='main']/header/div[2]/div[1]/div/span");
 
-                if (AutomationCommon.IsElementPresent(groupHeadderBy, driver))
-                {
-                    logger.WriteLog("groupHeadderBy is present");
-                    initBackgroundWorker();
-                    worker.RunWorkerAsync();
-                    initTimer();
-                    ChangeCampStatus(CampaignStatusEnum.Running);
-                    campaignStatusEnum = CampaignStatusEnum.Running;
+                    if (AutomationCommon.IsElementPresent(groupHeadderBy, driver))
+                    {
+                        logger.WriteLog("groupHeadderBy is present");
+                        initBackgroundWorker();
+                        worker.RunWorkerAsync();
+                        initTimer();
+                        ChangeCampStatus(CampaignStatusEnum.Running);
+                        campaignStatusEnum = CampaignStatusEnum.Running;
+                    }
+                    else
+                    {
+                        Utils.showAlert(Strings.PleaseGotoanygroupchat, Alerts.Alert.enmType.Warning);
+                        logger.WriteLog("groupHeadderBy is not present");
+                    }
                 }
-                else
+                else if (generalSettingsModel.browserType == 2)
                 {
-                    Utils.showAlert(Strings.PleaseGotoanygroupchat, Alerts.Alert.enmType.Warning);
-                    logger.WriteLog("groupHeadderBy is not present");
+
+                    WebView2 wv = Utils.GetActiveWebView(browser);
+
+                    if (!await WPPHelper.isWPPinjected(wv))
+                    {
+                        await WPPHelper.InjectWapi(wv, Config.GetSysFolderPath());
+                        Thread.Sleep(1000);
+                    }
+                    wAPI_GroupModel = await WPPHelper.getMyGroups(wv);
+
+                    ChooseGroup ghooseGroup = new ChooseGroup(this, wAPI_GroupModel);
+                    ghooseGroup.ShowDialog();
                 }
+
             }
+
         }
 
         private void GrabGroupActiveMembers_Load(object sender, EventArgs e)
@@ -350,24 +471,41 @@ namespace WASender
             worker.WorkerReportsProgress = true;
             worker.WorkerSupportsCancellation = true;
             worker.DoWork += new DoWorkEventHandler(worker_DoWork);
-
+            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
         }
 
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (campaignStatusEnum == CampaignStatusEnum.Running)
+            {
+                isStoped = true;
+                timerRunner.Stop();
+                ChangeCampStatus(CampaignStatusEnum.Finish);
+                campaignStatusEnum = CampaignStatusEnum.Finish;
+                activeMembersMain.AddRange(activeMembers);
+                materialButton5.Text = "Save: Members = " + (activeMembersMain.Count() + activeMembers.Count()).ToString();
+                button3.Text = "Export: Members = " + (activeMembersMain.Count() + activeMembers.Count()).ToString();
+                activeMembers = new List<Models.ActiveMemberModel>();
+            }
+        }
 
         private static bool isStoped = false;
         private static List<Models.ActiveMemberModel> activeMembers = new List<Models.ActiveMemberModel>();
 
-        private void worker_DoWork(object sender, DoWorkEventArgs e)
+        private async void worker_DoWork(object sender, DoWorkEventArgs e)
         {
             Thread.Sleep(1000);
-            while (isStoped == false)
+            WebView2 wv = new WebView2();
+            if (generalSettingsModel.browserType == 1)
             {
-                Thread.Sleep(1000);
-                if (isStoped == false)
+                while (isStoped == false)
                 {
-                    try
+                    Thread.Sleep(1000);
+                    if (isStoped == false)
                     {
-                        string mainJsString = @"
+                        try
+                        {
+                            string mainJsString = @"
                     var list=document.getElementsByClassName('WJuYU');
                     var mainList=[];
                     for ( var i=0;i < list.length;i++)
@@ -401,29 +539,38 @@ namespace WASender
                     return JSON.stringify(arr )
                 ";
 
-                        IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-                        string jsonstrin = (string)js.ExecuteScript(mainJsString);
+                            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+                            string jsonstrin = (string)js.ExecuteScript(mainJsString);
 
-                        activeMembers = JsonConvert.DeserializeObject<List<Models.ActiveMemberModel>>(jsonstrin);
+                            activeMembers = JsonConvert.DeserializeObject<List<Models.ActiveMemberModel>>(jsonstrin);
+                            logger.WriteLog("found : " + activeMembers.Count());
 
+                            IJavaScriptExecutor js2 = (IJavaScriptExecutor)driver;
+                            js2.ExecuteScript(" document.getElementsByClassName('_5kRIK')[0].scrollTop=5");
+                        }
+                        catch (Exception ex)
+                        {
 
-
-                        logger.WriteLog("found : " + activeMembers.Count());
-
-                        IJavaScriptExecutor js2 = (IJavaScriptExecutor)driver;
-                        js2.ExecuteScript(" document.getElementsByClassName('_33LGR')[0].scrollTop=5");
-                    }
-                    catch (Exception ex)
-                    {
-
-                        logger.WriteLog(ex.Message);
+                            logger.WriteLog(ex.Message);
+                        }
                     }
                 }
-                // document.getElementsByClassName('_33LGR')[0].scrollTop=5
+            }
+            else if (generalSettingsModel.browserType == 2)
+            {
+                browser.Invoke((MethodInvoker)delegate
+                {
+                    wv = Utils.GetActiveWebView(browser);
+                });
 
-                
-
-
+                if (!await WPPHelper.isWPPinjectedAsync(wv))
+                {
+                    await WPPHelper.InjectWapi(wv, Config.GetSysFolderPath());
+                    Thread.Sleep(1000);
+                }
+                //wAPI_SelectedGroup
+                // List<Models.ActiveMemberModel> ActiveMembers=
+                activeMembers = await WPPHelper.getChatAndCount(wv, wAPI_SelectedGroup.GroupId);
 
             }
         }
@@ -431,7 +578,7 @@ namespace WASender
         private void Initiate()
         {
 
-            if (campaignStatusEnum == CampaignStatusEnum.Stopped)
+            if (campaignStatusEnum == CampaignStatusEnum.Stopped || campaignStatusEnum == CampaignStatusEnum.Finish)
             {
                 if (activeMembersMain.Count() == 0)
                 {
@@ -474,7 +621,14 @@ namespace WASender
                         foreach (var item in nonduplicates.OrderByDescending(x => x.count))
                         {
                             ws.Cells[i + 1, 1].Value = AutomationCommon.GetNumbers(item.number);
-                            ws.Cells[i + 1, 2].Value = item.count;
+                            if (generalSettingsModel.browserType == 1)
+                            {
+                                ws.Cells[i + 1, 2].Value = item.count;
+                            }
+                            else if (generalSettingsModel.browserType == 2)
+                            {
+                                ws.Cells[i + 1, 2].Value = activeMembersMain.Where(x => x.number == item.number).Count();
+                            }
                             contacts1.Numbers.Add(AutomationCommon.GetNumbers(item.number)[0]);
                             contacts1.ContactNames.Add("Group Member " + i.ToString());
                             i++;

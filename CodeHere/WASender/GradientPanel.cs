@@ -11,7 +11,6 @@ namespace WASender
 {
     public class GradientPanel : Panel
     {
-        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private System.ComponentModel.IContainer components;
 
         public Color TopColor { get; set; }
@@ -42,15 +41,10 @@ namespace WASender
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.SuspendLayout();
             // 
             // bunifuDragControl1
             // 
-            this.bunifuDragControl1.Fixed = true;
-            this.bunifuDragControl1.Horizontal = true;
-            this.bunifuDragControl1.TargetControl = null;
-            this.bunifuDragControl1.Vertical = true;
             this.ResumeLayout(false);
 
         }

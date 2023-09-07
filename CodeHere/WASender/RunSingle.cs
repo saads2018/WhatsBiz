@@ -1273,7 +1273,40 @@ namespace WASender
 
                         try
                         {
-                            isNumberValid = WAPIHelper.validateNumber(driver, item.number);
+                            //isNumberValid = WAPIHelper.validateNumberInt(driver, item.number);
+
+                            if (generalSettingsModel.CheckNumberBeforeSending == false)
+                            {
+                                int validNumbver = 3;
+                                while (validNumbver == 3)
+                                {
+                                    validNumbver = WAPIHelper.validateNumberInt(driver, item.number);
+                                    if (validNumbver == 3)
+                                    {
+                                        validNumbver = WAPIHelper.validateNumberThreeInt(driver, item.number);
+                                    }
+                                }
+                                if (validNumbver == 1)
+                                {
+                                    isNumberValid = true;
+                                }
+                                else
+                                {
+                                    isNumberValid = false;
+                                }
+                            }
+                            else
+                            {
+                                isNumberValid = true;
+                            }
+
+
+
+
+                            //if (!isNumberValid)
+                            //{
+                            //    isNumberValid = WAPIHelper.validateNumber(driver, item.number);
+                            //}
                             // isNumberValid = true;
                         }
                         catch (Exception ex)
@@ -1294,6 +1327,7 @@ namespace WASender
                         }
                         else
                         {
+                            bool IsError = false;
                             foreach (MesageModel mesageModel in wASenderSingleTransModel.messages.Where(x => x != null).ToList())
                             {
 
@@ -1460,48 +1494,51 @@ namespace WASender
                                         }
                                         catch (Exception ex)
                                         {
-                                            logger.WriteLog("Is Number Valid-" + ex.Message);
+                                            IsError = true;
 
-                                            string class1 = "do8e0lj9", class2 = "YtmXM", class3 = "_1y6Yk", class4 = "YtmXM";
 
-                                            By hrefHolder1 = By.ClassName(class1);
-                                            By hrefHolder2 = By.ClassName(class2);
-                                            By hrefHolder3 = By.ClassName(class3);
-                                            By hrefHolder4 = By.ClassName(class4);
-                                            bool IsFound = false;
-                                            if (AutomationCommon.IsElementPresent(hrefHolder1, driver))
-                                            {
-                                                PlaceLink(driver, item.number, class1);
-                                                IsFound = true;
-                                            }
-                                            else if (AutomationCommon.IsElementPresent(hrefHolder2, driver))
-                                            {
-                                                PlaceLink(driver, item.number, class2);
-                                                IsFound = true;
-                                            }
-                                            else if (AutomationCommon.IsElementPresent(hrefHolder3, driver))
-                                            {
-                                                PlaceLink(driver, item.number, class3);
-                                                IsFound = true;
-                                            }
-                                            else if (AutomationCommon.IsElementPresent(hrefHolder4, driver))
-                                            {
-                                                PlaceLink(driver, item.number, class4);
-                                                IsFound = true;
-                                            }
-                                            if (IsFound == true)
-                                            {
-                                                try
-                                                {
-                                                    var rand = Utils.getRandom(500, 1000);
-                                                    WAPIHelper.markIsComposing(driver, item.number + "@c.us", rand);
-                                                    WAPIHelper.SendDirectMessage(driver, item.number, NewMessage);
-                                                }
-                                                catch (Exception exd)
-                                                {
-                                                    logger.WriteLog("Send Direct Failed-" + ex.Message);
-                                                }
-                                            }
+                                            //logger.WriteLog("Is Number Valid-" + ex.Message);
+
+                                            //string class1 = "do8e0lj9", class2 = "YtmXM", class3 = "_1y6Yk", class4 = "YtmXM";
+
+                                            //By hrefHolder1 = By.ClassName(class1);
+                                            //By hrefHolder2 = By.ClassName(class2);
+                                            //By hrefHolder3 = By.ClassName(class3);
+                                            //By hrefHolder4 = By.ClassName(class4);
+                                            //bool IsFound = false;
+                                            //if (AutomationCommon.IsElementPresent(hrefHolder1, driver))
+                                            //{
+                                            //    PlaceLink(driver, item.number, class1);
+                                            //    IsFound = true;
+                                            //}
+                                            //else if (AutomationCommon.IsElementPresent(hrefHolder2, driver))
+                                            //{
+                                            //    PlaceLink(driver, item.number, class2);
+                                            //    IsFound = true;
+                                            //}
+                                            //else if (AutomationCommon.IsElementPresent(hrefHolder3, driver))
+                                            //{
+                                            //    PlaceLink(driver, item.number, class3);
+                                            //    IsFound = true;
+                                            //}
+                                            //else if (AutomationCommon.IsElementPresent(hrefHolder4, driver))
+                                            //{
+                                            //    PlaceLink(driver, item.number, class4);
+                                            //    IsFound = true;
+                                            //}
+                                            //if (IsFound == true)
+                                            //{
+                                            //    try
+                                            //    {
+                                            //        var rand = Utils.getRandom(500, 1000);
+                                            //        WAPIHelper.markIsComposing(driver, item.number + "@c.us", rand);
+                                            //        WAPIHelper.SendDirectMessage(driver, item.number, NewMessage);
+                                            //    }
+                                            //    catch (Exception exd)
+                                            //    {
+                                            //        logger.WriteLog("Send Direct Failed-" + ex.Message);
+                                            //    }
+                                            //}
 
                                         }
 
@@ -1551,11 +1588,23 @@ namespace WASender
                             }
                             totalCounter++;
 
-                            var __count = wASenderSingleTransModel.contactList.Count();
-                            var _percentage = totalCounter * 100 / __count;
-                            item.sendStatusModel.isDone = true;
-                            item.sendStatusModel.sendStatusEnum = SendStatusEnum.Success;
-                            worker.ReportProgress(_percentage);
+                            if (IsError != true)
+                            {
+                                var __count = wASenderSingleTransModel.contactList.Count();
+                                var _percentage = totalCounter * 100 / __count;
+                                item.sendStatusModel.isDone = true;
+                                item.sendStatusModel.sendStatusEnum = SendStatusEnum.Success;
+                                worker.ReportProgress(_percentage);
+                            }
+                            else
+                            {
+                                var __count = wASenderSingleTransModel.contactList.Count();
+                                var _percentage = totalCounter * 100 / __count;
+                                item.sendStatusModel.isDone = true;
+                                item.sendStatusModel.sendStatusEnum = SendStatusEnum.Failed;
+                                worker.ReportProgress(_percentage);
+                            }
+
 
                         }
                     }

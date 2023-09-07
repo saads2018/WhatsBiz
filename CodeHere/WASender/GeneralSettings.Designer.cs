@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GeneralSettings));
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            this.materialComboBox1 = new MaterialSkin.Controls.MaterialComboBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.button7 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
@@ -40,7 +42,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.materialCard4 = new MaterialSkin.Controls.MaterialCard();
-            this.materialTextBox21 = new MaterialSkin.Controls.MaterialTextBox2();
             this.materialCheckbox1 = new System.Windows.Forms.CheckBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.materialLabel17 = new System.Windows.Forms.Label();
@@ -56,6 +57,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.materialCard1.SuspendLayout();
             this.materialCard2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -70,6 +72,8 @@
             // materialCard1
             // 
             this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.Controls.Add(this.materialComboBox1);
+            this.materialCard1.Controls.Add(this.progressBar1);
             this.materialCard1.Controls.Add(this.button7);
             this.materialCard1.Controls.Add(this.button5);
             this.materialCard1.Controls.Add(this.materialCard2);
@@ -90,6 +94,40 @@
             this.materialCard1.Size = new System.Drawing.Size(1013, 314);
             this.materialCard1.TabIndex = 53;
             this.materialCard1.Paint += new System.Windows.Forms.PaintEventHandler(this.materialCard1_Paint);
+            // 
+            // materialComboBox1
+            // 
+            this.materialComboBox1.AutoResize = false;
+            this.materialComboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialComboBox1.Depth = 0;
+            this.materialComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.materialComboBox1.DropDownHeight = 174;
+            this.materialComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.materialComboBox1.DropDownWidth = 121;
+            this.materialComboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.materialComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialComboBox1.FormattingEnabled = true;
+            this.materialComboBox1.Hint = "Choose Browser";
+            this.materialComboBox1.IntegralHeight = false;
+            this.materialComboBox1.ItemHeight = 43;
+            this.materialComboBox1.Location = new System.Drawing.Point(76, 123);
+            this.materialComboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.materialComboBox1.MaxDropDownItems = 4;
+            this.materialComboBox1.MouseState = MaterialSkin.MouseState.OUT;
+            this.materialComboBox1.Name = "materialComboBox1";
+            this.materialComboBox1.Size = new System.Drawing.Size(231, 49);
+            this.materialComboBox1.StartIndex = 0;
+            this.materialComboBox1.TabIndex = 89;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(276, 266);
+            this.progressBar1.MarqueeAnimationSpeed = 10;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(261, 17);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 92;
+            this.progressBar1.Visible = false;
             // 
             // button7
             // 
@@ -219,7 +257,7 @@
             // 
             this.materialCard4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.materialCard4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialCard4.Controls.Add(this.materialTextBox21);
+            this.materialCard4.Controls.Add(this.button8);
             this.materialCard4.Controls.Add(this.materialCheckbox1);
             this.materialCard4.Controls.Add(this.panel9);
             this.materialCard4.Controls.Add(this.materialLabel10);
@@ -233,36 +271,6 @@
             this.materialCard4.Size = new System.Drawing.Size(503, 160);
             this.materialCard4.TabIndex = 88;
             // 
-            // materialTextBox21
-            // 
-            this.materialTextBox21.AnimateReadOnly = false;
-            this.materialTextBox21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox21.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox21.Depth = 0;
-            this.materialTextBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTextBox21.HideSelection = true;
-            this.materialTextBox21.Hint = "Unique Class Name";
-            this.materialTextBox21.LeadingIcon = null;
-            this.materialTextBox21.Location = new System.Drawing.Point(17, 45);
-            this.materialTextBox21.Margin = new System.Windows.Forms.Padding(4);
-            this.materialTextBox21.MaxLength = 32767;
-            this.materialTextBox21.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox21.Name = "materialTextBox21";
-            this.materialTextBox21.PasswordChar = '\0';
-            this.materialTextBox21.PrefixSuffixText = null;
-            this.materialTextBox21.ReadOnly = false;
-            this.materialTextBox21.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox21.SelectedText = "";
-            this.materialTextBox21.SelectionLength = 0;
-            this.materialTextBox21.SelectionStart = 0;
-            this.materialTextBox21.ShortcutsEnabled = true;
-            this.materialTextBox21.Size = new System.Drawing.Size(460, 48);
-            this.materialTextBox21.TabIndex = 88;
-            this.materialTextBox21.TabStop = false;
-            this.materialTextBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox21.TrailingIcon = null;
-            this.materialTextBox21.UseSystemPasswordChar = false;
-            // 
             // materialCheckbox1
             // 
             this.materialCheckbox1.AutoSize = true;
@@ -271,6 +279,7 @@
             this.materialCheckbox1.Size = new System.Drawing.Size(18, 17);
             this.materialCheckbox1.TabIndex = 48;
             this.materialCheckbox1.UseVisualStyleBackColor = true;
+            this.materialCheckbox1.CheckedChanged += new System.EventHandler(this.materialCheckbox1_CheckedChanged);
             // 
             // panel9
             // 
@@ -300,9 +309,9 @@
             this.materialLabel10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.materialLabel10.Location = new System.Drawing.Point(48, 118);
             this.materialLabel10.Name = "materialLabel10";
-            this.materialLabel10.Size = new System.Drawing.Size(304, 18);
+            this.materialLabel10.Size = new System.Drawing.Size(363, 18);
             this.materialLabel10.TabIndex = 18;
-            this.materialLabel10.Text = "While Sending Message Open Chat Manually";
+            this.materialLabel10.Text = "Don\'t Check Number Status Before Sending Message";
             // 
             // btnSave
             // 
@@ -494,6 +503,20 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.ForeColor = System.Drawing.Color.White;
+            this.button8.Location = new System.Drawing.Point(261, 45);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(226, 49);
+            this.button8.TabIndex = 93;
+            this.button8.Text = "Manage Accounts";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // GeneralSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -547,7 +570,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private MaterialSkin.Controls.MaterialCard materialCard4;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox21;
         private System.Windows.Forms.CheckBox materialCheckbox1;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label materialLabel17;
@@ -556,5 +578,8 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private MaterialSkin.Controls.MaterialComboBox materialComboBox1;
+        private System.Windows.Forms.Button button8;
     }
 }

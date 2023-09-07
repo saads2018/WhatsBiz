@@ -435,6 +435,11 @@ namespace WASender
                 lblInitStatus.ForeColor = Color.DarkRed;
                 lblInitStatus.Text = "Error";
             }
+            else if (_initStatus == InitStatusEnum.Stopped)
+            {
+                lblInitStatus.ForeColor = Color.Red;
+                lblInitStatus.Text = "Stopped";
+            }
 
 
         }

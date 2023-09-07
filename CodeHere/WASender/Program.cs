@@ -26,6 +26,8 @@ namespace WASender
             System.Windows.Forms. Application.SetCompatibleTextRenderingDefault(false);
             /// Application.Run(new GMapExtractor());
             /// Application.Run(new GeneralSettings());
+            /// //Application.Run(new GroupGenerator());
+            // Application.Run(new gpttest());r
             System.Windows.Forms.Application.Run(new MainNavPage());
             //Application.Run(new GroupFinder());
         }

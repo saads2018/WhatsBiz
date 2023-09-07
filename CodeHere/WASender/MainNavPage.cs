@@ -16,6 +16,8 @@ using Keys = OpenQA.Selenium.Keys;
 using System.IO;
 using System.Web.UI.WebControls;
 using Panel = System.Windows.Forms.Panel;
+using MaterialSkin.Controls;
+using WASender.Models;
 
 namespace WASender
 {
@@ -77,7 +79,28 @@ namespace WASender
             initializeResolution();
         }
 
-       
+
+        public void checkBrowserType()
+        {
+            try
+            {
+                GeneralSettingsModel settings = Config.GetSettings();
+                /*if (settings.browserType == 1)
+                {
+                    materialButton34.Hide();
+                    materialButton35.Hide();
+                }
+                else
+                {
+                    materialButton34.Show();
+                    materialButton35.Show();
+                }*/
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
         private void initializeResolution()
         {
             if (Program.resWidth== 1280 || Program.resWidth == 1600)
@@ -645,6 +668,22 @@ namespace WASender
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+            using (Panel p = new Panel())
+            {
+                p.Location = new Point(0, 0);
+                p.Size = this.ClientRectangle.Size;
+                p.BackgroundImage = FormFade();
+                this.Controls.Add(p);
+                p.BringToFront();
+
+                BulkGroupGenerator s = new BulkGroupGenerator(this);
+                s.ShowDialog();
+                this.Refresh();
+            }
         }
     }
 }

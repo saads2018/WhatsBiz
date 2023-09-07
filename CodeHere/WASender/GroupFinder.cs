@@ -17,6 +17,7 @@ using RestSharp;
 using OfficeOpenXml;
 using System.IO;
 using Newtonsoft.Json;
+using System.Net;
 
 namespace WASender
 {
@@ -117,64 +118,82 @@ namespace WASender
 
 
 
-        private int BackgroundProcessLogicMethod(BackgroundWorker bw)
+        private async Task<int> BackgroundProcessLogicMethod(BackgroundWorker bw)
         {
             //int result = 0;
             //Thread.Sleep(20000);
             //MessageBox.Show("I was doing some work in the background.");
+            group_no = 1;
             while (IsRunning)
             {
-                var client = new RestClient("https://groupsor.link/group/searchmore/" + Searchturm);
-                client.Timeout = -1;
-                var request = new RestRequest(Method.POST);
-                request.AddHeader("Cookie", "ci_session=a%3A5%3A%7Bs%3A10%3A%22session_id%22%3Bs%3A32%3A%22f4acd9ae0adfb8dad9c3ff1164996c83%22%3Bs%3A10%3A%22ip_address%22%3Bs%3A13%3A%22172.71.198.72%22%3Bs%3A10%3A%22user_agent%22%3Bs%3A21%3A%22PostmanRuntime%2F7.29.2%22%3Bs%3A13%3A%22last_activity%22%3Bi%3A1665303876%3Bs%3A9%3A%22user_data%22%3Bs%3A0%3A%22%22%3B%7D93dfaa97a1fb55b8be313aea7aaf932b2625cf90");
-                request.AlwaysMultipartFormData = true;
-                request.AddParameter("group_no", group_no);
-                IRestResponse response = client.Execute(request);
-                string res = response.Content;
-                //Console.WriteLine(response.Content);
-
-                //HtmlDocument doc = new HtmlDocument(;
-                HtmlAgilityPack.HtmlDocument htmlDoc = new HtmlAgilityPack.HtmlDocument();
-                htmlDoc.LoadHtml(res);
-
-                var ss = htmlDoc.DocumentNode.SelectNodes("//a[contains(@class, 'joinbtn')]");
-
-                if (ss != null)
+                try
                 {
-                    foreach (var item in ss.ToList())
+                    ServicePointManager.Expect100Continue = true;
+
+                    Searchturm = Searchturm.Replace(" ", "-");
+
+                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                    //var client = new RestClient("https://groupsorlink.com/whatsapp/group/loadresult");
+                    var client = new RestClient("https://groupsor.link/group/searchmore/" + Searchturm);
+                    client.Timeout = -1;
+                    var request = new RestRequest(Method.POST);
+                    request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+                    request.AddHeader("Cookie", "groupda=odfdn40d8jp0vo68io532oo09iknrqo6");
+                    //request.AlwaysMultipartFormData = true;
+                    request.AddParameter("group_no", group_no);
+                    //request.AddParameter("keyword", Searchturm);
+                    IRestResponse response = client.Execute(request);
+                    string res = response.Content;
+                    //Console.WriteLine(response.Content);
+
+                    //HtmlDocument doc = new HtmlDocument(;
+                    HtmlAgilityPack.HtmlDocument htmlDoc = new HtmlAgilityPack.HtmlDocument();
+                    htmlDoc.LoadHtml(res);
+
+                    var ss = htmlDoc.DocumentNode.SelectNodes("//a[contains(@class, 'joinbtn')]");
+
+                    if (ss != null)
                     {
-                        try
+                        foreach (var item in ss.ToList())
                         {
-                            string ttl = item.Attributes["title"].Value;
-                            ttl = ttl.Replace("Click here to join ", "").Replace(" Whatsapp group", "");
-                            var link = item.Attributes["href"].Value;
-                            var waLink = link.Split('/')[link.Split('/').Length - 1];
-                            string fullLink = "https://chat.whatsapp.com/invite/" + waLink;
-
-                            dataGridView1.Invoke(new Action(() =>
+                            try
                             {
-                                DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[0].Clone();
-                                row.Cells[0].Value = ttl;
-                                row.Cells[1].Value = fullLink;
-                                dataGridView1.Rows.Add(row);
-                            }));
+                                string ttl = item.Attributes["title"].Value;
+                                ttl = ttl.Replace("Click here to join ", "").Replace(" Whatsapp group", "");
+                                var link = item.Attributes["href"].Value;
+                                var waLink = link.Split('/')[link.Split('/').Length - 1];
+                                string fullLink = "https://chat.whatsapp.com/invite/" + waLink;
 
-                            cntr = cntr + 1;
-                            materialButton5.Text = "Save: Members = " + cntr.ToString(); ;
-                            button3.Text = "Export: Members = " + cntr.ToString();
+                                dataGridView1.Invoke(new Action(() =>
+                                {
+                                    DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[0].Clone();
+                                    row.Cells[0].Value = ttl;
+                                    row.Cells[1].Value = fullLink;
+                                    dataGridView1.Rows.Add(row);
+                                }));
+
+                                cntr = cntr + 1;
+                                materialButton5.Text = "Save: Members = "+cntr.ToString();
+                                button3.Text = "Export: Members = " + cntr.ToString();
+                               
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
+
                         }
-                        catch (Exception ex)
-                        {
-
-                        }
-
+                        group_no = group_no + 1;
                     }
-                    group_no = group_no + 1;
+                    else
+                    {
+                        IsRunning = false;
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
                     IsRunning = false;
+                    bw.CancelAsync();
                 }
 
 
@@ -447,6 +466,11 @@ namespace WASender
         {
             save = false;
             Inititate();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 

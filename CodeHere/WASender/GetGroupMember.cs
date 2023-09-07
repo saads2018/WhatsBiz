@@ -260,6 +260,10 @@ namespace WASender
                     MaterialSnackBar SnackBarMessage = new MaterialSnackBar("Please Close All Previous Sessions and Browsers if open, Then try again", Strings.OK, true);
                     SnackBarMessage.Show(this);
                 }
+                else
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 

@@ -1,29 +1,31 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WASender.Model;
 using WASender.Models;
 
 namespace WASender
 {
     public class Strings
     {
-        public static string selectedLanguage = "English";
-
         private static string languageJson = "";
 
-
         public readonly static string AppName = "WaSender";
-        public readonly static string SoftwareVersion = "2.7.3";
+        public static string selectedLanguage = getLanguage(LanguagesEnum.English);
+        public static bool Allow_Users_to_Change_Language = true;
+
+
+
+        public readonly static string SoftwareVersion = "3.0.0";
         public readonly static string Column1 = GetValue("Column1");
         public readonly static string Number = GetValue("Number");
         public readonly static string Column2 = GetValue("Column2");
         public readonly static string DownloadSample = GetValue("DownloadSample");
-
-
         public readonly static string UploadSampleExcel = GetValue("UploadSampleExcel");
         public readonly static string ContectSender = GetValue("ContectSender");
         public readonly static string GroupSender = GetValue("GroupSender");
@@ -201,7 +203,6 @@ namespace WASender
         public readonly static string TotalFound = GetValue("TotalFound");
         public readonly static string Export = GetValue("Export");
         public readonly static string Nothingtoexport = GetValue("Nothingtoexport");
-
         public readonly static string GoogleMapDataEExtractor = GetValue("GoogleMapDataEExtractor");
         public readonly static string Usethatwindowtosearchforbusinessesandwhensearchresultsareshown = GetValue("Usethatwindowtosearchforbusinessesandwhensearchresultsareshown");
         public readonly static string PleaseSearchsomething = GetValue("PleaseSearchsomething");
@@ -220,8 +221,6 @@ namespace WASender
         public readonly static string One = GetValue("One");
         public readonly static string Two = GetValue("Two");
         public readonly static string Three = GetValue("Three");
-
-
         public readonly static string AddButtons = GetValue("AddButtons");
         public readonly static string Buttons = GetValue("Buttons");
         public readonly static string ButtonMessage = GetValue("ButtonMessage");
@@ -233,7 +232,6 @@ namespace WASender
         public readonly static string EnterURL = GetValue("EnterURL");
         public readonly static string EnterPhoneNumber = GetValue("EnterPhoneNumber");
         public readonly static string AddButton = GetValue("AddButton");
-
         public readonly static string GrabAllSavedContacts = GetValue("GrabAllSavedContacts");
         public readonly static string GrabAllGroups = GetValue("GrabAllGroups");
         public readonly static string ChooseGroup = GetValue("GrabAllGroups");
@@ -260,28 +258,189 @@ namespace WASender
         public readonly static string StartFinding = GetValue("StartFinding");
         public readonly static string GroupName = GetValue("GroupName");
         public readonly static string Pause = GetValue("Pause");
-
-
         public readonly static string RatingCount = GetValue("RatingCount");
-        public readonly static string AttachWithMainMessage = "Attach With Main Message";
-        public readonly static string clossinghour = "Clossing Hour";
-        public readonly static string latitude = "latitude";
-        public readonly static string longitude = "longitude ";
-        public readonly static string instagramprofile = "Instagram Profile";
+        public readonly static string AttachWithMainMessage = GetValue("AttachWithMainMessage");
+        public readonly static string clossinghour = GetValue("clossinghour");
+        public readonly static string latitude = GetValue("latitude");
+        public readonly static string longitude = GetValue("longitude");
+        public readonly static string instagramprofile = GetValue("instagramprofile");
+        public readonly static string facebookprofile = GetValue("facebookprofile");
+        public readonly static string linkedinprofile = GetValue("linkedinprofile");
+        public readonly static string twitterprofile = GetValue("twitterprofile");
+        public readonly static string EmailId = GetValue("EmailId");
+        public readonly static string GenerateNumbers = GetValue("GenerateNumbers");
+        public readonly static string Increment = GetValue("Increment");
+        public readonly static string Quentity = GetValue("Quentity");
+        public readonly static string Generate = GetValue("Generate");
+        public readonly static string CountryCode = GetValue("CountryCode");
+        public readonly static string BulkGroupGenerator = GetValue("BulkGroupGenerator");
+        public readonly static string GroupNameSettings = GetValue("GroupNameSettings");
+        public readonly static string GroupNamePrefix = GetValue("GroupNamePrefix");
+        public readonly static string GroupNameSuffix = GetValue("GroupNameSuffix");
+        public readonly static string DefaultNumberAdd = GetValue("DefaultNumberAdd");
+        public readonly static string GenerateTotalGroups = GetValue("GenerateTotalGroups");
+        public readonly static string Validate = GetValue("Validate");
+        public readonly static string GroupCreate = GetValue("GroupCreate");
+        public readonly static string secondsbeforeeveryGroupCreate = GetValue("secondsbeforeeveryGroupCreate");
+        public readonly static string IsNotValid = GetValue("IsNotValid");
+        public readonly static string DontCheckNumberStatusBeforeSendingMessage = GetValue("DontCheckNumberStatusBeforeSendingMessage");
+        public readonly static string ProvideInputs = GetValue("ProvideInputs");
+        public readonly static string StartGenerating = GetValue("StartGenerating");
+        public readonly static string ChromeEXEpath = GetValue("ChromeEXEpath");
+        public readonly static string CheckforInternalUpdate = GetValue("CheckforInternalUpdate");
+        public readonly static string UpdateChromeDriver = GetValue("UpdateChromeDriver");
+        public readonly static string clearsessions = GetValue("clearsessions");
+        public readonly static string ClearProfileCache = GetValue("ClearProfileCache");
+        public readonly static string ClearBOTCache = GetValue("ClearBOTCache");
+        public readonly static string About = GetValue("About");
+        public readonly static string UpdateCHromeDriverMethodOne = GetValue("UpdateCHromeDriverMethodOne");
+        public readonly static string UpdateCHromeDriverMethodTwo = GetValue("UpdateCHromeDriverMethodTwo");
+        public readonly static string SendGroupInvitationcodeiffail = GetValue("SendGroupInvitationcodeiffail");
+        public readonly static string GrabImages = GetValue("GrabImages");
+        public readonly static string ImagesFolder = GetValue("ImagesFolder");
+        public readonly static string GrabEmailId = GetValue("GrabEmailId");
+        public readonly static string GoogleContactsCSVGenerator = GetValue("GoogleContactsCSVGenerator");
+        public readonly static string GenrateRandomName = GetValue("GenrateRandomName");
+        public readonly static string NamePrefix = GetValue("NamePrefix");
+        public readonly static string NameSufix = GetValue("NameSufix");
+        public readonly static string GenerateNow = GetValue("GenerateNow");
+        public readonly static string ExportasGoogleContactCSV = GetValue("ExportasGoogleContactCSV");
 
-        public readonly static string facebookprofile = "Facebook Profile";
-        public readonly static string linkedinprofile = "Linkedin Profile";
-        public readonly static string twitterprofile = "Twitter Profile";
-        public readonly static string EmailId = "Email Id";
 
+        public readonly static string Loding = GetValue("Loding");
+        public readonly static string DeActivateLicence = GetValue("DeActivateLicence");
+        public readonly static string AreyouSure = GetValue("AreyouSure");
+        public readonly static string Yes = GetValue("Yes");
+        public readonly static string ManageAccounts = GetValue("ManageAccounts");
+        public readonly static string AccountName = GetValue("AccountName");
+        public readonly static string AreYouSuretodeletethisAccount = GetValue("AreYouSuretodeletethisAccount");
+        public readonly static string AccountDeleted = GetValue("AccountDeleted");
+        public readonly static string AddNewAccount = GetValue("AddNewAccount");
+        public readonly static string SameNameAlreadyExists = GetValue("SameNameAlreadyExists");
+        public readonly static string AccountAddedSuccessfully = GetValue("AccountAddedSuccessfully");
+        public readonly static string CantDeleteDefaultAccount = GetValue("CantDeleteDefaultAccount");
+        public readonly static string SetasDefaultAccount = GetValue("SetasDefaultAccount");
+        public readonly static string Accounts = GetValue("Accounts");
+        public readonly static string Load = GetValue("Load");
+        public readonly static string Primary = GetValue("Primary");
+        public readonly static string Launch = GetValue("Launch");
+        public readonly static string SwipeAccountaftermessages = GetValue("SwipeAccountaftermessages");
+        public readonly static string YouhaventaddedanyaccountyetToaddnewaccountpleaseuseACCOUNTSbutton = GetValue("YouhaventaddedanyaccountyetToaddnewaccountpleaseuseACCOUNTSbutton");
+        public readonly static string Pleaseselectatleastoneaccount = GetValue("Pleaseselectatleastoneaccount");
+        public readonly static string InvalidPurchaseCode = GetValue("InvalidPurchaseCode");
+
+        //------------END  Do not Trancelate ----------------------
+        public static string PurchaseCode = "";
+        //------------END  Do not Trancelate ----------------------
+
+
+        //public readonly static string _About = "About";
+        //public readonly static string _About = "About";
+        //public readonly static string _About = "About";
+        //public readonly static string _About = "About";
+        //public readonly static string _About = "About";
+        //public readonly static string _About = "About";
+        //public readonly static string _About = "About";
+        //public readonly static string _About = "About";
+
+        //About
+        //materialButton6
+
+        public static List<WASender.Models.LanguageModel> dict;
+
+
+        public static string getLanguage(LanguagesEnum enumLang)
+        {
+            if (enumLang == LanguagesEnum.Arabic)
+            {
+                return "Arabic";
+            }
+            else if (enumLang == LanguagesEnum.Chinese)
+            {
+                return "Chinese";
+            }
+            else if (enumLang == LanguagesEnum.Dutch)
+            {
+                return "Dutch";
+            }
+            else if (enumLang == LanguagesEnum.English)
+            {
+                return "English";
+            }
+            else if (enumLang == LanguagesEnum.French)
+            {
+                return "French";
+            }
+            else if (enumLang == LanguagesEnum.German)
+            {
+                return "German";
+            }
+            else if (enumLang == LanguagesEnum.Greek)
+            {
+                return "Greek";
+            }
+            else if (enumLang == LanguagesEnum.Gujarati)
+            {
+                return "Gujarati";
+            }
+            else if (enumLang == LanguagesEnum.Hebrew)
+            {
+                return "Hebrew";
+            }
+            else if (enumLang == LanguagesEnum.Hindi)
+            {
+                return "Hindi";
+            }
+            else if (enumLang == LanguagesEnum.Indonesian)
+            {
+                return "Indonesian";
+            }
+            else if (enumLang == LanguagesEnum.Italian)
+            {
+                return "Italian";
+            }
+            else if (enumLang == LanguagesEnum.Japanese)
+            {
+                return "Japanese";
+            }
+            else if (enumLang == LanguagesEnum.Laos)
+            {
+                return "Laos";
+            }
+            else if (enumLang == LanguagesEnum.Portuguese)
+            {
+                return "Portuguese";
+            }
+            else if (enumLang == LanguagesEnum.Russian)
+            {
+                return "Russian";
+            }
+            else if (enumLang == LanguagesEnum.Spanish)
+            {
+                return "Spanish";
+            }
+            else if (enumLang == LanguagesEnum.Turkish)
+            {
+                return "Turkish";
+            }
+            else if (enumLang == LanguagesEnum.Urdu)
+            {
+                return "Urdu";
+            }
+            return "English";
+        }
         private static string GetValue(string name)
         {
             if (languageJson == "")
             {
                 LoadLanguageJson();
             }
+            if (dict == null)
+            {
+                dict = JsonConvert.DeserializeObject<List<WASender.Models.LanguageModel>>(languageJson);
+            }
 
-            var dict = JsonConvert.DeserializeObject<List<WASender.Models.LanguageModel>>(languageJson);
+
 
             try
             {
@@ -297,7 +456,10 @@ namespace WASender
         {
             string fileName = "English.json";
 
-
+            if (selectedLanguage != "" && selectedLanguage != null)
+            {
+                fileName = selectedLanguage;
+            }
             try
             {
                 string settingPath = Config.GetGeneralSettingsFilePath();
@@ -307,7 +469,7 @@ namespace WASender
                     File.Create(settingPath).Close();
                 }
                 GeneralSettingsModel generalSettingsModel = new GeneralSettingsModel();
-                generalSettingsModel.selectedLanguage = "English";
+                generalSettingsModel.selectedLanguage = selectedLanguage;
                 string GeneralSettingJson = "";
                 using (StreamReader r = new StreamReader(settingPath))
                 {
@@ -320,7 +482,7 @@ namespace WASender
                 }
                 if (generalSettingsModel.selectedLanguage == null || generalSettingsModel.selectedLanguage == "")
                 {
-                    generalSettingsModel.selectedLanguage = "English";
+                    generalSettingsModel.selectedLanguage = selectedLanguage;
                 }
                 selectedLanguage = generalSettingsModel.selectedLanguage;
             }

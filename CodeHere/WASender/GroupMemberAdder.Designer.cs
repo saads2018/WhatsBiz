@@ -46,6 +46,8 @@
             this.label100 = new System.Windows.Forms.Label();
             this.materialButton1 = new System.Windows.Forms.Button();
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
+            this.label8 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.materialLabel13 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -286,6 +288,8 @@
             // 
             this.materialCard2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.materialCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard2.Controls.Add(this.label8);
+            this.materialCard2.Controls.Add(this.checkBox1);
             this.materialCard2.Controls.Add(this.panel3);
             this.materialCard2.Controls.Add(this.materialCheckbox2);
             this.materialCard2.Controls.Add(this.panel9);
@@ -306,8 +310,29 @@
             this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard2.Name = "materialCard2";
             this.materialCard2.Padding = new System.Windows.Forms.Padding(13, 14, 13, 14);
-            this.materialCard2.Size = new System.Drawing.Size(647, 139);
+            this.materialCard2.Size = new System.Drawing.Size(647, 173);
             this.materialCard2.TabIndex = 62;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label8.Location = new System.Drawing.Point(45, 141);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(215, 18);
+            this.label8.TabIndex = 50;
+            this.label8.Text = "Send group invitation code if fail";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(21, 143);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(18, 17);
+            this.checkBox1.TabIndex = 49;
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -374,6 +399,7 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(647, 32);
             this.panel9.TabIndex = 47;
+            this.panel9.Paint += new System.Windows.Forms.PaintEventHandler(this.panel9_Paint);
             // 
             // materialLabel17
             // 
@@ -856,5 +882,7 @@
         private System.Windows.Forms.Label materialLabel13;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label materialLabel14;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

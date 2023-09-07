@@ -163,13 +163,23 @@ namespace WASender
                         var globalCounter = gridTargetsGroup.Rows.Count - 1;
                         for (int i = 1; i < worksheet.Dimension.Rows; i++)
                         {
-                            if (Config.IsDemoMode == true && globalCounter > 5)
+                            try
                             {
-                                Utils.showAlert("You can import only 5 Groups in trial Version", Alerts.Alert.enmType.Error);
-                                return;
+                                if (Config.IsDemoMode == true && globalCounter > 5)
+                                {
+                                    Utils.showAlert("You can import only 5 Groups in trial Version", Alerts.Alert.enmType.Error);
+                                    return;
+                                }
+
+                                string _Number = worksheet.Cells[i + 1, 1].Value.ToString();
+                                gridTargetsGroup.Rows.Add();
+                                gridTargetsGroup.Rows[globalCounter].Cells[0].Value = _Number;
+
                             }
-                            gridTargetsGroup.Rows.Add();
-                            gridTargetsGroup.Rows[globalCounter].Cells[0].Value = worksheet.Cells[i + 1, 1].Value.ToString();
+                            catch (Exception ex)
+                            {
+
+                            }
                             globalCounter++;
 
                         }
@@ -358,16 +368,20 @@ namespace WASender
 
                     try
                     {
-                        bool isJoiner = WAPIHelper.addParticipants(driver, wAPI_SelectedGroup.GroupId, item.number);
-                        if (isJoiner == true)
-                        {
-                            item.sendStatusModel.isDone = true;
-                            item.sendStatusModel.sendStatusEnum = SendStatusEnum.Success;
-                        }
-                        else {
-                            item.sendStatusModel.isDone = true;
-                            item.sendStatusModel.sendStatusEnum = SendStatusEnum.Failed;
-                        }
+                        string isJoiner = WAPIHelper.addParticipants(driver, wAPI_SelectedGroup.GroupId, item.number,checkBox1.Checked);
+                        item.sendStatusModel.isDone = true;
+                        item.sendStatusModel.message = isJoiner;
+
+
+                        //if (isJoiner == true)
+                        //{
+                        //    item.sendStatusModel.isDone = true;
+                        //    item.sendStatusModel.sendStatusEnum = SendStatusEnum.Success;
+                        //}
+                        //else {
+                        //    item.sendStatusModel.isDone = true;
+                        //    item.sendStatusModel.sendStatusEnum = SendStatusEnum.Failed;
+                        //}
                     }
                     catch (Exception ex)
                     {
@@ -426,7 +440,7 @@ namespace WASender
                 for (int i = 0; i < wASenderGroupTransModel.contactList.Count(); i++)
                 {
                     ws.Cells[i + 1, 1].Value = wASenderGroupTransModel.contactList[i].number;
-                    ws.Cells[i + 1, 2].Value = wASenderGroupTransModel.contactList[i].sendStatusModel.sendStatusEnum;
+                    ws.Cells[i + 1, 2].Value = wASenderGroupTransModel.contactList[i].sendStatusModel.message;
                 }
                 xlPackage.Save();
             }
@@ -607,7 +621,7 @@ namespace WASender
                         gridStatus.Rows.Add();
                         gridStatus.Rows[globalCounter].Cells[0].Value = gridStatus.Rows.Count.ToString();
                         gridStatus.Rows[globalCounter].Cells[1].Value = item.number;
-                        gridStatus.Rows[globalCounter].Cells[2].Value = item.sendStatusModel.sendStatusEnum;
+                        gridStatus.Rows[globalCounter].Cells[2].Value = item.sendStatusModel.message;
 
                         gridStatus.FirstDisplayedScrollingRowIndex = gridStatus.RowCount - 1;
                         item.logged = true;
@@ -763,6 +777,11 @@ namespace WASender
                 }
                 
             }
+        }
+
+        private void panel9_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

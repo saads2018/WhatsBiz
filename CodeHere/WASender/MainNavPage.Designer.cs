@@ -160,11 +160,11 @@
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.label58 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.borderPanel15 = new WASender.BorderPanel();
-            this.pictureBox25 = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.label66 = new System.Windows.Forms.Label();
-            this.label67 = new System.Windows.Forms.Label();
+            this.borderPanel19 = new WASender.BorderPanel();
+            this.button29 = new System.Windows.Forms.Button();
+            this.pictureBox32 = new System.Windows.Forms.PictureBox();
+            this.label74 = new System.Windows.Forms.Label();
+            this.label75 = new System.Windows.Forms.Label();
             this.borderPanel16 = new WASender.BorderPanel();
             this.pictureBox26 = new System.Windows.Forms.PictureBox();
             this.pictureBox27 = new System.Windows.Forms.PictureBox();
@@ -180,6 +180,11 @@
             this.pictureBox31 = new System.Windows.Forms.PictureBox();
             this.label72 = new System.Windows.Forms.Label();
             this.label73 = new System.Windows.Forms.Label();
+            this.borderPanel15 = new WASender.BorderPanel();
+            this.pictureBox25 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.label66 = new System.Windows.Forms.Label();
+            this.label67 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.gradientPanel1 = new WASender.GradientPanel();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
@@ -225,9 +230,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             this.borderPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
-            this.borderPanel15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            this.borderPanel19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox32)).BeginInit();
             this.borderPanel16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
@@ -237,6 +241,9 @@
             this.borderPanel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox31)).BeginInit();
+            this.borderPanel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             this.panel4.SuspendLayout();
             this.gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
@@ -982,10 +989,11 @@
             this.flowLayoutPanel1.Controls.Add(this.borderPanel10);
             this.flowLayoutPanel1.Controls.Add(this.borderPanel8);
             this.flowLayoutPanel1.Controls.Add(this.borderPanel7);
-            this.flowLayoutPanel1.Controls.Add(this.borderPanel15);
+            this.flowLayoutPanel1.Controls.Add(this.borderPanel19);
             this.flowLayoutPanel1.Controls.Add(this.borderPanel16);
             this.flowLayoutPanel1.Controls.Add(this.borderPanel17);
             this.flowLayoutPanel1.Controls.Add(this.borderPanel18);
+            this.flowLayoutPanel1.Controls.Add(this.borderPanel15);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 375);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -1928,66 +1936,70 @@
             this.label15.TabIndex = 29;
             this.label15.Text = "Export Chat\r\nList";
             // 
-            // borderPanel15
+            // borderPanel19
             // 
-            this.borderPanel15.BackColor = System.Drawing.Color.White;
-            this.borderPanel15.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.borderPanel15.Controls.Add(this.pictureBox25);
-            this.borderPanel15.Controls.Add(this.pictureBox11);
-            this.borderPanel15.Controls.Add(this.label66);
-            this.borderPanel15.Controls.Add(this.label67);
-            this.borderPanel15.Location = new System.Drawing.Point(940, 966);
-            this.borderPanel15.Margin = new System.Windows.Forms.Padding(3, 2, 53, 33);
-            this.borderPanel15.Name = "borderPanel15";
-            this.borderPanel15.Size = new System.Drawing.Size(383, 206);
-            this.borderPanel15.TabIndex = 68;
+            this.borderPanel19.BackColor = System.Drawing.Color.White;
+            this.borderPanel19.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.borderPanel19.Controls.Add(this.button29);
+            this.borderPanel19.Controls.Add(this.pictureBox32);
+            this.borderPanel19.Controls.Add(this.label74);
+            this.borderPanel19.Controls.Add(this.label75);
+            this.borderPanel19.Location = new System.Drawing.Point(940, 966);
+            this.borderPanel19.Margin = new System.Windows.Forms.Padding(3, 2, 53, 33);
+            this.borderPanel19.Name = "borderPanel19";
+            this.borderPanel19.Size = new System.Drawing.Size(383, 206);
+            this.borderPanel19.TabIndex = 72;
+            this.borderPanel19.Visible = false;
             // 
-            // pictureBox25
+            // button29
             // 
-            this.pictureBox25.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox25.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox25.Image")));
-            this.pictureBox25.Location = new System.Drawing.Point(48, 110);
-            this.pictureBox25.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox25.Name = "pictureBox25";
-            this.pictureBox25.Size = new System.Drawing.Size(83, 63);
-            this.pictureBox25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox25.TabIndex = 49;
-            this.pictureBox25.TabStop = false;
+            this.button29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
+            this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button29.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button29.ForeColor = System.Drawing.Color.White;
+            this.button29.Location = new System.Drawing.Point(32, 135);
+            this.button29.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button29.Name = "button29";
+            this.button29.Size = new System.Drawing.Size(123, 36);
+            this.button29.TabIndex = 43;
+            this.button29.Text = "PROCEED";
+            this.button29.UseVisualStyleBackColor = false;
+            this.button29.Click += new System.EventHandler(this.button29_Click);
             // 
-            // pictureBox11
+            // pictureBox32
             // 
-            this.pictureBox11.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
-            this.pictureBox11.Location = new System.Drawing.Point(193, 43);
-            this.pictureBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(157, 129);
-            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox11.TabIndex = 48;
-            this.pictureBox11.TabStop = false;
+            this.pictureBox32.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox32.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox32.Image")));
+            this.pictureBox32.Location = new System.Drawing.Point(213, 29);
+            this.pictureBox32.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox32.Name = "pictureBox32";
+            this.pictureBox32.Size = new System.Drawing.Size(143, 142);
+            this.pictureBox32.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox32.TabIndex = 40;
+            this.pictureBox32.TabStop = false;
             // 
-            // label66
+            // label74
             // 
-            this.label66.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
-            this.label66.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label66.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label66.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label66.Location = new System.Drawing.Point(-1, 18);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(10, 171);
-            this.label66.TabIndex = 47;
+            this.label74.AutoSize = true;
+            this.label74.BackColor = System.Drawing.Color.Transparent;
+            this.label74.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label74.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
+            this.label74.Location = new System.Drawing.Point(27, 30);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(150, 58);
+            this.label74.TabIndex = 42;
+            this.label74.Text = "Bulk Group \r\nGenerator";
             // 
-            // label67
+            // label75
             // 
-            this.label67.AutoSize = true;
-            this.label67.BackColor = System.Drawing.Color.Transparent;
-            this.label67.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label67.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
-            this.label67.Location = new System.Drawing.Point(27, 30);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(137, 58);
-            this.label67.TabIndex = 29;
-            this.label67.Text = "Webhook \r\nIntegration";
+            this.label75.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
+            this.label75.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label75.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label75.Location = new System.Drawing.Point(0, 18);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(10, 171);
+            this.label75.TabIndex = 41;
             // 
             // borderPanel16
             // 
@@ -2001,7 +2013,7 @@
             this.borderPanel16.Margin = new System.Windows.Forms.Padding(3, 2, 53, 33);
             this.borderPanel16.Name = "borderPanel16";
             this.borderPanel16.Size = new System.Drawing.Size(383, 206);
-            this.borderPanel16.TabIndex = 69;
+            this.borderPanel16.TabIndex = 73;
             // 
             // pictureBox26
             // 
@@ -2062,7 +2074,7 @@
             this.borderPanel17.Margin = new System.Windows.Forms.Padding(3, 2, 53, 33);
             this.borderPanel17.Name = "borderPanel17";
             this.borderPanel17.Size = new System.Drawing.Size(383, 206);
-            this.borderPanel17.TabIndex = 69;
+            this.borderPanel17.TabIndex = 74;
             // 
             // pictureBox28
             // 
@@ -2123,7 +2135,7 @@
             this.borderPanel18.Margin = new System.Windows.Forms.Padding(3, 2, 53, 33);
             this.borderPanel18.Name = "borderPanel18";
             this.borderPanel18.Size = new System.Drawing.Size(383, 206);
-            this.borderPanel18.TabIndex = 69;
+            this.borderPanel18.TabIndex = 75;
             // 
             // pictureBox30
             // 
@@ -2171,6 +2183,67 @@
             this.label73.Size = new System.Drawing.Size(144, 58);
             this.label73.TabIndex = 29;
             this.label73.Text = "Manage \r\nCampaigns";
+            // 
+            // borderPanel15
+            // 
+            this.borderPanel15.BackColor = System.Drawing.Color.White;
+            this.borderPanel15.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.borderPanel15.Controls.Add(this.pictureBox25);
+            this.borderPanel15.Controls.Add(this.pictureBox11);
+            this.borderPanel15.Controls.Add(this.label66);
+            this.borderPanel15.Controls.Add(this.label67);
+            this.borderPanel15.Location = new System.Drawing.Point(62, 1448);
+            this.borderPanel15.Margin = new System.Windows.Forms.Padding(3, 2, 53, 33);
+            this.borderPanel15.Name = "borderPanel15";
+            this.borderPanel15.Size = new System.Drawing.Size(383, 206);
+            this.borderPanel15.TabIndex = 76;
+            // 
+            // pictureBox25
+            // 
+            this.pictureBox25.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox25.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox25.Image")));
+            this.pictureBox25.Location = new System.Drawing.Point(48, 110);
+            this.pictureBox25.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox25.Name = "pictureBox25";
+            this.pictureBox25.Size = new System.Drawing.Size(83, 63);
+            this.pictureBox25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox25.TabIndex = 49;
+            this.pictureBox25.TabStop = false;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
+            this.pictureBox11.Location = new System.Drawing.Point(193, 43);
+            this.pictureBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(157, 129);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox11.TabIndex = 48;
+            this.pictureBox11.TabStop = false;
+            // 
+            // label66
+            // 
+            this.label66.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
+            this.label66.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label66.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label66.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label66.Location = new System.Drawing.Point(-1, 18);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(10, 171);
+            this.label66.TabIndex = 47;
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.BackColor = System.Drawing.Color.Transparent;
+            this.label67.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label67.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(171)))), ((int)(((byte)(134)))));
+            this.label67.Location = new System.Drawing.Point(27, 30);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(137, 58);
+            this.label67.TabIndex = 29;
+            this.label67.Text = "Webhook \r\nIntegration";
             // 
             // panel4
             // 
@@ -2261,7 +2334,7 @@
             this.automaticMessagingNav1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.automaticMessagingNav1.Name = "automaticMessagingNav1";
             this.automaticMessagingNav1.Size = new System.Drawing.Size(1397, 763);
-            this.automaticMessagingNav1.TabIndex = 98;
+            this.automaticMessagingNav1.TabIndex = 100;
             this.automaticMessagingNav1.Visible = false;
             // 
             // MainNavPage
@@ -2334,10 +2407,9 @@
             this.borderPanel7.ResumeLayout(false);
             this.borderPanel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
-            this.borderPanel15.ResumeLayout(false);
-            this.borderPanel15.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            this.borderPanel19.ResumeLayout(false);
+            this.borderPanel19.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox32)).EndInit();
             this.borderPanel16.ResumeLayout(false);
             this.borderPanel16.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).EndInit();
@@ -2350,6 +2422,10 @@
             this.borderPanel18.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox31)).EndInit();
+            this.borderPanel15.ResumeLayout(false);
+            this.borderPanel15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.gradientPanel1.ResumeLayout(false);
@@ -2499,11 +2575,11 @@
         private System.Windows.Forms.PictureBox pictureBox24;
         private System.Windows.Forms.Label label64;
         private System.Windows.Forms.Label label65;
-        private BorderPanel borderPanel15;
-        private System.Windows.Forms.PictureBox pictureBox25;
-        private System.Windows.Forms.PictureBox pictureBox11;
-        private System.Windows.Forms.Label label66;
-        private System.Windows.Forms.Label label67;
+        private BorderPanel borderPanel19;
+        private System.Windows.Forms.Button button29;
+        private System.Windows.Forms.PictureBox pictureBox32;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.Label label75;
         private BorderPanel borderPanel16;
         private System.Windows.Forms.PictureBox pictureBox26;
         private System.Windows.Forms.PictureBox pictureBox27;
@@ -2519,6 +2595,11 @@
         private System.Windows.Forms.PictureBox pictureBox31;
         private System.Windows.Forms.Label label72;
         private System.Windows.Forms.Label label73;
+        private BorderPanel borderPanel15;
+        private System.Windows.Forms.PictureBox pictureBox25;
+        private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.Label label67;
         public AutomaticMessagingNav automaticMessagingNav1;
     }
 }

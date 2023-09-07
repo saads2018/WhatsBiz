@@ -25,6 +25,7 @@ namespace WASender
         public static readonly string ChromeProfileGMAPFolder = "ChromeProfileGMAP";
         public static readonly string ActivationFile = "Activation.txt";
         public static readonly string ProcessLoggerFolderName = "ProcessLogger";
+        public static readonly string ProfilesFolder = "Profiles";
         public static readonly string ErrorLoggerFolderName = "ErrorLogger";
         public static readonly string TempFolderName = "temp";
         public static readonly string MasterKeyName = "masterkey";
@@ -38,6 +39,65 @@ namespace WASender
         {
             var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
             return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+        }
+
+        public static void deActivateProduct()
+        {
+
+            String FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
+
+            String WaSenderFolderpath = Path.Combine(FolderPath, Config.WaSenderFolderName);
+            if (!Directory.Exists(WaSenderFolderpath))
+            {
+                Directory.CreateDirectory(WaSenderFolderpath);
+            }
+            String keyMarkersTxtFilepath = Path.Combine(WaSenderFolderpath, Config.ActivationFile);
+            if (File.Exists(keyMarkersTxtFilepath))
+            {
+                File.Delete(keyMarkersTxtFilepath);
+            }
+
+            string AppDataa = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            WaSenderFolderpath = Path.Combine(AppDataa, Config.WaSenderFolderName);
+            if (!Directory.Exists(WaSenderFolderpath))
+            {
+                Directory.CreateDirectory(WaSenderFolderpath);
+            }
+            string keyMarkersTxtFilepathSecond = Path.Combine(WaSenderFolderpath, Config.ActivationFile);
+            if (File.Exists(keyMarkersTxtFilepathSecond))
+            {
+                File.Delete(keyMarkersTxtFilepathSecond);
+            }
+        }
+
+        public static string GetEdgeDriver()
+        {
+            String FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
+
+            String WaSenderFolderpath = Path.Combine(FolderPath, Config.WaSenderFolderName);
+            if (!Directory.Exists(WaSenderFolderpath))
+            {
+                Directory.CreateDirectory(WaSenderFolderpath);
+            }
+            String keyMarkersTxtFilepath = Path.Combine(WaSenderFolderpath, Config.ChromeDriverFolder);
+            if (!Directory.Exists(keyMarkersTxtFilepath))
+            {
+                Directory.CreateDirectory(keyMarkersTxtFilepath);
+            }
+            if (!File.Exists(keyMarkersTxtFilepath + "\\msedgedriver.exe"))
+            {
+                File.Copy("msedgedriver.exe", keyMarkersTxtFilepath + "\\msedgedriver.exe");
+            }
+            else
+            {
+                DateTime ftime = File.GetLastWriteTime(keyMarkersTxtFilepath + "\\msedgedriver.exe");
+                DateTime ftime2 = File.GetLastWriteTime("msedgedriver.exe");
+                if (ftime < ftime2)
+                {
+                    File.Copy("msedgedriver.exe", keyMarkersTxtFilepath + "\\msedgedriver.exe", true);
+                }
+            }
+            return keyMarkersTxtFilepath;
         }
 
         public static GeneralSettingsModel GetSettings()
@@ -55,6 +115,10 @@ namespace WASender
                     {
                         generalSettingsModel = new GeneralSettingsModel();
                     }
+                    if (generalSettingsModel.browserType == 0)
+                    {
+                        generalSettingsModel.browserType = 1;
+                    }
                     return generalSettingsModel;
                 }
                 else
@@ -68,6 +132,69 @@ namespace WASender
             }
         }
 
+        public static string GetSysFolderPath()
+        {
+            String FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
+
+            String WaSenderFolderpath = Path.Combine(FolderPath, Config.WaSenderFolderName);
+            if (!Directory.Exists(WaSenderFolderpath))
+            {
+                Directory.CreateDirectory(WaSenderFolderpath);
+            }
+            String returnableFolder = Path.Combine(WaSenderFolderpath, Config.SysFilesFolder);
+
+            if (!Directory.Exists(returnableFolder))
+            {
+                Directory.CreateDirectory(returnableFolder);
+            }
+
+
+
+            if (!File.Exists(returnableFolder + "\\db.db"))
+            {
+                File.Copy("db.db", returnableFolder + "\\db.db");
+            }
+
+            if (!File.Exists(returnableFolder + "\\chatTemplate.csv"))
+            {
+                File.Copy("chatTemplate.csv", returnableFolder + "\\chatTemplate.csv", true);
+            }
+            else
+            {
+                DateTime ftime = File.GetLastWriteTime(returnableFolder + "\\chatTemplate.csv");
+                DateTime ftime2 = File.GetLastWriteTime("chatTemplate.csv");
+                if (ftime < ftime2)
+                {
+                    File.Copy("chatTemplate.csv", returnableFolder + "\\chatTemplate.csv", true);
+                }
+            }
+
+
+            return returnableFolder;
+        }
+        public static string GetProfilesFolderPath()
+        {
+            String FolderPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
+
+            String WaSenderFolderpath = Path.Combine(FolderPath, Config.WaSenderFolderName);
+            if (!Directory.Exists(WaSenderFolderpath))
+            {
+                Directory.CreateDirectory(WaSenderFolderpath);
+            }
+            String returnableFolder = Path.Combine(WaSenderFolderpath, Config.ProfilesFolder);
+
+            if (!Directory.Exists(returnableFolder))
+            {
+                Directory.CreateDirectory(returnableFolder);
+            }
+
+            //if (!File.Exists(returnableFolder + "\\db.db"))
+            //{
+            //    File.Copy("db.db", returnableFolder + "\\db.db");
+            //}
+
+            return returnableFolder;
+        }
 
         public static DateTime? getEndDate()
         {
